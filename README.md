@@ -8,7 +8,7 @@
 
 在自己的电脑的PowerShell，依次执行
   # 连接我的仓库
-    git clone https://github.com/ChoyeEEEE/SilkRoad.git
+    git clone git@github.com:ChoyeEEEE/SilkRoad.git
     cd SilkRoad
   # 安装环境依赖
     npm install
