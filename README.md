@@ -33,6 +33,12 @@
 
 （每次修改代码之前这些步骤都要重复一遍，以同步我们各自修改代码到本地）
 
+## 如何打开网页
+
+在SilkRoad项目根目录里打开终端，执行
+
+npm run dev
+
 ## 推荐 IDE 设置
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（请禁用 Vetur）。
