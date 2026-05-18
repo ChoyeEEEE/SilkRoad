@@ -39,6 +39,8 @@
 
 npm run dev
 
+会出现一个接口为5173网址，复制到浏览器打开即可
+
 ## 推荐 IDE 设置
 
 [VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（请禁用 Vetur）。
