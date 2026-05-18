@@ -1,4 +1,5 @@
 # SilkRoad
+<<<<<<< HEAD
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -71,3 +72,6 @@ npm run test:e2e -- --debug
 ```sh
 npm run lint
 ```
+=======
+A webpage about the Silk Road.
+>>>>>>> 506742675462bdc507f5f07323aadb3c00f57926
