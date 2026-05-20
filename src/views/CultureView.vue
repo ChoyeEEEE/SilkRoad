@@ -1,97 +1,269 @@
 <template>
   <div class="culture-view">
-    <section class="section">
-      <h2>丝路文化交融</h2>
-      <div class="content">
-        <h3>宗教传播：佛教、伊斯兰教文化交融</h3>
-        <p>佛教从印度传入中国，伊斯兰教亦经丝路传播。</p>
-        <h3>艺术交融：壁画、舞蹈、乐器、服饰</h3>
-        <p>敦煌壁画展示中西合璧的艺术风格，乐器如琵琶经丝路传入。</p>
-        <h3>语言、习俗、民俗风情展示</h3>
-        <p>多种语言交汇，驼铃声声，胡旋舞风靡盛唐。</p>
+    <section class="hero-banner">
+      <div class="hero-content">
+        <h1>丝路文化交融</h1>
+        <p class="hero-sub">千年文明的碰撞与融合</p>
+      </div>
+      <div class="hero-wave"></div>
+    </section>
+
+    <section class="culture-cards">
+      <div
+        v-for="(item, index) in cultureItems"
+        :key="item.title"
+        class="zigzag-row"
+        :class="{ reverse: index % 2 !== 0 }"
+        ref="cardRefs"
+      >
+        <div class="zigzag-image">
+          <div class="image-frame">
+            <div class="image-placeholder">
+              <span class="ph-icon">{{ item.icon }}</span>
+              <span class="ph-text">{{ item.title }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="zigzag-text">
+          <span class="item-number">{{ String(index + 1).padStart(2, '0') }}</span>
+          <h3>{{ item.title }}</h3>
+          <p>{{ item.desc }}</p>
+          <div class="text-decoration"></div>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
-// No script logic needed for now
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const cultureItems = [
+  {
+    title: '宗教传播',
+    desc: '佛教从印度传入中国，沿丝绸之路留下无数石窟寺庙。伊斯兰教亦经丝路传播，在中国大地生根发芽，形成了独特的文化交融景观。',
+    icon: '🕌'
+  },
+  {
+    title: '艺术交融',
+    desc: '敦煌壁画展示中西合璧的艺术风格，飞天舞姿、供养人像尽显异域风情。乐器如琵琶、箜篌经丝路传入中原，成为盛唐乐舞的重要组成。',
+    icon: '🎨'
+  },
+  {
+    title: '语言与习俗',
+    desc: '多种语言在丝路上交汇融合，驼铃声声穿越大漠。胡旋舞风靡盛唐，胡服、胡食融入中原生活，形成了丰富多彩的民俗风情。',
+    icon: '📜'
+  }
+]
+
+const cardRefs = ref<HTMLElement[]>([])
+let observer: IntersectionObserver | null = null
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      })
+    },
+    { threshold: 0.15 }
+  )
+  cardRefs.value.forEach((el) => {
+    if (el) observer!.observe(el)
+  })
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+})
 </script>
 
 <style scoped>
-/* 色彩主题：沙漠黄、戈壁棕、敦煌红、青黛蓝 */
-:root {
-  --desert-yellow: #F5DEB3;
-  --gobi-brown: #8B4513;
-  --dunhuang-red: #8B0000;
-  --qingdai-blue: #2F4F4F;
-}
-
-/* 基础重置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'SimSun', 'sans-serif';
-  background-color: var(--desert-yellow);
-  color: #333;
-  line-height: 1.6;
-}
-
-/* 容器 */
 .culture-view {
   min-height: 100vh;
+  overflow: hidden;
 }
 
-/* 核心板块 */
-.section {
-  padding: 3rem 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-  background: white;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.hero-banner {
+  position: relative;
+  height: 280px;
+  background: linear-gradient(135deg, #8B0000 0%, #2F4F4F 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-.section h2 {
+.hero-content {
   text-align: center;
-  margin-bottom: 2rem;
-  color: var(--dunhuang-red);
+  color: #fff;
+  z-index: 1;
+}
+
+.hero-content h1 {
   font-family: 'SimSun', cursive;
-  font-size: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: 6px;
+  animation: heroFadeIn 1s ease-out;
+}
+
+.hero-sub {
+  margin-top: 0.8rem;
+  font-size: 1.1rem;
+  opacity: 0.85;
+  letter-spacing: 3px;
+  animation: heroFadeIn 1s ease-out 0.3s both;
+}
+
+.hero-wave {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: #F5DEB3;
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+
+.culture-cards {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.zigzag-row {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.zigzag-row.reverse {
+  transform: translateX(60px);
+}
+
+.zigzag-row.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.zigzag-image {
+  flex: 0 0 380px;
+}
+
+.image-frame {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(139, 0, 0, 0.15);
+  transition: transform 0.4s ease;
+}
+
+.image-frame:hover {
+  transform: scale(1.03) rotate(-1deg);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 260px;
+  background: linear-gradient(135deg, rgba(245, 222, 179, 0.6), rgba(232, 224, 208, 0.8));
+  border: 2px dashed rgba(139, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.ph-icon {
+  font-size: 3rem;
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.ph-text {
+  font-size: 0.9rem;
+  color: #999;
+  font-family: 'SimSun', cursive;
+}
+
+.zigzag-text {
+  flex: 1;
   position: relative;
 }
 
-.section h2::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 60px;
-  height: 4px;
-  background: var(--qingdai-blue);
+.item-number {
+  font-size: 4rem;
+  font-weight: 900;
+  color: rgba(139, 0, 0, 0.08);
+  font-family: 'Georgia', serif;
+  line-height: 1;
+  display: block;
+  margin-bottom: -1rem;
 }
 
-.section h3 {
-  color: var(--gobi-brown);
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
+.zigzag-text h3 {
   font-family: 'SimSun', cursive;
+  font-size: 1.5rem;
+  color: #8B0000;
+  margin-bottom: 0.8rem;
+  position: relative;
 }
 
-.section p {
-  margin-bottom: 1rem;
-  text-indent: 2em;
+.zigzag-text p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1rem;
 }
 
-/* 响应式调整 */
+.text-decoration {
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #D4AF37, transparent);
+  margin-top: 1rem;
+  border-radius: 2px;
+  animation: lineGrow 0.8s ease-out 0.5s both;
+}
+
+@keyframes heroFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes iconFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes lineGrow {
+  from { width: 0; }
+  to { width: 50px; }
+}
+
 @media (max-width: 768px) {
-  .section {
-    padding: 2rem 1rem;
+  .zigzag-row,
+  .zigzag-row.reverse {
+    flex-direction: column;
+    transform: translateY(40px);
+  }
+
+  .zigzag-row.visible {
+    transform: translateY(0);
+  }
+
+  .zigzag-image {
+    flex: none;
+    width: 100%;
+  }
+
+  .hero-content h1 {
+    font-size: 1.8rem;
   }
 }
 </style>
