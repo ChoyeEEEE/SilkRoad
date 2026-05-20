@@ -1,39 +1,89 @@
 <template>
   <div class="history-view">
-    <section class="section animate-on-scroll">
+    <!-- 页面顶部装饰 -->
+    <div class="hero-banner">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1>历史溯源</h1>
+        <p>穿越千年时光，探寻丝绸之路的起源与辉煌</p>
+      </div>
+      <div class="scroll-hint">
+        <span>向下滚动</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+
+    <!-- 时间轴内容 -->
+    <section class="timeline-section">
       <h2 class="section-title">丝路起源与历史</h2>
-      <div class="content">
-        <div class="timeline">
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-date">公元前138年</div>
-            <div class="timeline-content">
-              <h3>张骞出使西域历史背景</h3>
-              <p>公元前138年，汉武帝派张骞出使西域，开启了汉朝与西域的直接联系。这一举动不仅是一次外交使命，更是东西方文化交流的序幕。</p>
+
+      <div class="timeline">
+        <!-- 中轴线 -->
+        <div class="timeline-line">
+          <div class="line-progress" ref="lineProgress"></div>
+        </div>
+
+        <!-- 时间轴节点 -->
+        <div v-for="(item, index) in timelineData" :key="index"
+             class="timeline-node"
+             :class="[index % 2 === 0 ? 'node-left' : 'node-right', { 'is-visible': visibleItems.has(index) }]"
+             ref="nodeRefs">
+
+          <!-- 连接线 -->
+          <div class="node-connector">
+            <div class="connector-line"></div>
+            <div class="connector-dot">
+              <span class="dot-icon">{{ item.icon }}</span>
             </div>
           </div>
-          
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-date">公元前2世纪</div>
-            <div class="timeline-content">
-              <h3>西汉开辟陆上丝路时间、初衷</h3>
-              <p>西汉时期（公元前2世纪），为争取盟友对抗匈奴，开通陆上丝路。张骞的两次出使西域，为后来的丝路贸易奠定了基础。</p>
+
+          <!-- 卡片 -->
+          <div class="node-card">
+            <!-- 图片区域 -->
+            <div class="card-image" :style="{ background: item.gradient }">
+              <img v-if="item.image" :src="item.image" :alt="item.imageLabel" class="card-img" />
+              <div v-else class="image-placeholder">
+                <span class="placeholder-icon">{{ item.icon }}</span>
+                <span class="placeholder-text">{{ item.imageLabel }}</span>
+              </div>
+              <div class="image-overlay"></div>
+            </div>
+
+            <!-- 内容区域 -->
+            <div class="card-body">
+              <div class="card-era">{{ item.era }}</div>
+              <h3 class="card-title">{{ item.title }}</h3>
+              <p class="card-desc">{{ item.description }}</p>
+              <div class="card-tags">
+                <span v-for="tag in item.tags" :key="tag" class="tag">{{ tag }}</span>
+              </div>
             </div>
           </div>
-          
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-date">秦汉时期至唐宋</div>
-            <div class="timeline-content">
-              <h3>海上丝绸之路发展历程</h3>
-              <p>从秦汉时期开始，逐渐发展，到唐宋时期达到鼎盛。海上丝路连接了中国东南沿波与东南亚、南亚、西亚及东非地区。</p>
-            </div>
+
+          <!-- 年份标签 -->
+          <div class="year-badge">{{ item.year }}</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 底部总结 -->
+    <section class="summary-section">
+      <div class="summary-card">
+        <div class="summary-icon">🏛️</div>
+        <h3>历史意义</h3>
+        <p>丝绸之路不仅是一条贸易通道，更是连接东西方文明的桥梁。它促进了文化、宗教、科技、艺术的交流融合，对人类文明发展产生了深远影响。</p>
+        <div class="summary-stats">
+          <div class="stat">
+            <span class="stat-num">2000+</span>
+            <span class="stat-label">年历史</span>
           </div>
-          
-          <div class="timeline-item animate-on-scroll">
-            <div class="timeline-date">历久弥新</div>
-            <div class="timeline-content">
-              <h3>丝路历史意义与时代价值</h3>
-              <p>促进了东西方文化、经济、技术的交流，对世界文明发展产生深远影响。丝路不仅是一条贸易路线，更是文明交流的桥梁。</p>
-            </div>
+          <div class="stat">
+            <span class="stat-num">7000+</span>
+            <span class="stat-label">公里路程</span>
+          </div>
+          <div class="stat">
+            <span class="stat-num">数十</span>
+            <span class="stat-label">个国家</span>
           </div>
         </div>
       </div>
@@ -42,261 +92,563 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-const checkScroll = () => {
-  const elements = document.querySelectorAll('.animate-on-scroll')
-  
-  elements.forEach(element => {
-    const elementTop = element.getBoundingClientRect().top
-    const elementBottom = element.getBoundingClientRect().bottom
-    const windowHeight = window.innerHeight
-    
-    if (elementTop < windowHeight * 0.8 && elementBottom > 0) {
-      element.classList.add('animated')
-    }
-  })
+interface TimelineItem {
+  year: string
+  era: string
+  title: string
+  description: string
+  icon: string
+  imageLabel: string
+  gradient: string
+  image?: string
+  tags: string[]
 }
 
+const timelineData: TimelineItem[] = [
+  {
+    year: '前138年',
+    era: '西汉时期',
+    title: '张骞出使西域',
+    description: '汉武帝派张骞出使西域，历经13年艰难险阻，开辟了中原通往西域的道路。张骞的两次出使，不仅带回了西域各国的地理人文信息，更开启了东西方文明交流的伟大篇章。',
+    icon: '🛤️',
+    imageLabel: '张骞出使西域',
+    image: '/picture/1866C5AF7EA21DF62C35C3354A6385A4.jpg',
+    gradient: 'linear-gradient(135deg, #C9A96E 0%, #8B6914 100%)',
+    tags: ['外交使命', '文明交流', '西域探索']
+  },
+  {
+    year: '前2世纪',
+    era: '西汉时期',
+    title: '陆上丝绸之路开辟',
+    description: '西汉为争取盟友对抗匈奴，正式开通陆上丝路。从长安出发，经河西走廊、西域，通往中亚、西亚，最终抵达地中海沿岸。这条路线成为古代东西方贸易和文化交流的大动脉。',
+    icon: '🐫',
+    imageLabel: '沙漠驼队',
+    image: '/picture/D5EE03F4B408EC0758DA49F1D1E82D65.jpg',
+    gradient: 'linear-gradient(135deg, #D4AF37 0%, #8B4513 100%)',
+    tags: ['贸易通道', '文化桥梁', '驼队商旅']
+  },
+  {
+    year: '7世纪',
+    era: '唐宋时期',
+    title: '海上丝绸之路鼎盛',
+    description: '唐宋时期，海上丝绸之路达到鼎盛。泉州、广州成为世界级大港口，商船往来于东南亚、南亚、西亚及东非地区。瓷器、丝绸、茶叶从这里运往世界各地。',
+    icon: '⛵',
+    imageLabel: '海上贸易',
+    image: '/picture/7BD645C4E1B458ED35106187F8F6A9AA.jpg',
+    gradient: 'linear-gradient(135deg, #2F4F4F 0%, #1a3a3a 100%)',
+    tags: ['海上贸易', '港口文化', '瓷器之路']
+  },
+  {
+    year: '13世纪',
+    era: '蒙元时期',
+    title: '蒙古帝国与丝路复兴',
+    description: '蒙古帝国的统一使丝绸之路再度繁荣。马可·波罗沿丝路来到中国，他的游记让欧洲人第一次详细了解了东方的富庶。东西方的贸易和文化交流达到新高峰。',
+    icon: '🏰',
+    imageLabel: '东西方交汇',
+    image: '/picture/09B828686165D7C89E2C09B4D082A1FF.jpg',
+    gradient: 'linear-gradient(135deg, #8B0000 0%, #5a0000 100%)',
+    tags: ['帝国统一', '文化交流', '马可·波罗']
+  },
+  {
+    year: '历久弥新',
+    era: '当代',
+    title: '丝路精神传承',
+    description: '丝绸之路的历史意义超越了时空限制。它所承载的和平合作、开放包容、互学互鉴、互利共赢的精神，至今仍激励着世界各国携手共建人类命运共同体。',
+    icon: '🌏',
+    imageLabel: '新时代丝路',
+    gradient: 'linear-gradient(135deg, #D4AF37 0%, #C9A96E 100%)',
+    tags: ['一带一路', '文明互鉴', '共同繁荣']
+  }
+]
+
+const visibleItems = ref(new Set<number>())
+const lineProgress = ref<HTMLElement | null>(null)
+const nodeRefs = ref<HTMLElement[]>([])
+
+let observer: IntersectionObserver | null = null
+
 onMounted(() => {
-  window.addEventListener('scroll', checkScroll)
-  // Initial check
-  checkScroll()
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Number(entry.target.getAttribute('data-index'))
+          visibleItems.value = new Set([...visibleItems.value, index])
+        }
+      })
+    },
+    { threshold: 0.3 }
+  )
+
+  setTimeout(() => {
+    document.querySelectorAll('.timeline-node').forEach((el, i) => {
+      el.setAttribute('data-index', String(i))
+      observer?.observe(el)
+    })
+  }, 100)
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
 })
 </script>
 
 <style scoped>
-/* 色彩主题：沙漠黄、戈壁棕、敦煌红、青黛蓝 */
-:root {
-  --desert-yellow: #F5DEB3;
-  --gobi-brown: #8B4513;
-  --dunhuang-red: #8B0000;
-  --qingdai-blue: #2F4F4F;
-  --gold: #D4AF37;
-  --cream: #FFF8E7;
-  --light-gray: #f8f9fa;
-}
-
-/* 基础重置 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'SimSun', 'sans-serif';
-  background-color: var(--desert-yellow);
-  color: #333;
-  line-height: 1.6;
-}
-
-/* 容器 */
 .history-view {
   min-height: 100vh;
-  padding: 60px 0; /* 为固定导航栏留出空间 */
-  position: relative;
+  background: linear-gradient(180deg, #f5f0e8 0%, #ede4d3 50%, #f5f0e8 100%);
 }
 
-/* 核心板块 */
-.section {
-  max-width: 1200px;
+/* ========== 顶部横幅 ========== */
+.hero-banner {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.2) 0%, transparent 60%),
+    linear-gradient(180deg, #3a2a10 0%, #6b4e10 30%, #8B6914 60%, #C9A96E 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  color: #FFF8DC;
+  letter-spacing: 12px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.3);
+  animation: fadeInDown 1s ease-out;
+}
+
+.hero-content p {
+  font-size: 1.3rem;
+  color: rgba(245,222,179,0.8);
+  margin-top: 1rem;
+  letter-spacing: 4px;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.scroll-hint {
+  position: absolute;
+  bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeInUp 1s ease-out 0.8s both;
+}
+
+.scroll-hint span {
+  font-size: 0.8rem;
+  color: rgba(245,222,179,0.6);
+  letter-spacing: 2px;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 2px solid rgba(245,222,179,0.6);
+  border-bottom: 2px solid rgba(245,222,179,0.6);
+  transform: rotate(45deg);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+/* ========== 时间轴区域 ========== */
+.timeline-section {
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
 }
 
 .section-title {
   text-align: center;
-  margin-bottom: 3rem;
-  color: var(--dunhuang-red);
-  font-family: 'SimSun', cursive;
+  margin-bottom: 4rem;
   font-size: 2.5rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  color: #8B0000;
+  letter-spacing: 4px;
   position: relative;
-  display: inline-block;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .section-title::after {
   content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 0;
+  display: block;
   width: 60px;
-  height: 4px;
-  background: var(--qingdai-blue);
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  margin: 1rem auto 0;
 }
 
-/* 时间轴样式 */
+/* ========== 时间轴 ========== */
 .timeline {
   position: relative;
-  max-width: 800px;
-  margin: 0 auto;
   padding: 2rem 0;
 }
 
-.timeline::before {
-  content: '';
+.timeline-line {
   position: absolute;
-  top: 0;
   left: 50%;
-  width: 4px;
-  height: 100%;
-  background: var(--qingdai-blue);
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: rgba(139,105,20,0.15);
   transform: translateX(-50%);
   border-radius: 2px;
 }
 
-.timeline-item {
+.line-progress {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, #D4AF37, #8B6914);
+  border-radius: 2px;
+  transition: height 0.1s linear;
+}
+
+/* ========== 时间轴节点 ========== */
+.timeline-node {
   position: relative;
-  margin-bottom: 3rem;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-
-.timeline-item.animated {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.timeline-date {
-  position: absolute;
-  left: 50%;
-  top: 0;
-  width: 120px;
-  height: 120px;
-  background: var(--dunhuang-red);
-  color: white;
-  border-radius: 50%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: 'SimSun', cursive;
-  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
-  transform: translateX(-50%);
-  transition: all 0.4s ease;
-  z-index: 10;
-}
-
-.timeline-date:hover {
-  transform: translateX(-50%) scale(1.1);
-  background: var(--qingdai-blue);
-}
-
-.timeline-content {
-  position: relative;
-  width: calc(50% - 80px);
-  margin-left: calc(50% + 40px);
-  background: white;
-  padding: 1.8rem;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  border-left: 4px solid var(--dunhuang-red);
-  transition: all 0.4s ease;
+  align-items: flex-start;
+  margin-bottom: 4rem;
   opacity: 0;
-  transform: translateX(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.timeline-item.animated .timeline-content {
+.timeline-node.node-left {
+  flex-direction: row;
+  padding-right: calc(50% + 40px);
+  transform: translateX(-40px);
+}
+
+.timeline-node.node-right {
+  flex-direction: row-reverse;
+  padding-left: calc(50% + 40px);
+  transform: translateX(40px);
+}
+
+.timeline-node.is-visible {
   opacity: 1;
   transform: translateX(0);
 }
 
-.timeline-content:nth-child(even) {
-  margin-left: auto;
-  margin-right: calc(50% + 40px);
-  border-left: none;
-  border-right: 4px solid var(--dunhuang-red);
+/* 连接器 */
+.node-connector {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
 }
 
-.timeline-content h3 {
-  color: var(--gobi-brown);
-  margin-bottom: 1rem;
-  font-family: 'SimSun', cursive;
+.connector-dot {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #D4AF37, #8B6914);
   display: flex;
   align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(212,175,55,0.4), 0 0 0 4px rgba(212,175,55,0.1);
+  transition: all 0.4s ease;
+}
+
+.connector-dot:hover {
+  transform: scale(1.15);
+  box-shadow: 0 6px 20px rgba(212,175,55,0.5), 0 0 0 8px rgba(212,175,55,0.15);
+}
+
+.dot-icon {
+  font-size: 1.4rem;
+}
+
+/* 卡片 */
+.node-card {
+  flex: 1;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+  transition: all 0.4s ease;
+}
+
+.node-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+}
+
+/* 图片区域 */
+.card-image {
+  height: 220px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.node-card:hover .card-img {
+  transform: scale(1.05);
+}
+
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
+  z-index: 1;
 }
 
-.timeline-content h3::before {
-  content: '▸';
-  color: var(--dunhuang-red);
-  font-size: 1.2rem;
+.placeholder-icon {
+  font-size: 3rem;
+  opacity: 0.7;
+  animation: float 3s ease-in-out infinite;
 }
 
-.timeline-content p {
+.placeholder-text {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.8);
+  letter-spacing: 2px;
+  font-family: 'SimSun', serif;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.15) 100%);
+}
+
+/* 内容区域 */
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-era {
+  display: inline-block;
+  padding: 0.25rem 0.8rem;
+  background: rgba(212,175,55,0.1);
+  color: #8B6914;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 0.8rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: #333;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+
+.card-desc {
+  font-size: 0.9rem;
   line-height: 1.8;
-  color: #555;
+  color: #666;
+  margin-bottom: 1rem;
 }
 
-/* 响应式调整 */
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tag {
+  padding: 0.2rem 0.6rem;
+  background: #f8f4ee;
+  color: #8B6914;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  border: 1px solid rgba(139,105,20,0.15);
+}
+
+/* 年份标签 */
+.year-badge {
+  position: absolute;
+  top: 20px;
+  padding: 0.4rem 1rem;
+  background: #8B0000;
+  color: white;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  font-family: 'SimSun', serif;
+  letter-spacing: 1px;
+  box-shadow: 0 3px 10px rgba(139,0,0,0.3);
+  z-index: 5;
+}
+
+.node-left .year-badge {
+  right: calc(50% + 60px);
+}
+
+.node-right .year-badge {
+  left: calc(50% + 60px);
+}
+
+/* ========== 底部总结 ========== */
+.summary-section {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 2rem 4rem;
+}
+
+.summary-card {
+  background: linear-gradient(135deg, #3a2a10 0%, #6b4e10 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  text-align: center;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.summary-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    repeating-linear-gradient(45deg, transparent 0px, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 60px);
+}
+
+.summary-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.summary-card h3 {
+  font-size: 1.8rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  letter-spacing: 4px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.summary-card p {
+  font-size: 1rem;
+  line-height: 1.8;
+  opacity: 0.9;
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.summary-stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  position: relative;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.stat-num {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #D4AF37;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+/* ========== 响应式 ========== */
 @media (max-width: 768px) {
-  .section {
-    padding: 2rem 1rem;
+  .hero-content h1 { font-size: 2.5rem; letter-spacing: 6px; }
+  .hero-content p { font-size: 1rem; }
+  .timeline-section { padding: 2rem 1rem; }
+  .section-title { font-size: 2rem; }
+
+  .timeline-line { left: 24px; }
+
+  .timeline-node.node-left,
+  .timeline-node.node-right {
+    padding-left: 70px;
+    padding-right: 0;
+    flex-direction: row;
   }
-  
-  .section-title {
-    font-size: 2rem;
+
+  .node-connector { left: 24px; }
+  .connector-dot { width: 40px; height: 40px; }
+  .dot-icon { font-size: 1.1rem; }
+
+  .node-left .year-badge,
+  .node-right .year-badge {
+    left: 70px;
+    right: auto;
+    top: -10px;
   }
-  
-  .timeline::before {
-    left: 20px;
-  }
-  
-  .timeline-item {
-    margin-bottom: 2.5rem;
-  }
-  
-  .timeline-date {
-    position: relative;
-    left: 0;
-    width: 80px;
-    height: 80px;
-    margin-bottom: 1rem;
-    transform: none;
-  }
-  
-  .timeline-content {
-    width: calc(100% - 100px);
-    margin-left: 110px;
-    border-left: none;
-    border-top: 4px solid var(--dunhuang-red);
-    padding-top: 1rem;
-  }
-  
-  .timeline-content:nth-child(even) {
-    margin-left: 110px;
-    border-left: none;
-    border-top: 4px solid var(--dunhuang-red);
-    border-right: none;
-  }
-  
-  .timeline-content h3::before {
-    display: none;
-  }
+
+  .card-image { height: 140px; }
+  .placeholder-icon { font-size: 2.5rem; }
+
+  .summary-card { padding: 2rem 1.5rem; }
+  .summary-stats { gap: 1.5rem; }
+  .stat-num { font-size: 1.5rem; }
 }
 
-/* 动画关键帧 */
+/* ========== 关键帧 ========== */
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes bounce {
+  0%, 100% { transform: rotate(45deg) translateY(0); }
+  50% { transform: rotate(45deg) translateY(6px); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 </style>

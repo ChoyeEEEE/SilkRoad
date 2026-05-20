@@ -3,7 +3,7 @@
     <header class="main-visual">
       <div class="banner">
         <!-- 背景图片 -->
-        <img src="/picture/43668BDA254C419D1DDBC3305607DADF.jpg" class="bg-image" alt="" draggable="false" />
+        <img src="/picture/523C934FDFF6CF60CEBBFD042B7081CA.jpg" class="bg-image" alt="" draggable="false" />
 
         <!-- 暗色遮罩（让文字更清晰） -->
         <div class="overlay"></div>
