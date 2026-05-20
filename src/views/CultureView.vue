@@ -93,7 +93,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 280px;
-  background: linear-gradient(135deg, #8B0000 0%, #2F4F4F 100%);
+  background: linear-gradient(135deg, #8B0000 0%, #4682B4 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -222,7 +222,7 @@ onUnmounted(() => {
 .zigzag-text h3 {
   font-family: 'SimSun', cursive;
   font-size: 1.5rem;
-  color: #8B0000;
+  color: #831616;
   margin-bottom: 0.8rem;
   position: relative;
 }
