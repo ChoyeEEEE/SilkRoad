@@ -17,10 +17,10 @@
         <div class="exchange-center">
           <div class="exchange-arrow">
             <svg width="60" height="24" viewBox="0 0 60 24">
-              <path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#D4AF37" stroke-width="2" fill="none"/>
+              <path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#C8982C" stroke-width="2" fill="none"/>
             </svg>
             <svg width="60" height="24" viewBox="0 0 60 24" class="arrow-reverse">
-              <path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#8B0000" stroke-width="2" fill="none"/>
+              <path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#B84C38" stroke-width="2" fill="none"/>
             </svg>
           </div>
         </div>
@@ -132,7 +132,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 280px;
-  background: linear-gradient(135deg, #8B4513 0%, #D4AF37 100%);
+  background: linear-gradient(135deg, #7A4A2A 0%, #C8982C 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -166,7 +166,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 60px;
-  background: #F5DEB3;
+  background: #E8C872;
   clip-path: ellipse(55% 100% at 50% 100%);
 }
 
@@ -193,8 +193,8 @@ onUnmounted(() => {
   font-weight: bold;
 }
 
-.left-title { color: #2F4F4F; }
-.right-title { color: #8B4513; }
+.left-title { color: #3D5C5C; }
+.right-title { color: #7A4A2A; }
 
 .col-icon {
   font-size: 1.8rem;
@@ -240,13 +240,13 @@ onUnmounted(() => {
 .divider-line {
   width: 2px;
   height: 80px;
-  background: linear-gradient(to bottom, transparent, #D4AF37, transparent);
+  background: linear-gradient(to bottom, transparent, #C8982C, transparent);
 }
 
 .divider-label {
   writing-mode: vertical-rl;
   font-family: 'SimSun', cursive;
-  color: #D4AF37;
+  color: #C8982C;
   font-size: 0.9rem;
   letter-spacing: 4px;
   padding: 1rem 0;
@@ -296,10 +296,10 @@ onUnmounted(() => {
 }
 
 .card-back {
-  background: linear-gradient(135deg, #8B0000, #2F4F4F);
+  background: linear-gradient(135deg, #B84C38, #3D5C5C);
   color: #fff;
   transform: rotateY(180deg);
-  box-shadow: 0 4px 16px rgba(139, 0, 0, 0.2);
+  box-shadow: 0 4px 16px rgba(184, 76, 56, 0.2);
 }
 
 .card-emoji {
@@ -351,7 +351,7 @@ onUnmounted(() => {
   .divider-line {
     width: 80px;
     height: 2px;
-    background: linear-gradient(to right, transparent, #D4AF37, transparent);
+    background: linear-gradient(to right, transparent, #C8982C, transparent);
   }
 
   .divider-label {

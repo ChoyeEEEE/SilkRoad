@@ -93,7 +93,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 280px;
-  background: linear-gradient(135deg, #8B0000 0%, #4682B4 100%);
+  background: linear-gradient(135deg, #B84C38 0%, #4682B4 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -127,7 +127,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 60px;
-  background: #F5DEB3;
+  background: #E8C872;
   clip-path: ellipse(55% 100% at 50% 100%);
 }
 
@@ -166,7 +166,7 @@ onUnmounted(() => {
   position: relative;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(139, 0, 0, 0.15);
+  box-shadow: 0 12px 40px rgba(184, 76, 56, 0.15);
   transition: transform 0.4s ease;
 }
 
@@ -185,7 +185,7 @@ onUnmounted(() => {
   width: 100%;
   height: 260px;
   background: linear-gradient(135deg, rgba(245, 222, 179, 0.6), rgba(232, 224, 208, 0.8));
-  border: 2px dashed rgba(139, 0, 0, 0.2);
+  border: 2px dashed rgba(184, 76, 56, 0.2);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -212,7 +212,7 @@ onUnmounted(() => {
 .item-number {
   font-size: 4rem;
   font-weight: 900;
-  color: rgba(139, 0, 0, 0.08);
+  color: rgba(184, 76, 56, 0.08);
   font-family: 'Georgia', serif;
   line-height: 1;
   display: block;
@@ -236,7 +236,7 @@ onUnmounted(() => {
 .text-decoration {
   width: 50px;
   height: 3px;
-  background: linear-gradient(90deg, #D4AF37, transparent);
+  background: linear-gradient(90deg, #C8982C, transparent);
   margin-top: 1rem;
   border-radius: 2px;
   animation: lineGrow 0.8s ease-out 0.5s both;
