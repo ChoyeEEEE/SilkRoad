@@ -438,7 +438,7 @@ onMounted(() => {
   document.querySelectorAll('.section-ornament').forEach((el) => {
     const obs = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0]?.isIntersecting) {
           el.classList.add('visible')
           obs.disconnect()
         }
@@ -451,7 +451,7 @@ onMounted(() => {
   if (statsRef.value) {
     const statsObs = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0]?.isIntersecting) {
           statsVisible.value = true
           statsObs.disconnect()
         }
