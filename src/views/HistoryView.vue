@@ -204,11 +204,13 @@ onUnmounted(() => {
 /* ========== 顶部横幅 ========== */
 .hero-banner {
   position: relative;
-  height: 60vh;
-  min-height: 400px;
+  height: 65vh;
+  min-height: 440px;
   background:
-    radial-gradient(ellipse at 50% 30%, rgba(212,175,55,0.2) 0%, transparent 60%),
-    linear-gradient(180deg, #3a2a10 0%, #6b4e10 30%, #8B6914 60%, #C9A96E 100%);
+    radial-gradient(ellipse at 20% 50%, rgba(139,37,0,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 50%, rgba(139,37,0,0.25) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(184,134,11,0.2) 0%, transparent 50%),
+    linear-gradient(170deg, #1a0a0a 0%, #3d1215 25%, #5C1A1B 45%, #7A2E2E 60%, #4A1A0A 80%, #2a1008 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -221,13 +223,26 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   background:
-    repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 40px);
+    repeating-linear-gradient(90deg, transparent 0px, transparent 60px, rgba(212,175,55,0.03) 60px, rgba(212,175,55,0.03) 61px),
+    repeating-linear-gradient(0deg, transparent 0px, transparent 60px, rgba(212,175,55,0.03) 60px, rgba(212,175,55,0.03) 61px);
+}
+
+.hero-banner::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(212,175,55,0.15);
+  margin: 1.5rem;
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.3) 100%);
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(212,175,55,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.4) 100%);
 }
 
 .hero-content {
@@ -237,21 +252,46 @@ onUnmounted(() => {
 }
 
 .hero-content h1 {
-  font-size: 4rem;
+  font-size: 4.2rem;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
-  color: #FFF8DC;
-  letter-spacing: 12px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.5), 0 0 40px rgba(212,175,55,0.3);
+  color: #D4AF37;
+  letter-spacing: 16px;
+  text-shadow:
+    0 0 20px rgba(212,175,55,0.3),
+    0 2px 10px rgba(0,0,0,0.6);
   animation: fadeInDown 1s ease-out;
+  position: relative;
+}
+
+.hero-content h1::before,
+.hero-content h1::after {
+  content: '—';
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  color: rgba(212,175,55,0.5);
+  vertical-align: middle;
+  margin: 0 0.8rem;
 }
 
 .hero-content p {
-  font-size: 1.3rem;
-  color: rgba(245,222,179,0.8);
-  margin-top: 1rem;
-  letter-spacing: 4px;
+  font-size: 1.25rem;
+  color: rgba(220,200,170,0.75);
+  margin-top: 1.2rem;
+  letter-spacing: 5px;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
   animation: fadeInUp 1s ease-out 0.3s both;
+  position: relative;
+}
+
+.hero-content p::before,
+.hero-content p::after {
+  content: '';
+  display: inline-block;
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.4), transparent);
+  vertical-align: middle;
+  margin: 0 1rem;
 }
 
 .scroll-hint {
@@ -266,15 +306,15 @@ onUnmounted(() => {
 
 .scroll-hint span {
   font-size: 0.8rem;
-  color: rgba(245,222,179,0.6);
-  letter-spacing: 2px;
+  color: rgba(212,175,55,0.45);
+  letter-spacing: 3px;
 }
 
 .scroll-arrow {
-  width: 20px;
-  height: 20px;
-  border-right: 2px solid rgba(245,222,179,0.6);
-  border-bottom: 2px solid rgba(245,222,179,0.6);
+  width: 18px;
+  height: 18px;
+  border-right: 1.5px solid rgba(212,175,55,0.45);
+  border-bottom: 1.5px solid rgba(212,175,55,0.45);
   transform: rotate(45deg);
   animation: bounce 2s ease-in-out infinite;
 }
@@ -598,8 +638,12 @@ onUnmounted(() => {
 
 /* ========== 响应式 ========== */
 @media (max-width: 768px) {
-  .hero-content h1 { font-size: 2.5rem; letter-spacing: 6px; }
-  .hero-content p { font-size: 1rem; }
+  .hero-banner { min-height: 360px; height: 50vh; }
+  .hero-banner::after { margin: 0.8rem; }
+  .hero-content h1 { font-size: 2.6rem; letter-spacing: 8px; }
+  .hero-content h1::before, .hero-content h1::after { font-size: 1.2rem; margin: 0 0.4rem; }
+  .hero-content p { font-size: 1rem; letter-spacing: 3px; }
+  .hero-content p::before, .hero-content p::after { width: 24px; margin: 0 0.5rem; }
   .timeline-section { padding: 2rem 1rem; }
   .section-title { font-size: 2rem; }
 

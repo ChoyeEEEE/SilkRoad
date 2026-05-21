@@ -304,26 +304,30 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
 .modal-leave-active { transition: opacity 0.2s; }
 .modal-enter-from, .modal-leave-to { opacity: 0; }
 
-.city-cards { margin-top: 1.5rem; }
+.city-cards { margin-top: 2rem; }
 .cards-title {
-  text-align: center; font-size: 1.4rem; color: #8B4513; margin-bottom: 1.2rem;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif; letter-spacing: 2px;
+  text-align: center; font-size: 1.7rem; color: #8B4513; margin-bottom: 1.6rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif; letter-spacing: 3px;
 }
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.6rem; }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 1rem; }
 .city-card {
-  background: white; border-radius: 10px; padding: 0.8rem;
+  background: white; border-radius: 12px; padding: 1.1rem 0.9rem;
   text-align: center; cursor: pointer; transition: all 0.3s ease;
-  border: 2px solid transparent; box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  border: 2px solid transparent; box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
-.city-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.1); border-color: #8B6914; }
+.city-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.13); border-color: #8B6914; }
 .city-card.active { border-color: #8B6914; background: #faf6ee; }
-.cname { display: block; font-size: 0.85rem; font-weight: bold; color: #333; font-family: 'SimSun', serif; }
-.csub { display: block; font-size: 0.65rem; color: #999; margin-top: 0.2rem; }
+.cname { display: block; font-size: 1.05rem; font-weight: bold; color: #333; font-family: 'SimSun', serif; }
+.csub { display: block; font-size: 0.78rem; color: #888; margin-top: 0.35rem; }
 
 @media (max-width: 768px) {
   .section { padding: 1.5rem 1rem; }
   .section-title { font-size: 2rem; }
   .city-label { font-size: 5.5px; }
-  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); }
+  .cards-title { font-size: 1.45rem; }
+  .cards-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 0.8rem; }
+  .city-card { padding: 0.9rem 0.7rem; }
+  .cname { font-size: 0.95rem; }
+  .csub { font-size: 0.72rem; }
 }
 </style>

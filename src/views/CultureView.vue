@@ -18,7 +18,8 @@
       >
         <div class="zigzag-image">
           <div class="image-frame">
-            <div class="image-placeholder">
+            <img v-if="item.img" :src="item.img" :alt="item.title" class="frame-img" />
+            <div v-else class="image-placeholder">
               <span class="ph-icon">{{ item.icon }}</span>
               <span class="ph-text">{{ item.title }}</span>
             </div>
@@ -42,17 +43,20 @@ const cultureItems = [
   {
     title: '宗教传播',
     desc: '佛教从印度传入中国，沿丝绸之路留下无数石窟寺庙。伊斯兰教亦经丝路传播，在中国大地生根发芽，形成了独特的文化交融景观。',
-    icon: '🕌'
+    icon: '🕌',
+    img: '/picture/印度佛教.jpg'
   },
   {
     title: '艺术交融',
     desc: '敦煌壁画展示中西合璧的艺术风格，飞天舞姿、供养人像尽显异域风情。乐器如琵琶、箜篌经丝路传入中原，成为盛唐乐舞的重要组成。',
-    icon: '🎨'
+    icon: '🎨',
+    img: '/picture/敦煌壁画2.jpg'
   },
   {
     title: '语言与习俗',
     desc: '多种语言在丝路上交汇融合，驼铃声声穿越大漠。胡旋舞风靡盛唐，胡服、胡食融入中原生活，形成了丰富多彩的民俗风情。',
-    icon: '📜'
+    icon: '📜',
+    img: '/picture/驼铃大漠.jpg'
   }
 ]
 
@@ -89,7 +93,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 280px;
-  background: linear-gradient(135deg, #8B0000 0%, #2F4F4F 100%);
+  background: linear-gradient(135deg, #8B0000 0%, #4682B4 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -170,6 +174,13 @@ onUnmounted(() => {
   transform: scale(1.03) rotate(-1deg);
 }
 
+.frame-img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
 .image-placeholder {
   width: 100%;
   height: 260px;
@@ -211,7 +222,7 @@ onUnmounted(() => {
 .zigzag-text h3 {
   font-family: 'SimSun', cursive;
   font-size: 1.5rem;
-  color: #8B0000;
+  color: #831616;
   margin-bottom: 0.8rem;
   position: relative;
 }
