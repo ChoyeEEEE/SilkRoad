@@ -106,12 +106,12 @@
 
               <!-- 沙漠底纹区域 -->
               <path d="M60 200 C200 200, 250 100, 400 120 C550 140, 600 80, 840 120"
-                    fill="none" stroke="url(#sandPattern)" stroke-width="80" opacity="0.3" />
+                    fill="none" stroke="url(#sandPattern)" stroke-width="80" opacity="0.4" />
 
               <!-- 路线光晕 -->
               <path class="route-glow-path" :d="routePathD"
                     fill="none" stroke="url(#routeGlow)" stroke-width="20"
-                    filter="url(#softGlow)" opacity="0.4" />
+                    filter="url(#softGlow)" opacity="0.3" />
 
               <!-- 主路线 -->
               <path class="route-main-path" :d="routePathD"
@@ -128,7 +128,7 @@
               <!-- 沙尘粒子 -->
               <circle v-for="n in 12" :key="'dust-'+n"
                       :cx="80 + n * 65" :cy="140 + Math.sin(n * 1.3) * 50"
-                      r="1.5" fill="rgba(212,175,55,0.4)"
+                      r="1.5" fill="rgba(139,69,19,0.3)"
                       :style="{ animationDelay: n * 0.4 + 's' }"
                       class="dust-particle" />
 
