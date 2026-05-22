@@ -17,6 +17,7 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
+    "leaflet": "^1.9.4",
     "pinia": "^3.0.4",
     "vue": "^3.5.32",
     "vue-router": "^5.0.4"
@@ -25,6 +26,7 @@
     "@playwright/test": "^1.59.1",
     "@tsconfig/node24": "^24.0.4",
     "@types/jsdom": "^28.0.1",
+    "@types/leaflet": "^1.9.21",
     "@types/node": "^24.12.2",
     "@vitejs/plugin-vue": "^6.0.6",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
