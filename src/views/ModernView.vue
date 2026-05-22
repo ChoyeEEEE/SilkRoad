@@ -41,7 +41,7 @@
           </div>
           <div class="center-line"></div>
           <div class="arrow-right">
-            <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8 H32 M27 3 L35 8 L27 13" stroke="#C8982C" stroke-width="2" fill="none"/></svg>
+            <svg width="40" height="16" viewBox="0 0 40 16"><path d="M0 8 H32 M27 3 L35 8 L27 13" stroke="#D4AF37" stroke-width="2" fill="none"/></svg>
           </div>
         </div>
 
@@ -165,7 +165,7 @@ onUnmounted(() => {
 
 .hero-ancient {
   flex: 1;
-  background: linear-gradient(135deg, #7A4A2A, #C8982C);
+  background: linear-gradient(135deg, #8B4513, #D4AF37);
   clip-path: polygon(0 0, 100% 0, 70% 100%, 0 100%);
 }
 
@@ -207,7 +207,7 @@ onUnmounted(() => {
   width: 56px;
   height: 56px;
   line-height: 56px;
-  background: linear-gradient(135deg, #C8982C, #B84C38);
+  background: linear-gradient(135deg, #D4AF37, #8B0000);
   border-radius: 50%;
   color: #fff;
   font-weight: bold;
@@ -223,7 +223,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 60px;
-  background: #E8C872;
+  background: #F5DEB3;
   clip-path: ellipse(55% 100% at 50% 100%);
   z-index: 3;
 }
@@ -285,7 +285,7 @@ onUnmounted(() => {
 
 .ancient-side .side-card {
   border: 1px solid rgba(212, 175, 55, 0.2);
-  border-top: 3px solid #C8982C;
+  border-top: 3px solid #D4AF37;
 }
 
 .modern-side .side-card {
@@ -350,7 +350,7 @@ onUnmounted(() => {
   font-weight: bold;
   font-family: 'SimSun', cursive;
   background: rgba(139, 69, 19, 0.1);
-  color: #7A4A2A;
+  color: #8B4513;
   margin-bottom: 0.5rem;
 }
 
@@ -385,7 +385,7 @@ onUnmounted(() => {
 
 .topic-badge {
   background: #fff;
-  border: 2px solid #C8982C;
+  border: 2px solid #D4AF37;
   border-radius: 50%;
   width: 72px;
   height: 72px;
@@ -410,7 +410,7 @@ onUnmounted(() => {
 .topic-text {
   font-size: 0.55rem;
   font-family: 'SimSun', cursive;
-  color: #7A4A2A;
+  color: #8B4513;
   font-weight: bold;
 }
 
@@ -418,7 +418,7 @@ onUnmounted(() => {
   width: 2px;
   flex: 1;
   min-height: 30px;
-  background: linear-gradient(to bottom, transparent, #C8982C, transparent);
+  background: linear-gradient(to bottom, transparent, #D4AF37, transparent);
 }
 
 .arrow-right {
@@ -443,7 +443,7 @@ onUnmounted(() => {
   text-align: center;
   font-family: 'SimSun', cursive;
   font-size: 1.6rem;
-  color: #3D5C5C;
+  color: #2F4F4F;
   margin-bottom: 2rem;
   position: relative;
 }
@@ -453,7 +453,7 @@ onUnmounted(() => {
   display: block;
   width: 50px;
   height: 3px;
-  background: #C8982C;
+  background: #D4AF37;
   margin: 0.8rem auto 0;
   border-radius: 2px;
 }
@@ -498,7 +498,7 @@ onUnmounted(() => {
   font-size: 1.5rem;
   font-weight: bold;
   font-family: 'Georgia', serif;
-  color: #C8982C;
+  color: #D4AF37;
 }
 
 .stat-label {
@@ -559,7 +559,7 @@ onUnmounted(() => {
     width: 60px;
     height: 2px;
     min-height: auto;
-    background: linear-gradient(to right, transparent, #C8982C, transparent);
+    background: linear-gradient(to right, transparent, #D4AF37, transparent);
   }
 
   .arrow-right {
