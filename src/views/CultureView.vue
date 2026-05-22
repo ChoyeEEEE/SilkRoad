@@ -476,8 +476,6 @@ onUnmounted(() => {
 /* ===== 页面标题区 Hero ===== */
 .hero-header {
   position: relative;
-  height: 280px;
-  background: linear-gradient(135deg, #B84C38 0%, #4682B4 100%);
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -656,10 +654,6 @@ onUnmounted(() => {
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 60px;
-  background: #E8C872;
-  clip-path: ellipse(55% 100% at 50% 100%);
   right: 0;
   height: 3px;
   background: linear-gradient(90deg, var(--dunhuang-red), var(--gold), var(--qingdai-blue));
@@ -746,8 +740,6 @@ onUnmounted(() => {
   backdrop-filter: blur(12px);
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 12px 40px rgba(184, 76, 56, 0.15);
-  transition: transform 0.4s ease;
   border: 1px solid rgba(212, 175, 55, 0.15);
   box-shadow: var(--card-shadow);
   transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -813,9 +805,6 @@ onUnmounted(() => {
 
 .image-placeholder {
   width: 100%;
-  height: 260px;
-  background: linear-gradient(135deg, rgba(245, 222, 179, 0.6), rgba(232, 224, 208, 0.8));
-  border: 2px dashed rgba(184, 76, 56, 0.2);
   height: 100%;
   display: flex;
   align-items: center;
@@ -850,14 +839,6 @@ onUnmounted(() => {
   filter: saturate(0.9);
 }
 
-.item-number {
-  font-size: 4rem;
-  font-weight: 900;
-  color: rgba(184, 76, 56, 0.08);
-  font-family: 'Georgia', serif;
-  line-height: 1;
-  display: block;
-  margin-bottom: -1rem;
 .artifact-card:hover .artifact-img {
   transform: scale(1.06);
   filter: saturate(1.1) brightness(1.05);
@@ -1017,10 +998,6 @@ onUnmounted(() => {
 /* 卡片底部装饰线 */
 .card-bottom-deco {
   height: 3px;
-  background: linear-gradient(90deg, #C8982C, transparent);
-  margin-top: 1rem;
-  border-radius: 2px;
-  animation: lineGrow 0.8s ease-out 0.5s both;
   background: linear-gradient(90deg, var(--dunhuang-red), var(--gold), var(--qingdai-blue), var(--gold), var(--dunhuang-red));
   background-size: 200% 100%;
   animation: shimmer-line 4s linear infinite;

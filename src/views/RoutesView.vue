@@ -189,7 +189,7 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
 .section { max-width: 1400px; margin: 0 auto; padding: 2rem 2rem; }
 
 .section-title {
-  text-align: center; margin-bottom: 0.5rem; color: #B84C38;
+  text-align: center; margin-bottom: 0.5rem; color: #8B0000;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
   font-size: 2.5rem; letter-spacing: 4px;
 }
@@ -245,7 +245,7 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
   border-radius: 6px; font-size: 1.1rem; cursor: pointer; transition: all 0.2s;
   color: #333; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
-.zoom-controls button:hover { background: #8B6E1A; color: white; }
+.zoom-controls button:hover { background: #8B6914; color: white; }
 
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.5);
@@ -257,7 +257,7 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
   max-height: 85vh; overflow-y: auto;
   box-shadow: 0 20px 60px rgba(0,0,0,0.25); position: relative;
   animation: modal-pop 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  border-top: 4px solid #8B6E1A;
+  border-top: 4px solid #8B6914;
 }
 @keyframes modal-pop {
   from { opacity: 0; transform: scale(0.9) translateY(20px); }
@@ -298,7 +298,7 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
   border-radius: 6px; cursor: pointer; font-size: 0.8rem; color: #666;
   transition: all 0.2s; font-family: 'SimSun', serif;
 }
-.nav-btn:hover { border-color: #8B6E1A; color: #8B6E1A; }
+.nav-btn:hover { border-color: #8B6914; color: #8B6914; }
 
 .modal-enter-active { transition: opacity 0.3s; }
 .modal-leave-active { transition: opacity 0.2s; }
@@ -306,7 +306,7 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
 
 .city-cards { margin-top: 2rem; }
 .cards-title {
-  text-align: center; font-size: 1.7rem; color: #7A4A2A; margin-bottom: 1.6rem;
+  text-align: center; font-size: 1.7rem; color: #8B4513; margin-bottom: 1.6rem;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif; letter-spacing: 3px;
 }
 .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(175px, 1fr)); gap: 1rem; }
@@ -315,8 +315,8 @@ onUnmounted(() => { window.removeEventListener('keydown', handleKeydown) })
   text-align: center; cursor: pointer; transition: all 0.3s ease;
   border: 2px solid transparent; box-shadow: 0 3px 10px rgba(0,0,0,0.08);
 }
-.city-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.13); border-color: #8B6E1A; }
-.city-card.active { border-color: #8B6E1A; background: #faf6ee; }
+.city-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.13); border-color: #8B6914; }
+.city-card.active { border-color: #8B6914; background: #faf6ee; }
 .cname { display: block; font-size: 1.05rem; font-weight: bold; color: #333; font-family: 'SimSun', serif; }
 .csub { display: block; font-size: 0.78rem; color: #888; margin-top: 0.35rem; }
 
