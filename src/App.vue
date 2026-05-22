@@ -187,13 +187,13 @@ onUnmounted(() => {
 </script>
 
 <style>
-/* 色彩主题：大漠鎏金黄、边关赤砂红 */
+/* 色彩主题：沙漠黄、戈壁棕、敦煌红、青黛蓝 */
 :root {
-  --desert-yellow: #E8C872;
-  --gobi-brown: #7A4A2A;
-  --dunhuang-red: #B84C38;
-  --qingdai-blue: #3D5C5C;
-  --gold: #C8982C;
+  --desert-yellow: #F5DEB3;
+  --gobi-brown: #8B4513;
+  --dunhuang-red: #8B0000;
+  --qingdai-blue: #2F4F4F;
+  --gold: #D4AF37;
 }
 
 /* 基础重置 */
@@ -229,14 +229,14 @@ body {
   z-index: 10000;
   transition: width 0.1s linear;
   border-radius: 0 2px 2px 0;
-  box-shadow: 0 0 8px rgba(200, 152, 44, 0.6);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
 }
 
 /* ========== 加载动画 ========== */
 .loading-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(232, 200, 114, 0.95);
+  background: rgba(245, 222, 179, 0.95);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -254,7 +254,7 @@ body {
 .spinner-ring {
   width: 60px;
   height: 60px;
-  border: 4px solid rgba(184, 76, 56, 0.15);
+  border: 4px solid rgba(139, 0, 0, 0.15);
   border-top-color: var(--dunhuang-red);
   border-right-color: var(--gold);
   border-radius: 50%;
@@ -475,7 +475,7 @@ body {
 
 .mobile-nav-links a:hover,
 .mobile-nav-links a.active-link {
-  background: rgba(184, 76, 56, 0.05);
+  background: rgba(139, 0, 0, 0.05);
   color: var(--dunhuang-red);
   border-left-color: var(--dunhuang-red);
   padding-left: 2.5rem;
@@ -552,14 +552,14 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 15px rgba(184, 76, 56, 0.3);
+  box-shadow: 0 4px 15px rgba(139, 0, 0, 0.3);
   transition: all 0.3s ease;
   z-index: 900;
 }
 
 .back-to-top:hover {
   transform: translateY(-4px) scale(1.08);
-  box-shadow: 0 8px 25px rgba(184, 76, 56, 0.4);
+  box-shadow: 0 8px 25px rgba(139, 0, 0, 0.4);
   background: linear-gradient(135deg, var(--gold), var(--dunhuang-red));
 }
 

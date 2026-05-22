@@ -67,21 +67,21 @@ const sceneryItems = [
     title: '大漠黄沙',
     desc: '塔克拉玛干沙漠浩瀚无垠，驼铃声声穿越金色沙海。',
     img: '/picture/大漠黄沙.jpg',
-    color: '#C8982C',
+    color: '#D4AF37',
     wide: true
   },
   {
     title: '雪山绿洲',
     desc: '天山雪水润泽绿洲，冰川与草原相映成趣。',
     img: '/picture/雪山绿洲.jpg',
-    color: '#3D5C5C',
+    color: '#2F4F4F',
     wide: false
   },
   {
     title: '戈壁草原',
     desc: '戈壁荒原辽阔壮美，风吹草低见牛羊。',
     img: '/picture/戈壁草原.jpg',
-    color: '#7A4A2A',
+    color: '#8B4513',
     wide: false
   },
   {
@@ -179,7 +179,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 320px;
-  background: linear-gradient(135deg, #4682B4 0%, #3D5C5C 40%, #C8982C 100%);
+  background: linear-gradient(135deg, #4682B4 0%, #2F4F4F 40%, #D4AF37 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -343,7 +343,7 @@ onUnmounted(() => {
 .info-accent {
   width: 40px;
   height: 3px;
-  background: var(--accent, #C8982C);
+  background: var(--accent, #D4AF37);
   margin-top: 1rem;
   border-radius: 2px;
   transition: width 0.5s ease;
@@ -365,7 +365,7 @@ onUnmounted(() => {
   text-align: center;
   font-family: 'SimSun', cursive;
   font-size: 1.6rem;
-  color: #3D5C5C;
+  color: #2F4F4F;
   margin-bottom: 2rem;
   position: relative;
 }
@@ -375,7 +375,7 @@ onUnmounted(() => {
   display: block;
   width: 50px;
   height: 3px;
-  background: #C8982C;
+  background: #D4AF37;
   margin: 0.8rem auto 0;
   border-radius: 2px;
 }

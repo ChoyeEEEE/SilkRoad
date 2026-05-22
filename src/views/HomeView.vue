@@ -3,41 +3,101 @@
     <header class="main-visual">
       <div class="banner">
         <div class="bg-clean"></div>
+
         <svg class="hero-silk-line" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
           <defs>
-            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-            <filter id="wideGlow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur in="SourceGraphic" stdDeviation="12"/></filter>
-            <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
+              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
+            <filter id="wideGlow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="12" />
+            </filter>
+            <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur" />
+              <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+            </filter>
             <linearGradient id="lineGrad" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" stop-color="#C8982C" stop-opacity="0"/><stop offset="8%" stop-color="#C8982C" stop-opacity="0.4"/><stop offset="25%" stop-color="#E8C872"/><stop offset="50%" stop-color="#C8982C"/><stop offset="75%" stop-color="#E8C872"/><stop offset="92%" stop-color="#C8982C" stop-opacity="0.4"/><stop offset="100%" stop-color="#C8982C" stop-opacity="0"/>
+              <stop offset="0%" stop-color="#D4AF37" stop-opacity="0" />
+              <stop offset="8%" stop-color="#D4AF37" stop-opacity="0.4" />
+              <stop offset="25%" stop-color="#E8D48B" />
+              <stop offset="50%" stop-color="#D4AF37" />
+              <stop offset="75%" stop-color="#E8D48B" />
+              <stop offset="92%" stop-color="#D4AF37" stop-opacity="0.4" />
+              <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
             </linearGradient>
-            <radialGradient id="nodeHalo"><stop offset="0%" stop-color="#C8982C" stop-opacity="0.15"/><stop offset="100%" stop-color="#C8982C" stop-opacity="0"/></radialGradient>
+            <radialGradient id="nodeHalo">
+              <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.15" />
+              <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
+            </radialGradient>
           </defs>
-          <path class="line-ambient" :d="heroPath" stroke="rgba(200,152,44,0.06)" stroke-width="50" fill="none" stroke-linecap="round" filter="url(#wideGlow)"/>
-          <path class="line-glow" :d="heroPath" stroke="rgba(200,152,44,0.12)" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#softGlow)"/>
-          <path class="line-main" :d="heroPath" stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          <path class="line-flow" :d="heroPath" stroke="rgba(255,248,220,0.9)" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="40 1200" stroke-dashoffset="0" filter="url(#softGlow)"/>
-          <g v-for="(node, i) in heroNodes" :key="node.id" class="hero-node" :style="{ animationDelay: (i * 0.2 + 1.2) + 's' }">
-            <circle :cx="node.x" :cy="node.y" r="16" fill="url(#nodeHalo)" class="node-halo" :style="{ animationDelay: (i * 0.3 + 1.5) + 's' }"/>
-            <circle :cx="node.x" :cy="node.y" r="3" fill="#E8C872" filter="url(#nodeGlow)" class="node-core"/>
-            <circle :cx="node.x" :cy="node.y" r="1.2" fill="#fff" opacity="0.9"/>
-            <text :x="node.x" :y="node.y + (node.above ? -20 : 26)" class="node-label" text-anchor="middle" :style="{ animationDelay: (i * 0.2 + 1.6) + 's' }">{{ node.name }}</text>
+
+          <!-- 柔和环境光 -->
+          <path class="line-ambient" :d="heroPath"
+                stroke="rgba(212,175,55,0.06)" stroke-width="50" fill="none" stroke-linecap="round" filter="url(#wideGlow)" />
+
+          <!-- 底层光带 -->
+          <path class="line-glow" :d="heroPath"
+                stroke="rgba(212,175,55,0.12)" stroke-width="8" fill="none" stroke-linecap="round" filter="url(#softGlow)" />
+
+          <!-- 主线 -->
+          <path class="line-main" :d="heroPath"
+                stroke="url(#lineGrad)" stroke-width="1.5" fill="none" stroke-linecap="round" />
+
+          <!-- 流光 -->
+          <path class="line-flow" :d="heroPath"
+                stroke="rgba(255,248,220,0.9)" stroke-width="2" fill="none" stroke-linecap="round"
+                stroke-dasharray="40 1200" stroke-dashoffset="0" filter="url(#softGlow)" />
+
+          <!-- 城市节点 -->
+          <g v-for="(node, i) in heroNodes" :key="node.id" class="hero-node"
+             :style="{ animationDelay: (i * 0.2 + 1.2) + 's' }">
+            <circle :cx="node.x" :cy="node.y" r="16" fill="url(#nodeHalo)" class="node-halo"
+                    :style="{ animationDelay: (i * 0.3 + 1.5) + 's' }" />
+            <circle :cx="node.x" :cy="node.y" r="3" fill="#E8D48B" filter="url(#nodeGlow)" class="node-core" />
+            <circle :cx="node.x" :cy="node.y" r="1.2" fill="#fff" opacity="0.9" />
+            <text :x="node.x" :y="node.y + (node.above ? -20 : 26)"
+                  class="node-label" text-anchor="middle"
+                  :style="{ animationDelay: (i * 0.2 + 1.6) + 's' }">
+              {{ node.name }}
+            </text>
           </g>
         </svg>
+
         <div class="banner-text">
-          <h1><span v-for="(char, i) in titleChars" :key="i" class="title-char" :style="{ animationDelay: (i * 0.08) + 's' }">{{ char }}</span></h1>
+          <h1>
+            <span v-for="(char, i) in titleChars" :key="i" class="title-char" :style="{ animationDelay: (i * 0.08) + 's' }">{{ char }}</span>
+          </h1>
           <p class="subtitle">跨越千年时空，感受文明交流的宏伟篇章</p>
+
         </div>
       </div>
+
       <nav class="quick-nav">
-        <button @click="scrollToSection('routes')"><span class="btn-icon">🗺️</span><span class="btn-label">路线</span></button>
-        <button @click="scrollToSection('culture')"><span class="btn-icon">🎭</span><span class="btn-label">文化</span></button>
-        <button @click="scrollToSection('cities')"><span class="btn-icon">🏛️</span><span class="btn-label">古迹</span></button>
-        <button @click="scrollToSection('trade')"><span class="btn-icon">🐫</span><span class="btn-label">好物</span></button>
-        <button @click="scrollToSection('modern')"><span class="btn-icon">🔄</span><span class="btn-label">古今对比</span></button>
+        <button @click="scrollToSection('routes')">
+          <span class="btn-icon">🗺️</span>
+          <span class="btn-label">路线</span>
+        </button>
+        <button @click="scrollToSection('culture')">
+          <span class="btn-icon">🎭</span>
+          <span class="btn-label">文化</span>
+        </button>
+        <button @click="scrollToSection('cities')">
+          <span class="btn-icon">🏛️</span>
+          <span class="btn-label">古迹</span>
+        </button>
+        <button @click="scrollToSection('trade')">
+          <span class="btn-icon">🐫</span>
+          <span class="btn-label">好物</span>
+        </button>
+        <button @click="scrollToSection('modern')">
+          <span class="btn-icon">🔄</span>
+          <span class="btn-label">古今对比</span>
+        </button>
       </nav>
     </header>
 
+    <!-- 数据统计条 -->
     <div class="stats-strip" ref="statsRef">
       <div class="stats-inner" :class="{ visible: statsVisible }">
         <div v-for="(stat, i) in stats" :key="stat.label" class="stat-item" :style="{ animationDelay: i * 0.15 + 's' }">
@@ -47,43 +107,103 @@
       </div>
     </div>
 
+    <!-- 路线概览 -->
     <section id="routes" class="content-section">
+      <div class="section-ornament">
+        <svg class="ornament-svg" width="320" height="24" viewBox="0 0 320 24">
+          <line x1="0" y1="12" x2="120" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="200" y1="12" x2="320" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="30" y1="12" x2="110" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <line x1="210" y1="12" x2="290" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <polygon points="160,4 168,12 160,20 152,12" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="0.8" />
+          <polygon points="160,7 165,12 160,17 155,12" fill="rgba(212,175,55,0.2)" />
+          <circle cx="120" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="200" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="30" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+          <circle cx="290" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+        </svg>
+      </div>
       <div class="section-inner" :class="{ visible: visibleSections.routes }">
         <div class="section-header">
           <span class="section-tag">ROUTES</span>
           <h2>丝路路线图</h2>
           <p class="section-desc">从长安到罗马，跨越万里的文明通道</p>
         </div>
-        <div class="img-slider" :style="{ '--dur': routeImages.length * 3 + 's' }">
-          <div class="slider-track">
-            <div v-for="(img, i) in routeImages" :key="'a'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
-            <div v-for="(img, i) in routeImages" :key="'b'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
+        <div class="route-cards">
+          <div v-for="(route, idx) in routeHighlights" :key="route.name" class="route-card" :style="{ animationDelay: idx * 0.15 + 's' }" @mouseenter="hoveredRoute = route.name" @mouseleave="hoveredRoute = ''">
+            <div class="route-card-inner" :class="{ hovered: hoveredRoute === route.name }">
+              <div class="card-image-slot">
+                <div class="image-placeholder">
+                  <span class="ph-icon">{{ route.icon }}</span>
+                  <span class="ph-hint">点击添加图片</span>
+                </div>
+              </div>
+              <h3>{{ route.name }}</h3>
+              <p>{{ route.desc }}</p>
+              <div class="route-distance">{{ route.distance }}</div>
+            </div>
           </div>
         </div>
-        <router-link to="/routes" class="section-link">查看完整路线 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></router-link>
+        <router-link to="/routes" class="section-link">
+          查看完整路线
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </router-link>
       </div>
     </section>
 
+    <!-- 文化概览 -->
     <section id="culture" class="content-section section-alt">
+      <div class="section-ornament">
+        <svg class="ornament-svg" width="320" height="24" viewBox="0 0 320 24">
+          <line x1="0" y1="12" x2="120" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="200" y1="12" x2="320" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="30" y1="12" x2="110" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <line x1="210" y1="12" x2="290" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <polygon points="160,4 168,12 160,20 152,12" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="0.8" />
+          <polygon points="160,7 165,12 160,17 155,12" fill="rgba(212,175,55,0.2)" />
+          <circle cx="120" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="200" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="30" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+          <circle cx="290" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+        </svg>
+      </div>
       <div class="section-inner" :class="{ visible: visibleSections.culture }">
         <div class="section-header">
           <span class="section-tag">CULTURE</span>
           <h2>文化瑰宝</h2>
           <p class="section-desc">宗教、艺术与思想的东西交融</p>
         </div>
-        <div class="img-slider" :style="{ '--dur': cultureImages.length * 3 + 's' }">
-          <div class="slider-track">
-            <div v-for="(img, i) in cultureImages" :key="'a'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
-            <div v-for="(img, i) in cultureImages" :key="'b'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
+        <div class="culture-grid">
+          <div v-for="(item, idx) in cultureHighlights" :key="item.title" class="culture-card" :style="{ animationDelay: idx * 0.12 + 's' }">
+            <div class="culture-card-inner">
+              <div class="card-image-slot card-image-slot-sm">
+                <div class="image-placeholder">
+                  <span class="ph-icon">{{ item.icon }}</span>
+                  <span class="ph-hint">添加图片</span>
+                </div>
+              </div>
+              <h3>{{ item.title }}</h3>
+              <p>{{ item.desc }}</p>
+            </div>
           </div>
         </div>
-        <router-link to="/culture" class="section-link">探索文化瑰宝 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></router-link>
+        <router-link to="/culture" class="section-link">
+          探索文化瑰宝
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </router-link>
       </div>
     </section>
 
+    <!-- 全宽特色图片横幅 -->
     <div class="feature-banner">
       <div class="feature-banner-inner">
-        <div class="feature-image-slot"><div class="image-placeholder-banner"><span class="ph-icon-large">🖼️</span><span class="ph-text-banner">在此添加丝路全景横幅图片</span></div></div>
+        <div class="feature-image-slot">
+          <div class="image-placeholder image-placeholder-banner">
+            <span class="ph-icon-large">🖼️</span>
+            <span class="ph-text-banner">在此添加丝路全景横幅图片</span>
+            <span class="ph-hint">建议尺寸 1920×600</span>
+          </div>
+        </div>
         <div class="feature-overlay">
           <p class="feature-quote">"无数铃声遥过碛，应驮白练到安西"</p>
           <span class="feature-attr">— 张籍《凉州词》</span>
@@ -91,59 +211,176 @@
       </div>
     </div>
 
+    <!-- 名城古迹 -->
     <section id="cities" class="content-section">
+      <div class="section-ornament">
+        <svg class="ornament-svg" width="320" height="24" viewBox="0 0 320 24">
+          <line x1="0" y1="12" x2="120" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="200" y1="12" x2="320" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="30" y1="12" x2="110" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <line x1="210" y1="12" x2="290" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <polygon points="160,4 168,12 160,20 152,12" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="0.8" />
+          <polygon points="160,7 165,12 160,17 155,12" fill="rgba(212,175,55,0.2)" />
+          <circle cx="120" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="200" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="30" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+          <circle cx="290" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+        </svg>
+      </div>
       <div class="section-inner" :class="{ visible: visibleSections.cities }">
         <div class="section-header">
           <span class="section-tag">CITIES</span>
           <h2>沿线名城</h2>
           <p class="section-desc">丝路上的璀璨明珠</p>
         </div>
-        <div class="img-slider" :style="{ '--dur': cityImages.length * 3 + 's' }">
-          <div class="slider-track">
-            <div v-for="(img, i) in cityImages" :key="'a'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
-            <div v-for="(img, i) in cityImages" :key="'b'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
+        <div class="city-showcase">
+          <div v-for="city in cityHighlights" :key="city.name" class="city-tile">
+            <div class="city-tile-bg" :style="{ background: city.gradient }"></div>
+            <div class="city-image-slot">
+              <div class="image-placeholder image-placeholder-city">
+                <span class="ph-hint">{{ city.name }} · 添加图片</span>
+              </div>
+            </div>
+            <div class="city-tile-content">
+              <span class="city-emoji">{{ city.icon }}</span>
+              <h3>{{ city.name }}</h3>
+              <p>{{ city.tagline }}</p>
+            </div>
           </div>
         </div>
-        <router-link to="/cities" class="section-link">游览名城古迹 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></router-link>
+        <router-link to="/cities" class="section-link">
+          游览名城古迹
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </router-link>
       </div>
     </section>
 
+    <!-- 商贸物产 -->
     <section id="trade" class="content-section section-alt">
+      <div class="section-ornament">
+        <svg class="ornament-svg" width="320" height="24" viewBox="0 0 320 24">
+          <line x1="0" y1="12" x2="120" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="200" y1="12" x2="320" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="30" y1="12" x2="110" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <line x1="210" y1="12" x2="290" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <polygon points="160,4 168,12 160,20 152,12" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="0.8" />
+          <polygon points="160,7 165,12 160,17 155,12" fill="rgba(212,175,55,0.2)" />
+          <circle cx="120" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="200" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="30" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+          <circle cx="290" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+        </svg>
+      </div>
       <div class="section-inner" :class="{ visible: visibleSections.trade }">
         <div class="section-header">
           <span class="section-tag">TRADE</span>
           <h2>商贸物产</h2>
           <p class="section-desc">东西方的繁华互通</p>
         </div>
-        <div class="img-slider" :style="{ '--dur': tradeImages.length * 3 + 's' }">
-          <div class="slider-track">
-            <div v-for="(img, i) in tradeImages" :key="'a'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
-            <div v-for="(img, i) in tradeImages" :key="'b'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
+        <div class="trade-layout">
+          <div class="trade-image-slot">
+            <div class="image-placeholder image-placeholder-trade">
+              <span class="ph-icon-large">🏺</span>
+              <span class="ph-text-banner">在此添加丝路贸易主题图片</span>
+              <span class="ph-hint">建议尺寸 800×500</span>
+            </div>
+          </div>
+          <div class="trade-flow">
+            <div class="trade-column">
+              <h3 class="trade-col-title">🇨🇳 中国输出</h3>
+              <div v-for="item in tradeExport" :key="item.name" class="trade-item">
+                <span class="trade-emoji">{{ item.icon }}</span>
+                <span class="trade-name">{{ item.name }}</span>
+              </div>
+            </div>
+            <div class="trade-arrows">
+              <svg width="60" height="24" viewBox="0 0 60 24"><path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#D4AF37" stroke-width="2" fill="none"/></svg>
+              <svg width="60" height="24" viewBox="0 0 60 24" class="arrow-reverse"><path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#8B0000" stroke-width="2" fill="none"/></svg>
+            </div>
+            <div class="trade-column">
+              <h3 class="trade-col-title">🌍 域外传入</h3>
+              <div v-for="item in tradeImport" :key="item.name" class="trade-item">
+                <span class="trade-emoji">{{ item.icon }}</span>
+                <span class="trade-name">{{ item.name }}</span>
+              </div>
+            </div>
           </div>
         </div>
-        <router-link to="/trade" class="section-link">了解更多物产 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></router-link>
+        <router-link to="/trade" class="section-link">
+          了解更多物产
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </router-link>
       </div>
     </section>
 
+    <!-- 古今对比 -->
     <section id="modern" class="content-section">
+      <div class="section-ornament">
+        <svg class="ornament-svg" width="320" height="24" viewBox="0 0 320 24">
+          <line x1="0" y1="12" x2="120" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="200" y1="12" x2="320" y2="12" stroke="rgba(212,175,55,0.18)" stroke-width="0.5" />
+          <line x1="30" y1="12" x2="110" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <line x1="210" y1="12" x2="290" y2="12" stroke="rgba(212,175,55,0.12)" stroke-width="0.5" stroke-dasharray="2 4" />
+          <polygon points="160,4 168,12 160,20 152,12" fill="none" stroke="rgba(212,175,55,0.35)" stroke-width="0.8" />
+          <polygon points="160,7 165,12 160,17 155,12" fill="rgba(212,175,55,0.2)" />
+          <circle cx="120" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="200" cy="12" r="1.5" fill="rgba(212,175,55,0.3)" />
+          <circle cx="30" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+          <circle cx="290" cy="12" r="1" fill="rgba(212,175,55,0.15)" />
+        </svg>
+      </div>
       <div class="section-inner" :class="{ visible: visibleSections.modern }">
         <div class="section-header">
           <span class="section-tag">MODERN</span>
           <h2>古今新篇</h2>
           <p class="section-desc">从驼铃声声到列车轰鸣</p>
         </div>
-        <div class="img-slider" :style="{ '--dur': modernImages.length * 3 + 's' }">
-          <div class="slider-track">
-            <div v-for="(img, i) in modernImages" :key="'a'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
-            <div v-for="(img, i) in modernImages" :key="'b'+i" class="slide-card"><img :src="img" alt="" class="slide-img"/></div>
+        <div class="compare-cards">
+          <div v-for="pair in modernHighlights" :key="pair.topic" class="compare-card">
+            <div class="compare-ancient">
+              <div class="card-image-slot card-image-slot-sm">
+                <div class="image-placeholder">
+                  <span class="ph-icon">{{ pair.ancient.icon }}</span>
+                  <span class="ph-hint">古代图片</span>
+                </div>
+              </div>
+              <span class="compare-label">古代</span>
+              <p>{{ pair.ancient.text }}</p>
+            </div>
+            <div class="compare-divider">
+              <span class="compare-topic">{{ pair.topic }}</span>
+              <span class="compare-vs">VS</span>
+            </div>
+            <div class="compare-modern">
+              <div class="card-image-slot card-image-slot-sm">
+                <div class="image-placeholder">
+                  <span class="ph-icon">{{ pair.modern.icon }}</span>
+                  <span class="ph-hint">现代图片</span>
+                </div>
+              </div>
+              <span class="compare-label">现代</span>
+              <p>{{ pair.modern.text }}</p>
+            </div>
           </div>
         </div>
-        <router-link to="/modern" class="section-link">查看古今对比 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></router-link>
+        <router-link to="/modern" class="section-link">
+          查看古今对比
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </router-link>
       </div>
     </section>
 
     <footer class="home-footer">
-      <div class="footer-ornament"><svg class="ornament-svg" width="200" height="20" viewBox="0 0 200 20"><line x1="0" y1="10" x2="80" y2="10" stroke="rgba(200,152,44,0.15)" stroke-width="0.5"/><line x1="120" y1="10" x2="200" y2="10" stroke="rgba(200,152,44,0.15)" stroke-width="0.5"/><polygon points="100,4 106,10 100,16 94,10" fill="none" stroke="rgba(200,152,44,0.25)" stroke-width="0.6"/></svg></div>
+      <div class="footer-ornament">
+        <svg class="ornament-svg" width="200" height="20" viewBox="0 0 200 20">
+          <line x1="0" y1="10" x2="80" y2="10" stroke="rgba(212,175,55,0.15)" stroke-width="0.5" />
+          <line x1="120" y1="10" x2="200" y2="10" stroke="rgba(212,175,55,0.15)" stroke-width="0.5" />
+          <polygon points="100,4 106,10 100,16 94,10" fill="none" stroke="rgba(212,175,55,0.25)" stroke-width="0.6" />
+          <polygon points="100,6.5 103.5,10 100,13.5 96.5,10" fill="rgba(212,175,55,0.15)" />
+          <circle cx="80" cy="10" r="1" fill="rgba(212,175,55,0.2)" />
+          <circle cx="120" cy="10" r="1" fill="rgba(212,175,55,0.2)" />
+        </svg>
+      </div>
       <p>丝路之旅 — 探寻千年文明的交汇</p>
     </footer>
   </div>
@@ -152,20 +389,83 @@
 <script setup lang="ts">
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 
+const hoveredRoute = ref('')
 const titleChars = '重走丝绸之路，探寻千年文明'.split('')
-const heroPath = 'M1160 265 C1100 255 1020 282 960 298 C900 314 820 322 740 318 C660 314 590 335 530 340 C470 345 400 358 320 365 C240 372 180 388 120 400 C60 412 40 430 20 445'
-const heroNodes = [
-  { id: 'h-changan', name: '长安', x: 1160, y: 265, above: false },
-  { id: 'h-dunhuang', name: '敦煌', x: 960, y: 298, above: true },
-  { id: 'h-kashgar', name: '疏勒', x: 740, y: 318, above: false },
-  { id: 'h-samarkand', name: '撒马尔罕', x: 530, y: 340, above: true },
-  { id: 'h-merv', name: '木鹿', x: 320, y: 365, above: false },
-  { id: 'h-baghdad', name: '巴格达', x: 120, y: 400, above: true },
-  { id: 'h-rome', name: '罗马', x: 20, y: 445, above: false },
-]
 
 const statsRef = ref<HTMLElement | null>(null)
 const statsVisible = ref(false)
+
+const scrollToSection = (sectionId: string) => {
+  const element = document.getElementById(sectionId)
+  if (element) {
+    const navHeight = 60
+    const elementPosition = element.getBoundingClientRect().top
+    const offsetPosition = elementPosition + window.pageYOffset - navHeight
+    window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
+  }
+}
+
+const visibleSections = reactive<Record<string, boolean>>({
+  routes: false,
+  culture: false,
+  cities: false,
+  trade: false,
+  modern: false,
+})
+
+let observer: IntersectionObserver | null = null
+
+onMounted(() => {
+  observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        const id = entry.target.id
+        if (id && id in visibleSections) {
+          if (entry.isIntersecting) {
+            visibleSections[id] = true
+          }
+        }
+      })
+    },
+    { threshold: 0.15 }
+  )
+
+  Object.keys(visibleSections).forEach((id) => {
+    const el = document.getElementById(id)
+    if (el) observer!.observe(el)
+  })
+
+  document.querySelectorAll('.section-ornament').forEach((el) => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          el.classList.add('visible')
+          obs.disconnect()
+        }
+      },
+      { threshold: 0.5 }
+    )
+    obs.observe(el)
+  })
+
+  if (statsRef.value) {
+    const statsObs = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          statsVisible.value = true
+          statsObs.disconnect()
+        }
+      },
+      { threshold: 0.3 }
+    )
+    statsObs.observe(statsRef.value)
+  }
+})
+
+onUnmounted(() => {
+  observer?.disconnect()
+})
+
 const stats = [
   { value: '7,000+', label: '陆上丝路全长 (km)' },
   { value: '2,000+', label: '年历史跨度' },
@@ -173,151 +473,878 @@ const stats = [
   { value: '40+', label: '途经国家与地区' },
 ]
 
-const scrollToSection = (id: string) => {
-  const el = document.getElementById(id)
-  if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 60, behavior: 'smooth' })
-}
 
-const visibleSections = reactive<Record<string, boolean>>({ routes: false, culture: false, cities: false, trade: false, modern: false })
-let observer: IntersectionObserver | null = null
+const heroPath = 'M1160 265 C1100 255 1020 282 960 298 C900 314 820 322 740 318 C660 314 590 335 530 340 C470 345 400 358 320 365 C240 372 180 388 120 400 C60 412 40 430 20 445'
 
-onMounted(() => {
-  observer = new IntersectionObserver((entries) => { entries.forEach((e) => { const id = e.target.id; if (id && id in visibleSections && e.isIntersecting) visibleSections[id] = true }) }, { threshold: 0.15 })
-  Object.keys(visibleSections).forEach((id) => { const el = document.getElementById(id); if (el) observer!.observe(el) })
-  if (statsRef.value) { const o = new IntersectionObserver((entries) => { if (entries[0]?.isIntersecting) { statsVisible.value = true; o.disconnect() } }, { threshold: 0.3 }); o.observe(statsRef.value) }
-})
-onUnmounted(() => { observer?.disconnect() })
+const heroNodes = [
+  { id: 'h-changan',   name: '长安',     x: 1160, y: 265, above: false },
+  { id: 'h-dunhuang',  name: '敦煌',     x: 960,  y: 298, above: true },
+  { id: 'h-kashgar',   name: '疏勒',     x: 740,  y: 318, above: false },
+  { id: 'h-samarkand', name: '撒马尔罕', x: 530,  y: 340, above: true },
+  { id: 'h-merv',      name: '木鹿',     x: 320,  y: 365, above: false },
+  { id: 'h-baghdad',   name: '巴格达',   x: 120,  y: 400, above: true },
+  { id: 'h-rome',      name: '罗马',     x: 20,   y: 445, above: false },
+]
 
-const routeImages = ['/picture/大漠黄沙.jpg', '/picture/戈壁草原.jpg', '/picture/驼铃大漠.jpg']
-const cultureImages = ['/picture/印度佛教.jpg', '/picture/敦煌壁画.jpg', '/picture/古法制茶.webp', '/picture/传统乐器.jpg']
-const cityImages = ['/picture/西安.jpg', '/picture/敦煌.jpg', '/picture/撒马尔罕.jpg', '/picture/罗马.jpg']
-const tradeImages = ['/picture/丝路歌舞.jpg', '/picture/古法制茶.webp', '/picture/波斯.jpg', '/picture/嘉峪关.jpg']
-const modernImages = ['/picture/驼铃大漠.jpg', '/picture/楼兰.jpg', '/picture/吐鲁番.jpg', '/picture/雪山绿洲.jpg']
+const routeHighlights = [
+  { name: '沙漠绿洲之路', icon: '🏜️', desc: '穿越塔克拉玛干沙漠，连接楼兰、龟兹等绿洲古城', distance: '约 7,000 km' },
+  { name: '草原丝绸之路', icon: '🐎', desc: '经蒙古高原西行，游牧民族的商贸通道', distance: '约 10,000 km' },
+  { name: '海上丝绸之路', icon: '⛵', desc: '从东南沿海出发，经南海抵达波斯湾与非洲东海岸', distance: '约 15,000 km' },
+]
+
+const cultureHighlights = [
+  { icon: '📿', title: '宗教传播', desc: '佛教、伊斯兰教、景教沿丝路东传，与本土文化交融共生' },
+  { icon: '🎨', title: '艺术交流', desc: '敦煌壁画融合中西技法，犍陀罗艺术影响深远' },
+  { icon: '📜', title: '科技西传', desc: '造纸术、印刷术、火药经丝路传入西方，改变世界进程' },
+  { icon: '🎵', title: '音乐融合', desc: '龟兹乐、天竺乐与中原雅乐交汇，催生盛唐乐舞' },
+]
+
+const cityHighlights = [
+  { name: '长安', icon: '🏯', tagline: '丝路起点，万国来朝', gradient: 'linear-gradient(135deg, #8B0000 0%, #D4AF37 100%)' },
+  { name: '敦煌', icon: '🏜️', tagline: '莫高窟壁画千年不朽', gradient: 'linear-gradient(135deg, #C2703E 0%, #F5DEB3 100%)' },
+  { name: '撒马尔罕', icon: '🕌', tagline: '中亚明珠，帖木儿之都', gradient: 'linear-gradient(135deg, #2F4F4F 0%, #5F9EA0 100%)' },
+  { name: '罗马', icon: '🏛️', tagline: '条条大路通罗马', gradient: 'linear-gradient(135deg, #4A0E4E 0%, #C0A0D0 100%)' },
+]
+
+const tradeExport = [
+  { icon: '🍵', name: '丝绸' },
+  { icon: '🫖', name: '茶叶' },
+  { icon: '🏺', name: '瓷器' },
+  { icon: '💎', name: '玉石' },
+]
+
+const tradeImport = [
+  { icon: '🍇', name: '葡萄' },
+  { icon: '🥜', name: '胡桃' },
+  { icon: '🐴', name: '汗血宝马' },
+  { icon: '💎', name: '琉璃' },
+]
+
+const modernHighlights = [
+  {
+    topic: '交通',
+    ancient: { icon: '🐫', text: '骆驼商队，日行30公里' },
+    modern: { icon: '🚄', text: '中欧班列，日行1000公里' },
+  },
+  {
+    topic: '通信',
+    ancient: { icon: '🕊️', text: '飞鸽传书，数月到达' },
+    modern: { icon: '📡', text: '光纤网络，瞬间传输' },
+  },
+  {
+    topic: '贸易',
+    ancient: { icon: '⚖️', text: '以物易物，集市交易' },
+    modern: { icon: '💻', text: '跨境电商，全球联通' },
+  },
+]
 </script>
 
 <style scoped>
+:root {
+  --gold: #D4AF37;
+  --cream: #FFF8E7;
+}
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
+
 .home-view { min-height: 100vh; overflow: hidden; }
-.main-visual { text-align: center; position: relative; overflow: hidden; }
-.banner { position: relative; height: 100vh; min-height: 600px; overflow: hidden; }
-.bg-clean { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 55%, rgba(200,152,44,0.06) 0%, transparent 50%), linear-gradient(180deg, #0f0b07 0%, #1c110a 30%, #2d1a12 60%, #1c110a 100%); }
 
-.hero-silk-line { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
-.line-ambient { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: line-draw 3.5s cubic-bezier(0.25,0.1,0.25,1) 0.3s forwards; }
-.line-glow { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: line-draw 3s cubic-bezier(0.25,0.1,0.25,1) 0.5s forwards, glow-pulse 6s ease-in-out 4s infinite; }
-.line-main { stroke-dasharray: 1600; stroke-dashoffset: 1600; animation: line-draw 2.8s cubic-bezier(0.25,0.1,0.25,1) 0.6s forwards; }
-.line-flow { animation: flow-travel 4s ease-in-out 3.5s infinite; }
-@keyframes line-draw { to { stroke-dashoffset: 0; } }
-@keyframes glow-pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
-@keyframes flow-travel { 0% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: -1240; } }
-.hero-node { opacity: 0; animation: node-enter 0.7s cubic-bezier(0.34,1.56,0.64,1) forwards; }
-@keyframes node-enter { from { opacity: 0; } to { opacity: 1; } }
-.node-halo { animation: halo-breathe 5s ease-in-out infinite; }
-@keyframes halo-breathe { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
-.node-label { font-size: 11px; font-family: 'SimSun','STSong',serif; fill: rgba(232,200,114,0.75); letter-spacing: 3px; opacity: 0; animation: label-in 0.6s ease-out forwards; }
-@keyframes label-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-
-.banner-text { position: absolute; top: 10%; left: 50%; transform: translateX(-50%); text-align: center; width: 90%; max-width: 900px; z-index: 10; }
-.banner-text h1 { font-size: 3.8rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; letter-spacing: 8px; font-weight: 400; color: #FFF8DC; -webkit-text-stroke: 0.5px rgba(122,74,42,0.4); text-shadow: 0 0 20px rgba(122,74,42,0.6), 0 0 50px rgba(122,74,42,0.3), 0 2px 4px rgba(0,0,0,0.8), 0 4px 20px rgba(0,0,0,0.5); }
-.title-char { display: inline-block; opacity: 0; animation: char-reveal 0.6s ease-out forwards; }
-@keyframes char-reveal { from { opacity: 0; transform: translateY(20px) rotateX(40deg); filter: blur(4px); } to { opacity: 1; transform: translateY(0) rotateX(0); filter: blur(0); } }
-.subtitle { font-size: 1.5rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: rgba(232,200,114,0.9); text-shadow: 0 1px 4px rgba(0,0,0,0.7); margin-top: 1rem; letter-spacing: 4px; animation: fadeInUp 1.5s ease-out 1.5s both; }
-
-.quick-nav { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); display: flex; gap: 1rem; z-index: 12; flex-wrap: wrap; justify-content: center; }
-.quick-nav button { background: rgba(122,74,42,0.2); color: #E8C872; border: 1px solid rgba(200,152,44,0.3); padding: 0.7rem 1.5rem; border-radius: 30px; cursor: pointer; font-weight: bold; transition: all 0.4s ease; backdrop-filter: blur(8px); font-family: 'SimSun',serif; letter-spacing: 2px; font-size: 0.95rem; display: flex; align-items: center; gap: 0.4rem; position: relative; overflow: hidden; }
-.quick-nav button::after { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(200,152,44,0.15) 50%, transparent 70%); transform: translateX(-100%); transition: transform 0.6s ease; }
-.quick-nav button:hover::after { transform: translateX(100%); }
-.quick-nav button:hover { background: rgba(200,152,44,0.35); border-color: #C8982C; color: white; transform: translateY(-3px); box-shadow: 0 5px 20px rgba(200,152,44,0.3); }
-.btn-icon { font-size: 1.1rem; }
-
-.stats-strip { background: linear-gradient(135deg, #2d1a12 0%, #3d210e 50%, #2d1a12 100%); padding: 2.5rem 2rem; position: relative; overflow: hidden; }
-.stats-strip::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent, transparent 24.5%, rgba(200,152,44,0.1) 24.5%, rgba(200,152,44,0.1) 25.5%, transparent 25.5%); }
-.stats-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; position: relative; z-index: 1; }
-.stats-inner.visible .stat-item { animation: stat-slide-up 0.6s ease-out both; }
-.stat-item { text-align: center; opacity: 0; }
-.stat-number { display: block; font-size: 2rem; font-weight: bold; color: #C8982C; font-family: 'Courier New',monospace; letter-spacing: 2px; }
-.stat-label { display: block; font-size: 0.8rem; color: rgba(232,200,114,0.7); margin-top: 0.3rem; letter-spacing: 1px; font-family: 'SimSun',serif; }
-@keyframes stat-slide-up { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
-.content-section { padding: 5rem 2rem; position: relative; }
-.section-alt { background: rgba(122,74,42,0.04); }
-.section-inner { max-width: 1100px; margin: 0 auto; opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.section-inner.visible { opacity: 1; transform: translateY(0); }
-.section-header { text-align: center; margin-bottom: 2.5rem; }
-.section-tag { display: inline-block; font-size: 0.7rem; letter-spacing: 4px; color: #C8982C; font-family: 'Courier New',monospace; margin-bottom: 0.5rem; opacity: 0.7; }
-.section-header h2 { font-size: 2.2rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #2d1a12; letter-spacing: 4px; margin-bottom: 0.5rem; }
-.section-desc { font-size: 1rem; color: #8B6E1A; letter-spacing: 2px; }
-.section-link { display: inline-flex; align-items: center; gap: 0.5rem; margin-top: 2.5rem; padding: 0.8rem 2rem; background: transparent; border: 1px solid rgba(122,74,42,0.3); border-radius: 30px; color: #7A4A2A; text-decoration: none; font-size: 0.95rem; letter-spacing: 2px; font-family: 'SimSun',serif; transition: all 0.3s ease; position: relative; overflow: hidden; }
-.section-link::before { content: ''; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 30%, rgba(122,74,42,0.06) 50%, transparent 70%); transform: translateX(-100%); transition: transform 0.5s ease; }
-.section-link:hover::before { transform: translateX(100%); }
-.section-link:hover { background: rgba(122,74,42,0.08); border-color: #7A4A2A; transform: translateX(4px); }
-.section-link svg { transition: transform 0.3s ease; }
-.section-link:hover svg { transform: translateX(4px); }
-
-/* ========== 图片轮播 ========== */
-.img-slider {
-  overflow: hidden;
-  margin: 0 -2rem;
-  padding: 0.5rem 0;
-  position: relative;
+.main-visual {
+  text-align: center; padding: 0; position: relative; overflow: hidden;
 }
 
-.slider-track {
-  display: flex;
-  gap: 1rem;
-  animation: slide-scroll var(--dur, 12s) linear infinite;
-  width: max-content;
+.banner {
+  position: relative; height: 100vh; min-height: 600px; overflow: hidden;
 }
 
-.img-slider:hover .slider-track {
-  animation-play-state: paused;
+/* 背景 — 干净深色 */
+.bg-clean {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 55%, rgba(212,175,55,0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #0d0a06 0%, #1a1008 30%, #2d1810 60%, #1a1008 100%);
 }
 
-.slide-card {
-  flex: 0 0 300px;
-  height: 200px;
-  border-radius: 14px;
-  overflow: hidden;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.06);
-  background: linear-gradient(135deg, rgba(200,152,44,0.08), rgba(122,74,42,0.06));
-  transition: box-shadow 0.4s ease;
+/* ========== 主角：丝路主线 ========== */
+.hero-silk-line {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  z-index: 2; pointer-events: none;
 }
 
-.slide-card:hover {
-  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+.heroPath {
+  --path-len: 1600;
 }
 
-.slide-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+/* 线条绘制 */
+.line-ambient {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: line-draw 3.5s cubic-bezier(0.25, 0.1, 0.25, 1) 0.3s forwards;
+}
+.line-glow {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: line-draw 3s cubic-bezier(0.25, 0.1, 0.25, 1) 0.5s forwards,
+             glow-pulse 6s ease-in-out 4s infinite;
+}
+.line-main {
+  stroke-dasharray: 1600;
+  stroke-dashoffset: 1600;
+  animation: line-draw 2.8s cubic-bezier(0.25, 0.1, 0.25, 1) 0.6s forwards;
+}
+.line-flow {
+  animation: flow-travel 4s ease-in-out 3.5s infinite;
+}
+@keyframes line-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes glow-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+@keyframes flow-travel {
+  0% { stroke-dashoffset: 0; }
+  100% { stroke-dashoffset: -1240; }
+}
+
+/* 城市节点 */
+.hero-node {
+  opacity: 0;
+  animation: node-enter 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+@keyframes node-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.node-halo {
+  animation: halo-breathe 5s ease-in-out infinite;
+}
+@keyframes halo-breathe {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.node-core {
+  transition: r 0.3s ease, fill 0.3s ease;
+}
+
+.node-label {
+  font-size: 11px;
+  font-family: 'SimSun', 'STSong', serif;
+  fill: rgba(232, 212, 139, 0.75);
+  letter-spacing: 3px;
+  font-weight: normal;
+  opacity: 0;
+  animation: label-in 0.6s ease-out forwards;
+}
+@keyframes label-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 文字 */
+.banner-text {
+  position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
+  text-align: center; width: 90%; max-width: 900px; z-index: 10;
+}
+.banner-text h1 {
+  font-size: 3.8rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  letter-spacing: 8px; font-weight: 400;
+  color: #FFF8DC;
+  -webkit-text-stroke: 0.5px rgba(139,69,19,0.4);
+  text-shadow:
+    0 0 20px rgba(139,69,19,0.6),
+    0 0 50px rgba(139,69,19,0.3),
+    0 2px 4px rgba(0,0,0,0.8),
+    0 4px 20px rgba(0,0,0,0.5);
+}
+.title-char {
+  display: inline-block;
+  opacity: 0;
+  animation: char-reveal 0.6s ease-out forwards;
+}
+@keyframes char-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px) rotateX(40deg);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+    filter: blur(0);
+  }
+}
+.subtitle {
+  font-size: 1.5rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  color: rgba(245,222,179,0.9);
+  text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+  margin-top: 1rem; letter-spacing: 4px;
+  animation: fadeInUp 1.5s ease-out 1.5s both;
+}
+
+
+/* 快速导航 */
+.quick-nav {
+  position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 1rem; z-index: 12; flex-wrap: wrap; justify-content: center;
+}
+.quick-nav button {
+  background: rgba(139,69,19,0.2); color: #F5DEB3;
+  border: 1px solid rgba(212,175,55,0.3);
+  padding: 0.7rem 1.5rem; border-radius: 30px; cursor: pointer;
+  font-weight: bold; transition: all 0.4s ease;
+  backdrop-filter: blur(8px); font-family: 'SimSun', serif;
+  letter-spacing: 2px; font-size: 0.95rem;
+  display: flex; align-items: center; gap: 0.4rem;
+  position: relative; overflow: hidden;
+}
+.quick-nav button::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(212,175,55,0.15) 50%, transparent 70%);
+  transform: translateX(-100%);
   transition: transform 0.6s ease;
 }
+.quick-nav button:hover::after {
+  transform: translateX(100%);
+}
+.quick-nav button:hover {
+  background: rgba(212,175,55,0.35); border-color: var(--gold);
+  color: white; transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(212,175,55,0.3);
+}
+.quick-nav button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(212,175,55,0.2);
+}
+.btn-icon { font-size: 1.1rem; }
 
-.slide-card:hover .slide-img {
+/* ========== 数据统计条 ========== */
+.stats-strip {
+  background: linear-gradient(135deg, #2d1810 0%, #3d1f0a 50%, #2d1810 100%);
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.stats-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 24.5%,
+    rgba(212,175,55,0.1) 24.5%,
+    rgba(212,175,55,0.1) 25.5%,
+    transparent 25.5%
+  );
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+}
+.stats-inner.visible .stat-item {
+  animation: stat-slide-up 0.6s ease-out both;
+}
+.stat-item {
+  text-align: center;
+  opacity: 0;
+}
+.stat-number {
+  display: block;
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 2px;
+}
+.stat-label {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(245,222,179,0.7);
+  margin-top: 0.3rem;
+  letter-spacing: 1px;
+  font-family: 'SimSun', serif;
+}
+
+@keyframes stat-slide-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== 内容区域 ========== */
+.content-section {
+  padding: 5rem 2rem;
+  position: relative;
+}
+.section-alt {
+  background: rgba(139,69,19,0.04);
+}
+
+.section-ornament {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.section-ornament .ornament-svg {
+  display: inline-block;
+  max-width: 100%;
+}
+.section-ornament.visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+.section-inner.visible ~ .section-ornament,
+.section-ornament.visible {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.section-inner.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.section-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  letter-spacing: 4px;
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  margin-bottom: 0.5rem;
+  opacity: 0.7;
+}
+.section-header h2 {
+  font-size: 2.2rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  color: #2d1810;
+  letter-spacing: 4px;
+  margin-bottom: 0.5rem;
+}
+.section-desc {
+  font-size: 1rem;
+  color: #8B6914;
+  letter-spacing: 2px;
+}
+
+.section-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+  padding: 0.8rem 2rem;
+  background: transparent;
+  border: 1px solid rgba(139,69,19,0.3);
+  border-radius: 30px;
+  color: #8B4513;
+  text-decoration: none;
+  font-size: 0.95rem;
+  letter-spacing: 2px;
+  font-family: 'SimSun', serif;
+  transition: all 0.3s ease;
+  position: relative; overflow: hidden;
+}
+.section-link::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(139,69,19,0.06) 50%, transparent 70%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.section-link:hover::before {
+  transform: translateX(100%);
+}
+.section-link:hover {
+  background: rgba(139,69,19,0.08);
+  border-color: #8B4513;
+  transform: translateX(4px);
+}
+.section-link svg {
+  transition: transform 0.3s ease;
+}
+.section-link:hover svg {
+  transform: translateX(4px);
+}
+
+/* ========== 图片占位符通用样式 ========== */
+.card-image-slot {
+  width: 100%;
+  height: 180px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+.card-image-slot-sm {
+  height: 140px;
+  border-radius: 10px;
+}
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139,69,19,0.08) 0%, rgba(212,175,55,0.06) 100%);
+  border: 2px dashed rgba(139,69,19,0.2);
+  border-radius: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.image-placeholder:hover {
+  border-color: rgba(212,175,55,0.5);
+  background: linear-gradient(135deg, rgba(139,69,19,0.12) 0%, rgba(212,175,55,0.1) 100%);
+}
+.ph-icon {
+  font-size: 2rem;
+  opacity: 0.6;
+}
+.ph-hint {
+  font-size: 0.7rem;
+  color: rgba(139,69,19,0.4);
+  letter-spacing: 1px;
+  font-family: 'SimSun', serif;
+}
+
+.image-placeholder-banner {
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(139,69,19,0.12) 0%, rgba(47,79,79,0.1) 50%, rgba(212,175,55,0.08) 100%);
+}
+.image-placeholder-banner:hover {
+  border: none;
+}
+.ph-icon-large {
+  font-size: 3rem;
+  opacity: 0.5;
+}
+.ph-text-banner {
+  font-size: 0.9rem;
+  color: rgba(139,69,19,0.45);
+  letter-spacing: 2px;
+  font-family: 'SimSun', serif;
+}
+
+.image-placeholder-city {
+  border: 2px dashed rgba(255,255,255,0.3);
+  background: rgba(0,0,0,0.15);
+  position: absolute; inset: 0;
+  border-radius: 0;
+  z-index: 0;
+}
+.image-placeholder-city .ph-hint {
+  color: rgba(255,255,255,0.5);
+}
+.image-placeholder-city:hover {
+  border-color: rgba(255,255,255,0.5);
+  background: rgba(0,0,0,0.2);
+}
+
+.image-placeholder-trade {
+  height: 100%;
+  border-radius: 16px;
+  border: 2px dashed rgba(139,69,19,0.15);
+  background: linear-gradient(135deg, rgba(139,69,19,0.06) 0%, rgba(212,175,55,0.04) 100%);
+}
+
+/* ========== 全宽特色横幅 ========== */
+.feature-banner {
+  padding: 0 2rem;
+  margin: 2rem 0;
+}
+.feature-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 280px;
+}
+.feature-image-slot {
+  position: absolute; inset: 0;
+}
+.feature-overlay {
+  position: absolute; inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(45,24,16,0.4);
+  padding: 2rem;
+}
+.feature-quote {
+  font-size: 1.6rem;
+  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  color: rgba(255,248,220,0.95);
+  letter-spacing: 4px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+  text-align: center;
+  max-width: 700px;
+}
+.feature-attr {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: rgba(245,222,179,0.7);
+  letter-spacing: 2px;
+  font-family: 'SimSun', serif;
+}
+
+/* ========== 路线卡片 ========== */
+.route-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.route-card-inner {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(139,69,19,0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.route-card-inner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), #8B0000, var(--gold));
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+.route-card-inner.hovered::before,
+.route-card-inner:hover::before {
+  transform: scaleX(1);
+}
+.route-card-inner:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(139,69,19,0.12);
+  border-color: rgba(212,175,55,0.3);
+}
+.route-card-inner h3 {
+  font-size: 1.2rem;
+  color: #2d1810;
+  margin-bottom: 0.5rem;
+  font-family: 'SimSun', serif;
+  letter-spacing: 2px;
+}
+.route-card-inner p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+}
+.route-distance {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+}
+
+/* ========== 文化卡片 ========== */
+.culture-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.culture-card-inner {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(139,69,19,0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: default;
+}
+.culture-card-inner:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 40px rgba(139,69,19,0.12);
+  border-color: rgba(212,175,55,0.3);
+}
+.culture-card-inner h3 {
+  font-size: 1.1rem;
+  color: #2d1810;
+  margin-bottom: 0.5rem;
+  font-family: 'SimSun', serif;
+  letter-spacing: 2px;
+}
+.culture-card-inner p {
+  font-size: 0.85rem;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* ========== 城市展示 ========== */
+.city-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+.city-tile {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  cursor: default;
+}
+.city-tile-bg {
+  position: absolute; inset: 0;
+  transition: transform 0.6s ease;
+}
+.city-image-slot {
+  position: absolute; inset: 0;
+  z-index: 1;
+}
+.city-tile:hover .city-tile-bg {
   transform: scale(1.08);
 }
-
-@keyframes slide-scroll {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(calc(-50% + 0.5rem)); }
+.city-tile-content {
+  position: absolute; inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.25);
+  transition: background 0.4s ease;
+  padding: 1rem;
+  z-index: 2;
+}
+.city-tile:hover .city-tile-content {
+  background: rgba(0,0,0,0.15);
+}
+.city-emoji {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  transition: transform 0.4s ease;
+}
+.city-tile:hover .city-emoji {
+  transform: scale(1.15) translateY(-4px);
+}
+.city-tile-content h3 {
+  color: white;
+  font-size: 1.3rem;
+  font-family: 'SimSun', serif;
+  letter-spacing: 3px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+.city-tile-content p {
+  color: rgba(255,255,255,0.85);
+  font-size: 0.85rem;
+  margin-top: 0.3rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.5);
 }
 
-/* ========== 特色横幅 ========== */
-.feature-banner { padding: 0 2rem; margin: 2rem 0; }
-.feature-banner-inner { max-width: 1200px; margin: 0 auto; position: relative; border-radius: 16px; overflow: hidden; min-height: 280px; }
-.feature-image-slot { position: absolute; inset: 0; }
-.image-placeholder-banner { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; background: linear-gradient(135deg, rgba(122,74,42,0.12), rgba(61,92,92,0.1) 50%, rgba(200,152,44,0.08)); }
-.ph-icon-large { font-size: 3rem; opacity: 0.5; }
-.ph-text-banner { font-size: 0.9rem; color: rgba(122,74,42,0.45); letter-spacing: 2px; font-family: 'SimSun',serif; }
-.feature-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background: rgba(45,26,18,0.4); padding: 2rem; }
-.feature-quote { font-size: 1.6rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: rgba(255,248,220,0.95); letter-spacing: 4px; text-shadow: 0 2px 8px rgba(0,0,0,0.5); text-align: center; max-width: 700px; }
-.feature-attr { margin-top: 0.8rem; font-size: 0.9rem; color: rgba(232,200,114,0.7); letter-spacing: 2px; font-family: 'SimSun',serif; }
+/* ========== 贸易布局 ========== */
+.trade-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+}
+.trade-image-slot {
+  width: 100%;
+  max-width: 700px;
+  height: 220px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.trade-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.trade-column {
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
+}
+.trade-col-title {
+  font-size: 1.1rem;
+  color: #2d1810;
+  margin-bottom: 1rem;
+  font-family: 'SimSun', serif;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.trade-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.6);
+  border: 1px solid rgba(139,69,19,0.08);
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+  transition: all 0.3s ease;
+}
+.trade-item:hover {
+  transform: translateX(4px);
+  border-color: rgba(212,175,55,0.3);
+  box-shadow: 0 4px 12px rgba(139,69,19,0.08);
+}
+.trade-emoji { font-size: 1.3rem; }
+.trade-name {
+  font-size: 0.95rem;
+  color: #333;
+  font-family: 'SimSun', serif;
+  letter-spacing: 1px;
+}
+.trade-arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 2.5rem;
+}
+.arrow-reverse {
+  transform: rotate(180deg);
+}
 
-.home-footer { text-align: center; padding: 3rem 2rem; color: rgba(122,74,42,0.5); font-size: 0.85rem; letter-spacing: 3px; font-family: 'SimSun',serif; border-top: 1px solid rgba(122,74,42,0.1); }
-.footer-ornament { margin-bottom: 1rem; opacity: 0.6; }
+/* ========== 古今对比 ========== */
+.compare-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.compare-card {
+  display: flex;
+  align-items: stretch;
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(139,69,19,0.1);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+.compare-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(139,69,19,0.12);
+  border-color: rgba(212,175,55,0.3);
+}
+.compare-ancient,
+.compare-modern {
+  flex: 1;
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+}
+.compare-ancient {
+  background: rgba(139,69,19,0.03);
+}
+.compare-modern {
+  background: rgba(47,79,79,0.03);
+}
+.compare-label {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  color: #999;
+  font-family: 'Courier New', monospace;
+  text-transform: uppercase;
+}
+.compare-ancient p,
+.compare-modern p {
+  font-size: 0.85rem;
+  color: #555;
+  line-height: 1.5;
+  margin-top: 0.3rem;
+}
+.compare-divider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.8rem;
+  background: rgba(212,175,55,0.08);
+  min-width: 60px;
+}
+.compare-topic {
+  font-size: 0.75rem;
+  color: #8B4513;
+  font-family: 'SimSun', serif;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+  margin-bottom: 0.5rem;
+}
+.compare-vs {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: var(--gold);
+  font-family: 'Courier New', monospace;
+  animation: vs-pulse 2s ease-in-out infinite;
+}
+@keyframes vs-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
 
-@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+/* ========== 底部 ========== */
+.home-footer {
+  text-align: center;
+  padding: 3rem 2rem;
+  color: rgba(139,69,19,0.5);
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  font-family: 'SimSun', serif;
+  border-top: 1px solid rgba(139,69,19,0.1);
+}
+.footer-ornament {
+  margin-bottom: 1rem;
+  opacity: 0.6;
+}
+
+/* ========== 关键帧 ========== */
+@keyframes cloud-float {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(120vw); }
+}
+@keyframes dust-float {
+  0% { transform: translate(-20px, 0) scale(0); opacity: 0; }
+  10% { opacity: 0.8; transform: translate(0, 0) scale(1); }
+  90% { opacity: 0.3; }
+  100% { transform: translate(80vw, -40px) scale(0.3); opacity: 0; }
+}
+@keyframes bird-fly {
+  from { transform: translateX(-50px); }
+  to { transform: translateX(100vw); }
+}
+@keyframes bird-flap {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.6); }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
 @media (max-width: 768px) {
   .banner-text h1 { font-size: 2.2rem; letter-spacing: 4px; }
@@ -326,11 +1353,19 @@ const modernImages = ['/picture/驼铃大漠.jpg', '/picture/楼兰.jpg', '/pict
   .quick-nav button { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
   .content-section { padding: 3rem 1rem; }
   .section-header h2 { font-size: 1.6rem; }
-  .img-slider { margin: 0 -1rem; }
-  .slide-card { flex: 0 0 240px; height: 160px; border-radius: 12px; }
+  .section-ornament { margin-bottom: 1rem; }
+  .route-cards { grid-template-columns: 1fr; }
+  .culture-grid { grid-template-columns: repeat(2, 1fr); }
+  .city-showcase { grid-template-columns: repeat(2, 1fr); }
+  .trade-flow { flex-direction: column; align-items: center; }
+  .trade-arrows { flex-direction: row; padding-top: 0; }
+  .arrow-reverse { transform: rotate(0deg); }
+  .compare-cards { grid-template-columns: 1fr; }
+
   .stats-inner { grid-template-columns: repeat(2, 1fr); }
   .stat-number { font-size: 1.5rem; }
   .feature-banner-inner { min-height: 200px; }
   .feature-quote { font-size: 1.1rem; letter-spacing: 2px; }
+  .node-label { font-size: 10px; }
 }
 </style>
