@@ -115,7 +115,7 @@ onUnmounted(() => {
   min-height: 100vh;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(180deg, #F5DEB3 0%, #f0e6d0 30%, #e8dcc8 60%, #F5DEB3 100%);
+  background: linear-gradient(180deg, #E8C872 0%, #f0e6d0 30%, #e8dcc8 60%, #E8C872 100%);
 }
 
 .bg-particles {
@@ -157,7 +157,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 300px;
-  background: linear-gradient(135deg, #8B4513 0%, #D4AF37 40%, #8B0000 100%);
+  background: linear-gradient(135deg, #7A4A2A 0%, #C8982C 40%, #B84C38 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -202,7 +202,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 60px;
-  background: linear-gradient(180deg, transparent, #F5DEB3);
+  background: linear-gradient(180deg, transparent, #E8C872);
   clip-path: ellipse(55% 100% at 50% 100%);
   z-index: 2;
 }
@@ -220,12 +220,12 @@ onUnmounted(() => {
 }
 
 .region-label {
-  color: #8B4513;
+  color: #7A4A2A;
   font-family: 'SimSun', cursive;
   font-size: 1.5rem;
   margin-bottom: 2rem;
   padding-left: 1rem;
-  border-left: 4px solid #D4AF37;
+  border-left: 4px solid #C8982C;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -266,7 +266,7 @@ onUnmounted(() => {
 
 .city-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(139, 0, 0, 0.12);
+  box-shadow: 0 16px 48px rgba(184, 76, 56, 0.12);
   border-color: rgba(212, 175, 55, 0.35);
 }
 
@@ -332,18 +332,18 @@ onUnmounted(() => {
 
 .card-tag.domestic {
   background: rgba(47, 79, 79, 0.1);
-  color: #2F4F4F;
+  color: #3D5C5C;
 }
 
 .card-tag.foreign {
   background: rgba(212, 175, 55, 0.15);
-  color: #8B6914;
+  color: #8B6E1A;
 }
 
 .card-title {
   font-family: 'SimSun', cursive;
   font-size: 1.4rem;
-  color: #8B0000;
+  color: #B84C38;
   margin-bottom: 0.6rem;
 }
 
@@ -356,14 +356,14 @@ onUnmounted(() => {
 .card-accent {
   width: 40px;
   height: 3px;
-  background: linear-gradient(90deg, #D4AF37, transparent);
+  background: linear-gradient(90deg, #C8982C, transparent);
   margin-top: 1.2rem;
   border-radius: 2px;
   transition: width 0.5s ease;
 }
 
 .card-accent.foreign-accent {
-  background: linear-gradient(90deg, #8B4513, transparent);
+  background: linear-gradient(90deg, #7A4A2A, transparent);
 }
 
 .city-card:hover .card-accent {
