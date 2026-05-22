@@ -350,7 +350,7 @@ function deleteGuestbook(id: number) {
 .hero-banner {
   position: relative;
   height: 280px;
-  background: linear-gradient(135deg, #D4AF37 0%, #8B0000 50%, #2F4F4F 100%);
+  background: linear-gradient(135deg, #C8982C 0%, #B84C38 50%, #3D5C5C 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -380,7 +380,7 @@ function deleteGuestbook(id: number) {
   left: 0;
   width: 100%;
   height: 60px;
-  background: #F5DEB3;
+  background: #E8C872;
   clip-path: ellipse(55% 100% at 50% 100%);
 }
 
@@ -388,7 +388,7 @@ function deleteGuestbook(id: number) {
   text-align: center;
   font-family: 'SimSun', cursive;
   font-size: 1.8rem;
-  color: #8B0000;
+  color: #B84C38;
   margin-bottom: 0.5rem;
   position: relative;
 }
@@ -398,7 +398,7 @@ function deleteGuestbook(id: number) {
   display: block;
   width: 50px;
   height: 3px;
-  background: #2F4F4F;
+  background: #3D5C5C;
   margin: 0.6rem auto 0;
   border-radius: 2px;
 }
@@ -428,9 +428,9 @@ function deleteGuestbook(id: number) {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  border: 2px solid #D4AF37;
+  border: 2px solid #C8982C;
   background: #fff;
-  color: #D4AF37;
+  color: #C8982C;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -439,7 +439,7 @@ function deleteGuestbook(id: number) {
 }
 
 .nav-btn:hover:not(:disabled) {
-  background: #D4AF37;
+  background: #C8982C;
   color: #fff;
   transform: scale(1.1);
 }
@@ -473,20 +473,20 @@ function deleteGuestbook(id: number) {
   justify-content: space-between;
   align-items: center;
   padding: 0.8rem 1.2rem;
-  background: linear-gradient(135deg, rgba(139, 0, 0, 0.04), rgba(212, 175, 55, 0.06));
+  background: linear-gradient(135deg, rgba(184, 76, 56, 0.04), rgba(200, 152, 44, 0.06));
   border-bottom: 1px solid rgba(0, 0, 0, 0.04);
 }
 
 .card-index {
   font-size: 0.85rem;
-  color: #8B0000;
+  color: #B84C38;
   font-weight: bold;
   font-family: 'Georgia', serif;
 }
 
 .card-score {
   font-size: 0.85rem;
-  color: #D4AF37;
+  color: #C8982C;
   font-weight: bold;
 }
 
@@ -542,7 +542,7 @@ function deleteGuestbook(id: number) {
 }
 
 .option-btn:hover:not(:disabled) {
-  border-color: #D4AF37;
+  border-color: #C8982C;
   background: rgba(212, 175, 55, 0.05);
   transform: translateX(4px);
 }
@@ -569,8 +569,8 @@ function deleteGuestbook(id: number) {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(139, 0, 0, 0.08);
-  color: #8B0000;
+  background: rgba(184, 76, 56, 0.08);
+  color: #B84C38;
   font-weight: bold;
   font-size: 0.8rem;
   display: flex;
@@ -638,7 +638,7 @@ function deleteGuestbook(id: number) {
 
 .next-btn {
   padding: 0.7rem 2rem;
-  background: linear-gradient(135deg, #8B0000, #D4AF37);
+  background: linear-gradient(135deg, #B84C38, #C8982C);
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -651,7 +651,7 @@ function deleteGuestbook(id: number) {
 
 .next-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(184, 76, 56, 0.3);
 }
 
 .result-summary p {
@@ -662,13 +662,13 @@ function deleteGuestbook(id: number) {
 }
 
 .result-summary strong {
-  color: #D4AF37;
+  color: #C8982C;
   font-size: 1.4rem;
 }
 
 .restart-btn {
   padding: 0.6rem 1.8rem;
-  background: #2F4F4F;
+  background: #3D5C5C;
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -700,7 +700,7 @@ function deleteGuestbook(id: number) {
 }
 
 .dot.active {
-  background: #D4AF37;
+  background: #C8982C;
   transform: scale(1.3);
 }
 
@@ -807,7 +807,7 @@ function deleteGuestbook(id: number) {
 
 .form-field label {
   font-size: 0.85rem;
-  color: #8B4513;
+  color: #7A4A2A;
   font-weight: bold;
   font-family: 'SimSun', cursive;
 }
@@ -828,7 +828,7 @@ function deleteGuestbook(id: number) {
 
 .form-field input:focus,
 .form-field textarea:focus {
-  border-color: #D4AF37;
+  border-color: #C8982C;
   background: rgba(245, 222, 179, 0.25);
   box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
 }
@@ -851,7 +851,7 @@ function deleteGuestbook(id: number) {
   align-items: center;
   gap: 0.4rem;
   padding: 0.7rem 1.8rem;
-  background: linear-gradient(135deg, #8B0000, #D4AF37);
+  background: linear-gradient(135deg, #B84C38, #C8982C);
   color: #fff;
   border: none;
   border-radius: 25px;
@@ -864,7 +864,7 @@ function deleteGuestbook(id: number) {
 
 .submit-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(139, 0, 0, 0.3);
+  box-shadow: 0 6px 20px rgba(184, 76, 56, 0.3);
 }
 
 .submit-btn:disabled {
@@ -890,7 +890,7 @@ function deleteGuestbook(id: number) {
   padding: 1.2rem 1.5rem;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(212, 175, 55, 0.1);
-  border-left: 4px solid #D4AF37;
+  border-left: 4px solid #C8982C;
   transition: all 0.3s ease;
 }
 
@@ -910,7 +910,7 @@ function deleteGuestbook(id: number) {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg, #D4AF37, #8B0000);
+  background: linear-gradient(135deg, #C8982C, #B84C38);
   color: #fff;
   display: flex;
   align-items: center;
