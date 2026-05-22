@@ -209,6 +209,36 @@
               <div class="card-back">
                 <p>{{ item.desc }}</p>
               </div>
+            </transition-group>
+          </div>
+        </transition-group>
+      </div>
+    </section>
+    
+
+    <!-- 贸易影响时间线 -->
+    <section class="impact-section" ref="impactRef">
+      <div class="impact-container">
+        <h2 class="section-title" :class="{ 'visible': impactVisible }">
+          <span class="title-deco-line"></span>
+          贸易影响
+          <span class="title-deco-line"></span>
+        </h2>
+
+        <div class="impact-timeline">
+          <div class="impact-line">
+            <div class="impact-progress" :style="{ height: impactProgress + '%' }"></div>
+          </div>
+          <div v-for="(event, index) in impactEvents" :key="index"
+               class="impact-node"
+               :class="{ 'visible': impactNodeVisible[index], 'node-left': index % 2 === 0, 'node-right': index % 2 !== 0 }">
+            <div class="impact-dot">
+              <span>{{ event.icon }}</span>
+            </div>
+            <div class="impact-card">
+              <div class="impact-era">{{ event.era }}</div>
+              <h4>{{ event.title }}</h4>
+              <p>{{ event.desc }}</p>
             </div>
           </div>
         </div>
