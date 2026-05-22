@@ -47,9 +47,9 @@
               <div class="card-back">
                 <p>{{ item.desc }}</p>
               </div>
-            </transition-group>
+            </div>
           </div>
-        </transition-group>
+        </div>
       </div>
     </section>
 
