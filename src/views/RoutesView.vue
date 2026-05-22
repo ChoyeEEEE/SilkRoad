@@ -647,6 +647,7 @@ onUnmounted(() => {
   text-align: center; font-size: 1.7rem; color: #8B4513; margin-bottom: 1.6rem;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif; letter-spacing: 3px;
 }
+
 .cards-subtitle {
   font-size: 1.15rem; color: #5D4037; margin: 1.5rem 0 1rem;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
