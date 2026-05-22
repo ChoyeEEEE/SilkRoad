@@ -141,7 +141,7 @@ onUnmounted(() => {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 20% 30%, rgba(184, 76, 56, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 20% 30%, rgba(139, 0, 0, 0.03) 0%, transparent 50%),
     radial-gradient(circle at 80% 70%, rgba(212, 175, 55, 0.04) 0%, transparent 50%),
     radial-gradient(circle at 50% 50%, rgba(47, 79, 79, 0.02) 0%, transparent 60%);
 }
@@ -173,7 +173,7 @@ onUnmounted(() => {
 .hero-banner {
   position: relative;
   height: 300px;
-  background: linear-gradient(135deg, #3D5C5C 0%, #B84C38 60%, #C8982C 100%);
+  background: linear-gradient(135deg, #2F4F4F 0%, #8B0000 60%, #D4AF37 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -255,7 +255,7 @@ onUnmounted(() => {
 
 .heritage-card:hover {
   transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 16px 48px rgba(184, 76, 56, 0.1);
+  box-shadow: 0 16px 48px rgba(139, 0, 0, 0.1);
   border-color: rgba(212, 175, 55, 0.3);
 }
 
@@ -300,7 +300,7 @@ onUnmounted(() => {
 }
 
 .overlay-category {
-  background: rgba(184, 76, 56, 0.85);
+  background: rgba(139, 0, 0, 0.85);
   color: #fff;
   padding: 5px 14px;
   border-radius: 20px;
@@ -317,7 +317,7 @@ onUnmounted(() => {
 .card-content h3 {
   font-family: 'SimSun', cursive;
   font-size: 1.25rem;
-  color: #3D5C5C;
+  color: #2F4F4F;
   margin-bottom: 0.5rem;
 }
 
@@ -336,7 +336,7 @@ onUnmounted(() => {
 
 .tag {
   background: rgba(212, 175, 55, 0.12);
-  color: #8B6E1A;
+  color: #8B6914;
   padding: 3px 10px;
   border-radius: 12px;
   font-size: 0.75rem;
