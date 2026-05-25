@@ -2,112 +2,107 @@
 
 一个关于丝绸之路的网页项目。
 
-## 如何写代码
+## 项目简介
 
-请先下载 VScode 作为编辑器
+SilkRoad 是一个使用 Vue 框架开发的网页应用，旨在介绍和展示丝绸之路的相关历史、地理、文化等内容。该项目具有现代化的界面设计，交互体验友好，适合学习与展示。
 
-在自己的电脑的PowerShell，依次执行
-  # 连接我的仓库
-    git clone git@github.com:ChoyeEEEE/SilkRoad.git （SSH连接）
-    git clone https://github.com/ChoyeEEEE/SilkRoad.git （梯子连接）
-    cd SilkRoad
-  # 安装环境依赖
-    npm install
-  # 开启自己的分支（为了不与其它修改者相互干扰）
-    git checkout -b ****/**** （*号部分可取此次修改内容的总结，如‘Header/Add-BGM’
+## 技术栈
 
-再打开 VScode ，从 VScode 里打开刚刚拉取的文件夹，即可在本地进行修改。
-（拉取的文件通常在以下两个路径C:\Users\Username\Desktop\SilkRoad 或 C:\Users\Username\Documents\SilkRoad)
+- **Vue.js**：项目的主力前端框架，负责组件化开发和页面构建。
+- **TypeScript**：为项目提供类型支持，提高代码的可维护性和健壮性。
+- **HTML**：用于结构化基本页面内容。
 
-## 如何上传代码
+## 安装与使用
 
-改完保存
+1. 克隆项目到本地：
 
-在SilkRoad项目根目录里打开终端，依次输入
-  # 缓存文件（有个 . 别漏了）
-    git add .
-  # 确认文件（引号内的中文可修改）
-    git commit -m "feat: 完成首页BGM配置"
-    git push origin ****/****
+   ```bash
+   git clone https://github.com/ChoyeEEEE/SilkRoad.git
+   cd SilkRoad
+   ```
 
-上传完成
+2. 安装依赖：
 
-（每次修改代码之前这些步骤都要重复一遍，以同步我们各自修改代码到本地）
+   ```bash
+   npm install
+   ```
 
-## 如何打开网页
+3. 启动开发服务器：
 
-在SilkRoad项目根目录里打开终端，执行
+   ```bash
+   npm run dev
+   ```
 
-npm run dev
+4. 访问本地开发环境，默认地址一般为 `http://localhost:3000` 或终端输出的端口。
 
-会出现一个接口为5173网址，复制到浏览器打开即可
+## 目录结构与说明
 
-## 推荐 IDE 设置
+本项目主要目录及文件说明如下，便于开发者快速理解每个部分作用：
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar)（请禁用 Vetur）。
-
-## 推荐浏览器设置
-
-- 基于 Chromium 的浏览器（Chrome、Edge、Brave 等）：
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [在 Chrome DevTools 中开启自定义对象格式化](http://bit.ly/object-formatters)
-- Firefox：
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [在 Firefox DevTools 中开启自定义对象格式化](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
-
-## TS 中 `.vue` 导入的类型支持
-
-TypeScript 默认无法处理 `.vue` 导入的类型信息，因此我们使用 `vue-tsc` 替代 `tsc` CLI 进行类型检查。在编辑器中，需要 [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) 使 TypeScript 语言服务识别 `.vue` 类型。
-
-## 自定义配置
-
-参见 [Vite 配置参考](https://vite.dev/config/)。
-
-## 项目安装
-
-```sh
-npm install
+```
+├── .editorconfig           # 统一不同编辑器的代码风格
+├── .gitattributes          # Git 控制属性配置
+├── .gitignore              # Git 忽略文件配置
+├── .oxlintrc.json          # 代码检查配置
+├── .prettierrc.json        # Prettier 格式化工具配置
+├── .vscode/                # VS Code 编辑器配置（如插件、推荐设置等）
+├── README.md               # 项目说明文档
+├── LICENSE                 # 开源许可证
+├── e2e/                    # 端到端自动化测试目录
+├── env.d.ts                # 环境变量类型声明
+├── eslint.config.ts        # ESLint 代码规范配置
+├── index.html              # 入口 HTML 文件，Vue 挂载点
+├── package.json            # 项目依赖、脚本等信息
+├── package-lock.json       # npm 依赖锁定文件
+├── playwright.config.ts    # Playwright 测试配置
+├── public/                 # 公共资源目录，静态文件（不会经过构建工具处理）
+├── src/                    # 源码目录（核心开发内容见下）
+│   ├── App.vue             # 根组件，程序入口视图
+│   ├── main.ts             # 应用入口文件，创建并挂载 Vue 实例
+│   ├── __tests__/          # 单元测试相关内容
+│   ├── router/             # 路由配置相关模块
+│   ├── stores/             # 全局状态管理（如 Pinia、Vuex）
+│   ├── views/              # 主页面组件（与路由直接关联的页面）
+│   └── ...                 # 可能还包括 utils（工具）、api（接口）、components（自定义组件）等
+├── tsconfig.app.json       # TS 针对 app 的编译配置
+├── tsconfig.json           # 主 TypeScript 配置文件
+├── tsconfig.node.json      # Node 环境下 TS 配置
+├── tsconfig.vitest.json    # Vitest 测试环境下 TS 配置
+├── vite.config.ts          # Vite 构建工具配置
+├── vitest.config.ts        # Vitest 单元测试配置
+├── 丝绸之路图片/           # 项目相关图片资源
 ```
 
-### 开发环境编译与热重载
+### 主要目录说明
 
-```sh
-npm run dev
-```
+- **.vscode/**：项目相关的 VS Code 编辑器建议配置。
+- **e2e/**：端到端测试用例，确保整体流程可用性。
+- **public/**：静态资源目录，例如 favicon、logo 等，打包时原样输出。
+- **src/**：项目核心代码，常见子目录说明如下：
+  - **App.vue**：Vue 根组件，应用的布局和全局逻辑入口。
+  - **main.ts**：应用主入口，加载根组件与插件。
+  - **__tests__/**：单元测试存放处。
+  - **router/**：前端路由配置，页面导航逻辑。
+  - **stores/**：全局状态管理方案相关目录（如 Pinia store、Vuex store）。
+  - **views/**：主页面级组件，通常与路由一一对应。
+  - **assets/**（如存在）：静态资源如样式、图片、字体等，会被打包处理。
+  - **components/**（如存在）：站内可复用的界面组件，并非页面。
+- **丝绸之路图片/**：丝绸之路相关图片资料归档文件夹。
+- **config & json/ts 文件**：各种工具、依赖和 TypeScript 的配置文件。
+- **README.md、LICENSE**：项目信息与协议，查阅项目和参与贡献的重要入口。
 
-### 生产环境类型检查、编译与压缩
+如出现 `utils/`、`api/`、`types/` 等文件夹，也可做类似简要说明。
 
-```sh
-npm run build
-```
+---
 
-### 使用 [Vitest](https://vitest.dev/) 运行单元测试
+## 许可证
 
-```sh
-npm run test:unit
-```
+本项目采用 MIT License 授权。详见 [LICENSE](./LICENSE) 文件。
 
-### 使用 [Playwright](https://playwright.dev) 运行端到端测试
+## 参与贡献
 
-```sh
-# 首次运行时安装浏览器
-npx playwright install
+欢迎提交 Issue 或 Pull Request 参与项目改进！
 
-# 在 CI 环境中测试时，需先构建项目
-npm run build
+---
 
-# 运行端到端测试
-npm run test:e2e
-# 仅在 Chromium 上运行测试
-npm run test:e2e -- --project=chromium
-# 运行指定文件的测试
-npm run test:e2e -- tests/example.spec.ts
-# 以调试模式运行测试
-npm run test:e2e -- --debug
-```
-
-### 使用 [ESLint](https://eslint.org/) 进行代码检查
-
-```sh
-npm run lint
-```
+若需了解更多信息，请访问 [项目主页](https://github.com/ChoyeEEEE/SilkRoad)。

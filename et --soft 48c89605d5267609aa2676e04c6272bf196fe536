@@ -1,0 +1,254 @@
+[33mcommit 73c853e4633adc646a5d1cc3c8e396e64b753fd7[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32m丝路地图修改[m[33m, [m[1;31morigin/丝路地图修改[m[33m)[m
+Author: gugu009 <2770759957@qq.com>
+Date:   Fri May 22 01:56:44 2026 +0800
+
+    商贸添加新板块
+
+[33mcommit 48c89605d5267609aa2676e04c6272bf196fe536[m
+Author: gugu009 <2770759957@qq.com>
+Date:   Fri May 22 01:14:34 2026 +0800
+
+    修改丝路地图
+
+[33mcommit 3d56b332503678000935faec93b0848614762cc1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32m文化瑰宝加图[m[33m)[m
+Merge: 1cdb25e 0b4b080
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Thu May 21 21:30:30 2026 +0800
+
+    Merge pull request #11 from ChoyeEEEE/文化瑰宝
+    
+    feat: 文化瑰宝
+
+[33mcommit 0b4b080a91a8db4d281a1a18b064bbf57b4405a5[m
+Merge: c972d1b 1cdb25e
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Thu May 21 21:30:19 2026 +0800
+
+    Merge branch 'main' into 文化瑰宝
+
+[33mcommit 1cdb25e311149065bb1f114f6200cc336bce7183[m
+Merge: 619bb9d 5ff2aa8
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Thu May 21 16:56:53 2026 +0800
+
+    Merge pull request #10 from ChoyeEEEE/文化瑰宝加图
+    
+    文化瑰宝加图
+
+[33mcommit 5ff2aa8fba64c1f708e8e66ea8ff6e43475326b0[m[33m ([m[1;31morigin/文化瑰宝加图[m[33m)[m
+Author: gugu009 <2770759957@qq.com>
+Date:   Thu May 21 02:39:14 2026 +0800
+
+    更改历史溯源配色
+
+[33mcommit 0d7485609098f3825355423dc446191a6e138ef1[m
+Author: gugu009 <2770759957@qq.com>
+Date:   Thu May 21 01:26:05 2026 +0800
+
+    文化瑰宝加图
+
+[33mcommit 619bb9d5287c832ed3860f6e916d9b867a743b78[m[33m ([m[1;32mmain[m[33m, [m[1;32memerald-viper[m[33m)[m
+Merge: dd25a1b 7c168b2
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Wed May 20 23:30:26 2026 +0800
+
+    Merge pull request #8 from ChoyeEEEE/首页修改
+    
+    feat: 首页修改
+
+[33mcommit 7c168b2fba27894607b09ed45cf6f7d6e2ad1e77[m[33m ([m[1;31morigin/首页修改[m[33m)[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Wed May 20 23:29:54 2026 +0800
+
+    feat: 首页修改
+
+[33mcommit c972d1b100ae1fae3f0c2ee3f75ddee141aa4df3[m[33m ([m[1;31morigin/文化瑰宝[m[33m)[m
+Author: Q5277 <1512894117@qq.com>
+Date:   Wed May 20 23:27:08 2026 +0800
+
+    feat: 完成首页BGM配置
+
+[33mcommit dd25a1ba46913f89ec1ad7c2c184cab9ca5f9d0b[m
+Merge: 5b2afac 1ac2bd9
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Wed May 20 23:21:49 2026 +0800
+
+    Merge pull request #7 from ChoyeEEEE/风光地貌加入图片
+    
+    风光地貌加入图片
+
+[33mcommit 1ac2bd92068ccabdae7bbacc3273faf8a8600323[m[33m ([m[1;31morigin/风光地貌加入图片[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 23:12:47 2026 +0800
+
+    feat:风光地貌加入图片
+
+[33mcommit ac303364b302c93cb3ed2f6bf6e80f85dabfd79c[m[33m ([m[1;31morigin/非遗技艺加入图片[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 22:54:51 2026 +0800
+
+    feat:非遗技艺加入图片
+
+[33mcommit 5b2afac4a6dafa484684d269cff13145b32a90e8[m
+Merge: f3df703 22acae5
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Wed May 20 21:34:18 2026 +0800
+
+    Merge pull request #6 from ChoyeEEEE/名城风物加入了图片
+    
+    feat:名城风物加入了图片
+
+[33mcommit 22acae521a61f6135f65ddeaf2916923e68a26fe[m[33m ([m[1;31morigin/名城风物加入了图片[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 21:27:38 2026 +0800
+
+    feat:名城风物加入了图片
+
+[33mcommit f3df7032a668fafe1963493bb9871b699b95c685[m
+Merge: a576fc9 fe1d8a6
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Wed May 20 20:53:31 2026 +0800
+
+    Merge pull request #5 from ChoyeEEEE/互动专区改进
+    
+    互动专区改进
+
+[33mcommit fe1d8a63166979aca05c7565c80c9531eba7a9b8[m[33m ([m[1;31morigin/互动专区改进[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 20:51:34 2026 +0800
+
+    feat:互动专区改进
+
+[33mcommit f78b6104b8fb42de404ca0e71a2087c2328f708c[m[33m ([m[1;31morigin/每个部分都改了一点点，还没配图[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 20:35:19 2026 +0800
+
+    feat:每个部分都改了一点点，还没配图
+
+[33mcommit 34caba5151af0b97296c62535a0cf548cc46f62d[m[33m ([m[1;31morigin/历史溯源修改加配图[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 16:24:27 2026 +0800
+
+    feat:历史溯源修改加配图
+
+[33mcommit a576fc93c5952a6c993e6626f1ef906b865f5343[m
+Merge: 368ff3b 4a41818
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Wed May 20 15:50:02 2026 +0800
+
+    Merge pull request #4 from ChoyeEEEE/框架
+    
+    feat:框架
+
+[33mcommit 4a418186091f6bfd21cd392f96bada562b7e33d4[m[33m ([m[1;31morigin/框架[m[33m)[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Wed May 20 15:39:04 2026 +0800
+
+    feat:框架
+
+[33mcommit 368ff3b8a001c8a64ad906089db45f03ed152dd9[m
+Merge: 7a2ad58 d96c1ac
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Tue May 19 21:07:16 2026 +0800
+
+    Merge pull request #3 from ChoyeEEEE/test4
+    
+    feat: 测试
+
+[33mcommit d96c1ac3f7c9a258584e8d94eb79bbcf757afc4f[m[33m ([m[1;31morigin/test4[m[33m)[m
+Merge: 25c811c 7a2ad58
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Tue May 19 21:07:05 2026 +0800
+
+    Merge branch 'main' into test4
+
+[33mcommit 7a2ad583c41adb565128b533fe1e6c081d040c7f[m[33m ([m[1;31morigin/test2[m[33m, [m[1;32mfeature/第二次上传[m[33m)[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 22:47:52 2026 +0800
+
+    Update cloning instructions in README
+    
+    Added SSH and HTTPS clone options for repository.
+
+[33mcommit 25c811c68dcefa30532ed62bde6bdd7e8aa9edfe[m
+Author: wwq27 <383134@whut.edu.cn>
+Date:   Mon May 18 22:26:18 2026 +0800
+
+    feat: 测试
+
+[33mcommit e66b6fcd5be4bded875b53616a31f496af75dbd4[m
+Merge: fe9f64d 9bf0bb6
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 22:25:03 2026 +0800
+
+    Merge pull request #2 from ChoyeEEEE/feature/第二次上传
+    
+    feat: 完成第二次上传
+
+[33mcommit 9bf0bb64866765e93daed1d4a71177ecb9ca2e27[m[33m ([m[1;31morigin/feature/第二次上传[m[33m)[m
+Author: gugu009 <2770759957@qq.com>
+Date:   Mon May 18 22:14:44 2026 +0800
+
+    feat: 完成第二次上传
+
+[33mcommit fe9f64d52808cd23c63d61b9aea52bec6704971f[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 21:48:47 2026 +0800
+
+    Update README.md
+
+[33mcommit 90414c2bf729d41fcb2cf70ad5913653ab86eb3d[m
+Merge: a18f200 ce6a79e
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 21:44:15 2026 +0800
+
+    Merge pull request #1 from ChoyeEEEE/feature/首页布局
+    
+    feat: xxx
+
+[33mcommit ce6a79ea4b406bcbfc564921e37b7a0df018d507[m[33m ([m[1;31morigin/feature/首页布局[m[33m)[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 21:37:30 2026 +0800
+
+    feat: xxx
+
+[33mcommit a18f2007502fc26a2843e7bd60e5bb0cb7807fbe[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 15:29:22 2026 +0800
+
+    Update README.md
+
+[33mcommit 436d826b48a360f75b12783f70e894787742ffff[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 15:27:30 2026 +0800
+
+    Update header text to Chinese
+
+[33mcommit 1a001586b9f0936d4d2aad5d8cf466b6eaebc1b7[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 15:24:41 2026 +0800
+
+    Add web page opening instructions to README
+    
+    Added instructions for opening the web page using npm.
+
+[33mcommit 62517f25c42606aa7411ea56505c24a74d1b8f02[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 15:04:41 2026 +0800
+
+    Update README with coding and upload instructions
+    
+    Added instructions for coding and uploading code to the SilkRoad project.
+
+[33mcommit 1ec1a9745de5a8fe6f5de131ea15fa9e688dc023[m
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon May 18 11:52:44 2026 +0800
+
+    Translate README to Chinese and format updates
+    
+    Updated README.md to include Chinese translations and improved formatting.
+
+[33mcommit 783ee37ef546d8678fa942182be537515cfb38e6[m
+Merge: e9c818e 5067426
+Author: ChoyeEEEE <383360@whut.edu.cn>
+Date:   Mon 
