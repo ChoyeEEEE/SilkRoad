@@ -84,6 +84,9 @@
             <span class="stat-value">{{ stat.value }}</span>
             <span class="stat-label">{{ stat.label }}</span>
           </div>
+          <span class="stat-click-hint">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+          </span>
           <div class="stat-scan-line"></div>
           <div class="stat-card-shine"></div>
         </div>
@@ -253,17 +256,27 @@ onUnmounted(() => {
 .hero-center h1 {
   font-family: 'SimSun', cursive;
   font-size: 2.8rem;
-  color: #fff;
+  color: #000;
   letter-spacing: 8px;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
   animation: heroFadeIn 1s ease-out;
 }
 
 .hero-sub {
   margin-top: 0.6rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: #000;
   font-size: 1.05rem;
   letter-spacing: 3px;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.5);
+  animation: heroFadeIn 1s ease-out 0.3s both;
+}
+
+.hero-sub {
+  margin-top: 0.6rem;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 1.05rem;
+  letter-spacing: 3px;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.5);
   animation: heroFadeIn 1s ease-out 0.3s both;
 }
 
@@ -625,6 +638,31 @@ onUnmounted(() => {
 
 .stat-card:hover .stat-card-shine {
   left: 100%;
+}
+
+.stat-click-hint {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(0, 200, 255, 0.15);
+  border: 1px solid rgba(0, 200, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 200, 255, 0.6);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  z-index: 3;
+}
+
+.stat-card:hover .stat-click-hint {
+  opacity: 1;
+  background: rgba(0, 200, 255, 0.25);
+  border-color: rgba(0, 200, 255, 0.5);
+  color: #00c8ff;
 }
 
 @keyframes scanDown {

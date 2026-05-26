@@ -1,11 +1,13 @@
 <template>
   <div class="interactive-view">
     <section class="hero-banner">
+      <img src="/picture/interactive-hero.jpg" alt="互动专区" class="hero-bg-img" draggable="false" />
+      <div class="hero-overlay"></div>
       <div class="hero-content">
         <h1>趣味互动专区</h1>
         <p class="hero-sub">探索丝路，寓教于乐</p>
       </div>
-      <div class="hero-wave"></div>
+      <div class="hero-gradient-bottom"></div>
     </section>
 
     <section class="quiz-section">
@@ -92,8 +94,17 @@
 
     <section class="poetry-section">
       <h2 class="section-title">丝路诗词合集</h2>
+      <p class="section-desc">点击卡片，探索诗词与丝绸之路的故事</p>
       <div class="poetry-cards">
-        <div v-for="(poem, pIdx) in poems" :key="pIdx" class="poem-card">
+        <div v-for="(poem, pIdx) in poems" :key="pIdx" class="poem-card" @click="openPoemLightbox(poem)">
+          <div class="poem-img">
+            <img :src="poem.img" :alt="poem.author" />
+            <div class="poem-img-overlay">
+              <span class="zoom-icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+              </span>
+            </div>
+          </div>
           <div class="poem-content">
             <p class="poem-line" v-for="line in poem.lines" :key="line">{{ line }}</p>
           </div>
@@ -150,11 +161,34 @@
         <p>还没有留言，成为第一个留下足迹的人吧！</p>
       </div>
     </section>
+
+    <transition name="lightbox-fade">
+      <div v-if="poemLightbox.visible" class="lightbox-overlay" @click.self="closePoemLightbox">
+        <div class="lightbox-container">
+          <button class="lightbox-close" @click="closePoemLightbox">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+          </button>
+          <div class="lightbox-content">
+            <div class="lightbox-img-wrap" v-if="poemLightbox.img">
+              <img :src="poemLightbox.img" :alt="poemLightbox.author" />
+            </div>
+            <div class="lightbox-info">
+              <div class="lightbox-poem-lines">
+                <p v-for="line in poemLightbox.lines" :key="line">{{ line }}</p>
+              </div>
+              <p class="lightbox-poem-author">{{ poemLightbox.author }}</p>
+              <div class="lightbox-divider"></div>
+              <p class="lightbox-detail">{{ poemLightbox.detail }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, reactive, computed, onMounted, onUnmounted } from 'vue'
 
 interface Question {
   question: string
@@ -290,10 +324,84 @@ function restart() {
 }
 
 const poems = [
-  { lines: ['渭城朝雨浥轻尘', '客舍青青柳色新', '劝君更尽一杯酒', '西出阳关无故人'], author: '王维《送元二使安西》' },
-  { lines: ['黄河远上白云间', '一片孤城万仞山', '羌笛何须怨杨柳', '春风不度玉门关'], author: '王之涣《凉州词》' },
-  { lines: ['明月出天山', '苍茫云海间', '长风几万里', '吹度玉门关'], author: '李白《关山月》' }
+  {
+    lines: ['渭城朝雨浥轻尘', '客舍青青柳色新', '劝君更尽一杯酒', '西出阳关无故人'],
+    author: '王维《送元二使安西》',
+    img: '/picture/poem-yangguan.jpg',
+    detail: '阳关位于今甘肃敦煌西南，是丝绸之路上的重要关隘。诗人在渭城（今西安）送别友人元二出使安西（今新疆库车），一场朝雨洗去了路上的轻尘，也映衬了离别的感伤。"西出阳关无故人"道出了丝路远行的孤寂——过了阳关便是茫茫戈壁，故人难再相见。此诗后来被谱为《阳关三叠》，成为中国最经典的送别曲。'
+  },
+  {
+    lines: ['黄河远上白云间', '一片孤城万仞山', '羌笛何须怨杨柳', '春风不度玉门关'],
+    author: '王之涣《凉州词》',
+    img: '/picture/poem-liangzhou.jpg',
+    detail: '凉州（今甘肃武威）是河西走廊的重镇，丝绸之路上的商贸枢纽。诗中描绘了黄河源头直入云霄、孤城矗立万仞山间的壮阔景象。玉门关是丝路南北两道的分界点，"春风不度"既是写实——塞外荒凉、春风难至，也暗喻朝廷恩泽难以惠及边关将士。羌笛声中的乡愁，是无数丝路守卫者的共同心声。'
+  },
+  {
+    lines: ['明月出天山', '苍茫云海间', '长风几万里', '吹度玉门关'],
+    author: '李白《关山月》',
+    img: '/picture/poem-guanshan.jpg',
+    detail: '天山横亘西域，是丝绸之路必经的天然屏障。李白以雄浑的笔触描绘了天山明月从云海中升起的壮丽画面，长风跨越万里吹过玉门关。这首诗借关山月色，抒发了戍边将士的思乡之情和对和平的渴望。天山南北两条丝路——天山北路和天山南路，曾是东西方文明交流的重要通道。'
+  },
+  {
+    lines: ['秦时明月汉时关', '万里长征人未还', '但使龙城飞将在', '不教胡马度阴山'],
+    author: '王昌龄《出塞》',
+    img: '/picture/poem-chumo.jpg',
+    detail: '阴山山脉是古代中原与北方游牧民族的天然分界线，也是丝绸之路北线的重要屏障。诗人感慨从秦汉以来，无数将士为了守卫这条通道而远征万里、埋骨他乡。"龙城飞将"指汉代名将李广，诗人盼望能有良将镇守边关，保障丝路畅通与国家安全。'
+  },
+  {
+    lines: ['白日依山尽', '黄河入海流', '欲穷千里目', '更上一层楼'],
+    author: '王之涣《登鹳雀楼》',
+    img: '/picture/poem-saiqu.jpg',
+    detail: '鹳雀楼位于今山西永济，地处黄河东岸，是丝绸之路上东段的重要节点。诗人登楼远眺，黄河奔流入海、群山连绵尽收眼底。"欲穷千里目，更上一层楼"不仅是登高望远的写照，更象征着丝路开拓者不断探索、勇攀高峰的精神。这座楼见证了无数商旅从中原出发、踏上西行之路的壮志豪情。'
+  },
+  {
+    lines: ['北风卷地白草折', '胡天八月即飞雪', '忽如一夜春风来', '千树万树梨花开'],
+    author: '岑参《白雪歌送武判官归京》',
+    img: '/picture/poem-dongtian.jpg',
+    detail: '这首诗写于岑参在安西（今新疆库车）和北庭（今新疆吉木萨尔）任职期间。诗中描绘了西域八月飞雪的奇景——北风卷地、白草折断，一夜之间大雪覆盖了千万棵树木，如梨花盛开。武判官即将归京，诗人在风雪中设宴送别，展现了丝路边塞的壮美与艰辛。安西和北庭是唐朝经营西域的核心据点。'
+  },
+  {
+    lines: ['月黑雁飞高', '单于夜遁逃', '欲将轻骑逐', '大雪满弓刀'],
+    author: '卢纶《塞下曲》',
+    img: '/picture/poem-saishang.jpg',
+    detail: '塞下曲描绘的是边塞将士在月黑风高之夜追击敌军的场景。丝绸之路的畅通离不开强大的军事保障——汉唐两代都在沿线设置了完整的军事防御体系。从敦煌到楼兰、从玉门关到碎叶城，驻军屯田、烽燧相望，正是这些将士的守护，才使得驼队商旅能够安全往来于东西方之间。'
+  },
+  {
+    lines: ['千里黄云白日曛', '北风吹雁雪纷纷', '莫愁前路无知己', '天下谁人不识君'],
+    author: '高适《别董大》',
+    img: '/picture/poem-zhengren.jpg',
+    detail: '董大即董庭兰，唐代著名琴师。高适在边塞送别这位音乐家好友，写下了这首慷慨激昂的送别诗。丝绸之路不仅是贸易通道，更是文化传播的桥梁——琵琶、箜篌、胡琴等乐器沿丝路传入中国，与中原音乐融合，形成了丰富多彩的丝路音乐文化。"天下谁人不识君"正是丝路文化交流使艺术跨越国界的生动写照。'
+  }
 ]
+
+const poemLightbox = reactive({ visible: false, img: '', title: '', lines: '' as string[], author: '', detail: '' })
+
+function openPoemLightbox(poem: typeof poems[number]) {
+  poemLightbox.img = poem.img
+  poemLightbox.title = poem.lines[0]
+  poemLightbox.lines = poem.lines
+  poemLightbox.author = poem.author
+  poemLightbox.detail = poem.detail
+  poemLightbox.visible = true
+  document.body.style.overflow = 'hidden'
+}
+
+function closePoemLightbox() {
+  poemLightbox.visible = false
+  document.body.style.overflow = ''
+}
+
+function handlePoemKeydown(e: KeyboardEvent) {
+  if (e.key === 'Escape') closePoemLightbox()
+}
+
+onMounted(() => {
+  document.addEventListener('keydown', handlePoemKeydown)
+})
+
+onUnmounted(() => {
+  document.removeEventListener('keydown', handlePoemKeydown)
+})
 
 interface GuestItem {
   id: number
@@ -349,39 +457,69 @@ function deleteGuestbook(id: number) {
 
 .hero-banner {
   position: relative;
-  height: 280px;
-  background: linear-gradient(135deg, #D4AF37 0%, #8B0000 50%, #2F4F4F 100%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 650px;
   overflow: hidden;
 }
 
-.hero-content { text-align: center; color: #fff; z-index: 1; }
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    transparent 30%,
+    transparent 70%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  z-index: 1;
+}
+
+.hero-content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
 
 .hero-content h1 {
   font-family: 'SimSun', cursive;
-  font-size: 2.5rem;
-  letter-spacing: 6px;
+  font-size: 2.8rem;
+  color: #fff;
+  letter-spacing: 8px;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
   animation: heroFadeIn 1s ease-out;
 }
 
 .hero-sub {
-  margin-top: 0.8rem;
-  font-size: 1.1rem;
-  opacity: 0.85;
+  margin-top: 0.6rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.05rem;
   letter-spacing: 3px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
   animation: heroFadeIn 1s ease-out 0.3s both;
 }
 
-.hero-wave {
+.hero-gradient-bottom {
   position: absolute;
   bottom: -2px;
   left: 0;
   width: 100%;
-  height: 60px;
-  background: #F5DEB3;
-  clip-path: ellipse(55% 100% at 50% 100%);
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, #F5DEB3);
+  z-index: 3;
 }
 
 .section-title {
@@ -729,20 +867,25 @@ function deleteGuestbook(id: number) {
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes heroZoom {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.06); }
+}
+
 @keyframes heroFadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .poetry-section {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 2rem 2rem 3rem;
 }
 
 .poetry-cards {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   margin-top: 1.5rem;
 }
@@ -750,48 +893,251 @@ function deleteGuestbook(id: number) {
 .poem-card {
   background: #fff;
   border-radius: 12px;
-  padding: 1.5rem;
+  overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(212, 175, 55, 0.12);
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  cursor: pointer;
 }
 
 .poem-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.poem-img {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  overflow: hidden;
+}
+
+.poem-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.poem-card:hover .poem-img img {
+  transform: scale(1.08);
+}
+
+.poem-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.poem-card:hover .poem-img-overlay {
+  opacity: 1;
+}
+
+.zoom-icon {
+  transform: scale(0.6);
+  transition: transform 0.3s ease;
+}
+
+.poem-card:hover .zoom-icon {
+  transform: scale(1);
+}
+
+.poem-content {
+  padding: 1rem 0.8rem 0.5rem;
 }
 
 .poem-line {
   font-family: 'SimSun', cursive;
-  font-size: 1.05rem;
+  font-size: 0.9rem;
   color: #333;
-  line-height: 2;
+  line-height: 1.8;
   margin: 0;
-  text-indent: 0;
 }
 
 .poem-author {
-  margin-top: 0.8rem;
-  font-size: 0.8rem;
+  margin: 0;
+  padding: 0.4rem 0.8rem 1rem;
+  font-size: 0.75rem;
   color: #999;
-  text-indent: 0;
+}
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.lightbox-container {
+  position: relative;
+  max-width: 800px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #1a1a2e;
+  border-radius: 16px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+  animation: lightboxIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border-top: 3px solid #D4AF37;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+
+.lightbox-close:hover {
+  background: rgba(139, 0, 0, 0.8);
+  transform: rotate(90deg);
+}
+
+.lightbox-content {
+  display: flex;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.lightbox-img-wrap {
+  flex: 0 0 45%;
+  max-height: 90vh;
+  overflow: hidden;
+}
+
+.lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.lightbox-info {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: auto;
+}
+
+.lightbox-poem-lines {
+  text-align: center;
+  margin-bottom: 0.8rem;
+}
+
+.lightbox-poem-lines p {
+  font-family: 'SimSun', cursive;
+  font-size: 1.2rem;
+  color: #D4AF37;
+  line-height: 2;
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.lightbox-poem-author {
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.2rem;
+}
+
+.lightbox-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  margin: 0 auto 1.2rem;
+}
+
+.lightbox-detail {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  line-height: 1.9;
+  text-align: justify;
+}
+
+.lightbox-fade-enter-active { transition: opacity 0.3s ease; }
+.lightbox-fade-leave-active { transition: opacity 0.25s ease; }
+.lightbox-fade-enter-from,
+.lightbox-fade-leave-to { opacity: 0; }
+
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.9) translateY(20px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .guestbook-section {
   max-width: 700px;
   margin: 0 auto;
-  padding: 0 2rem 4rem;
+  padding: 3rem 2rem 4rem;
+  position: relative;
+}
+
+.guestbook-section::before {
+  content: '🪶';
+  position: absolute;
+  top: 1rem;
+  left: 2rem;
+  font-size: 1.8rem;
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+.guestbook-section::after {
+  content: '✉';
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 1.8rem;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 .guestbook-form {
-  background: #fff;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 248, 231, 0.6) 100%);
   border-radius: 14px;
-  padding: 1.5rem 2rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  border: 1px solid rgba(212, 175, 55, 0.12);
+  padding: 1.8rem 2rem;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(212, 175, 55, 0.18);
   margin-top: 1.5rem;
   margin-bottom: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.guestbook-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #D4AF37, #8B0000, #D4AF37);
+  border-radius: 14px 14px 0 0;
 }
 
 .form-row {
@@ -885,18 +1231,32 @@ function deleteGuestbook(id: number) {
 }
 
 .guest-card {
-  background: #fff;
+  background: linear-gradient(135deg, #fff 0%, rgba(255, 248, 231, 0.4) 100%);
   border-radius: 12px;
   padding: 1.2rem 1.5rem;
   box-shadow: 0 3px 14px rgba(0, 0, 0, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.12);
   border-left: 4px solid #D4AF37;
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.guest-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 100% 0%, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .guest-card:hover {
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
   transform: translateX(4px);
+  border-left-color: #8B0000;
 }
 
 .guest-card-header {
@@ -969,8 +1329,11 @@ function deleteGuestbook(id: number) {
 
 .guestbook-empty {
   text-align: center;
-  padding: 2.5rem 1rem;
+  padding: 3rem 1rem;
   color: #ccc;
+  background: linear-gradient(135deg, rgba(255, 248, 231, 0.3), rgba(245, 222, 179, 0.2));
+  border-radius: 14px;
+  border: 2px dashed rgba(212, 175, 55, 0.2);
 }
 
 .empty-icon {
@@ -1005,7 +1368,7 @@ function deleteGuestbook(id: number) {
 
 @media (max-width: 768px) {
   .poetry-cards {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero-content h1 {
@@ -1019,6 +1382,19 @@ function deleteGuestbook(id: number) {
   .nav-btn.prev,
   .nav-btn.next {
     display: none;
+  }
+
+  .lightbox-content {
+    flex-direction: column;
+  }
+
+  .lightbox-img-wrap {
+    flex: none;
+    max-height: 40vh;
+  }
+
+  .lightbox-info {
+    padding: 1.5rem;
   }
 }
 </style>
