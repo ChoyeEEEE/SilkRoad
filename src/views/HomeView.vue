@@ -133,10 +133,11 @@
           <div v-for="(route, idx) in routeHighlights" :key="route.name" class="route-card" :style="{ animationDelay: idx * 0.15 + 's' }" @mouseenter="hoveredRoute = route.name" @mouseleave="hoveredRoute = ''">
             <div class="route-card-inner" :class="{ hovered: hoveredRoute === route.name }">
               <div class="card-image-slot">
-                <div class="image-placeholder">
-                  <span class="ph-icon">{{ route.icon }}</span>
-                  <span class="ph-hint">点击添加图片</span>
+                <img :src="route.image" :alt="route.name" class="route-img" />
+                <div class="card-img-overlay">
+                  <span class="card-img-icon">{{ route.icon }}</span>
                 </div>
+                <div class="card-img-shine"></div>
               </div>
               <h3>{{ route.name }}</h3>
               <p>{{ route.desc }}</p>
@@ -177,10 +178,11 @@
           <div v-for="(item, idx) in cultureHighlights" :key="item.title" class="culture-card" :style="{ animationDelay: idx * 0.12 + 's' }">
             <div class="culture-card-inner">
               <div class="card-image-slot card-image-slot-sm">
-                <div class="image-placeholder">
-                  <span class="ph-icon">{{ item.icon }}</span>
-                  <span class="ph-hint">添加图片</span>
+                <img :src="item.image" :alt="item.title" class="culture-img" />
+                <div class="culture-img-overlay">
+                  <span class="culture-img-icon">{{ item.icon }}</span>
                 </div>
+                <div class="culture-img-shine"></div>
               </div>
               <h3>{{ item.title }}</h3>
               <p>{{ item.desc }}</p>
@@ -198,11 +200,8 @@
     <div class="feature-banner">
       <div class="feature-banner-inner">
         <div class="feature-image-slot">
-          <div class="image-placeholder image-placeholder-banner">
-            <span class="ph-icon-large">🖼️</span>
-            <span class="ph-text-banner">在此添加丝路全景横幅图片</span>
-            <span class="ph-hint">建议尺寸 1920×600</span>
-          </div>
+          <img src="/picture/无数铃声遥过碛,应驮白练到安西.jpg" alt="无数铃声遥过碛，应驮白练到安西" class="feature-img" />
+          <div class="feature-img-shine"></div>
         </div>
         <div class="feature-overlay">
           <p class="feature-quote">"无数铃声遥过碛，应驮白练到安西"</p>
@@ -487,16 +486,16 @@ const heroNodes = [
 ]
 
 const routeHighlights = [
-  { name: '沙漠绿洲之路', icon: '🏜️', desc: '穿越塔克拉玛干沙漠，连接楼兰、龟兹等绿洲古城', distance: '约 7,000 km' },
-  { name: '草原丝绸之路', icon: '🐎', desc: '经蒙古高原西行，游牧民族的商贸通道', distance: '约 10,000 km' },
-  { name: '海上丝绸之路', icon: '⛵', desc: '从东南沿海出发，经南海抵达波斯湾与非洲东海岸', distance: '约 15,000 km' },
+  { name: '沙漠绿洲之路', icon: '🏜️', desc: '穿越塔克拉玛干沙漠，连接楼兰、龟兹等绿洲古城', distance: '约 7,000 km', image: '/picture/沙漠绿洲.jpg' },
+  { name: '草原丝绸之路', icon: '🐎', desc: '经蒙古高原西行，游牧民族的商贸通道', distance: '约 10,000 km', image: '/picture/草原丝绸之路.jpg' },
+  { name: '海上丝绸之路', icon: '⛵', desc: '从东南沿海出发，经南海抵达波斯湾与非洲东海岸', distance: '约 15,000 km', image: '/picture/海上丝绸之路.jpg' },
 ]
 
 const cultureHighlights = [
-  { icon: '📿', title: '宗教传播', desc: '佛教、伊斯兰教、景教沿丝路东传，与本土文化交融共生' },
-  { icon: '🎨', title: '艺术交流', desc: '敦煌壁画融合中西技法，犍陀罗艺术影响深远' },
-  { icon: '📜', title: '科技西传', desc: '造纸术、印刷术、火药经丝路传入西方，改变世界进程' },
-  { icon: '🎵', title: '音乐融合', desc: '龟兹乐、天竺乐与中原雅乐交汇，催生盛唐乐舞' },
+  { icon: '📿', title: '宗教传播', desc: '佛教、伊斯兰教、景教沿丝路东传，与本土文化交融共生', image: '/picture/宗教传播.jpg' },
+  { icon: '🎨', title: '艺术交流', desc: '敦煌壁画融合中西技法，犍陀罗艺术影响深远', image: '/picture/艺术交流.jpg' },
+  { icon: '📜', title: '科技西传', desc: '造纸术、印刷术、火药经丝路传入西方，改变世界进程', image: '/picture/科技西传.jpg' },
+  { icon: '🎵', title: '音乐融合', desc: '龟兹乐、天竺乐与中原雅乐交汇，催生盛唐乐舞', image: '/picture/音乐融合.jpg' },
 ]
 
 const cityHighlights = [
@@ -653,6 +652,7 @@ const modernHighlights = [
   font-size: 3.8rem;
   font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
   letter-spacing: 8px; font-weight: 400;
+  white-space: nowrap;
   color: #FFF8DC;
   -webkit-text-stroke: 0.5px rgba(139,69,19,0.4);
   text-shadow:
@@ -895,6 +895,7 @@ const modernHighlights = [
   border-radius: 12px;
   overflow: hidden;
   margin-bottom: 1rem;
+  position: relative;
 }
 .card-image-slot-sm {
   height: 140px;
@@ -986,6 +987,23 @@ const modernHighlights = [
 }
 .feature-image-slot {
   position: absolute; inset: 0;
+  overflow: hidden;
+}
+.feature-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+.feature-banner:hover .feature-img {
+  transform: scale(1.05);
+}
+.feature-img-shine {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.08) 50%, transparent 60%);
+  transform: translateX(-100%);
+}
+.feature-banner:hover .feature-img-shine {
+  animation: img-shine 1.2s ease forwards;
 }
 .feature-overlay {
   position: absolute; inset: 0;
@@ -1067,6 +1085,50 @@ const modernHighlights = [
   letter-spacing: 1px;
 }
 
+/* 路线卡片图片 */
+.route-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.6s ease;
+}
+.route-card-inner:hover .route-img {
+  transform: scale(1.08);
+  filter: brightness(1.05) saturate(1.1);
+}
+.card-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(45,24,16,0.5) 100%);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 1rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.route-card-inner:hover .card-img-overlay {
+  opacity: 1;
+}
+.card-img-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  transform: translateY(10px);
+  transition: transform 0.4s ease;
+}
+.route-card-inner:hover .card-img-icon {
+  transform: translateY(0);
+}
+.card-img-shine {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.15) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: none;
+}
+.route-card-inner:hover .card-img-shine {
+  animation: img-shine 0.8s ease forwards;
+}
+@keyframes img-shine {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+
 /* ========== 文化卡片 ========== */
 .culture-grid {
   display: grid;
@@ -1098,6 +1160,45 @@ const modernHighlights = [
   font-size: 0.85rem;
   color: #666;
   line-height: 1.6;
+}
+
+/* 文化卡片图片 */
+.culture-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+}
+.culture-card-inner:hover .culture-img {
+  transform: scale(1.1);
+  filter: brightness(1.08) saturate(1.15);
+}
+.culture-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(45,24,16,0.05) 0%, rgba(45,24,16,0.45) 100%);
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 0.8rem;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.culture-card-inner:hover .culture-img-overlay {
+  opacity: 1;
+}
+.culture-img-icon {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  transform: translateY(8px) scale(0.9);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.culture-card-inner:hover .culture-img-icon {
+  transform: translateY(0) scale(1);
+}
+.culture-img-shine {
+  position: absolute; inset: 0;
+  background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,0.12) 50%, transparent 60%);
+  transform: translateX(-100%);
+}
+.culture-card-inner:hover .culture-img-shine {
+  animation: img-shine 0.7s ease forwards;
 }
 
 /* ========== 城市展示 ========== */
@@ -1347,7 +1448,7 @@ const modernHighlights = [
 }
 
 @media (max-width: 768px) {
-  .banner-text h1 { font-size: 2.2rem; letter-spacing: 4px; }
+  .banner-text h1 { font-size: 2.2rem; letter-spacing: 4px; white-space: nowrap; }
   .subtitle { font-size: 1.1rem; }
   .quick-nav { gap: 0.6rem; bottom: 4%; }
   .quick-nav button { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
