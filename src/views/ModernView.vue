@@ -69,26 +69,46 @@
 
     <section class="stats-banner" ref="statsRef">
       <h2>新时代丝路成果</h2>
-      <div class="stats-grid">
-        <div
-          v-for="(stat, index) in stats"
-          :key="stat.label"
-          class="stat-card"
-          :style="{ animationDelay: index * 0.08 + 's' }"
-          @click="openLightbox('', stat.title, stat.detail)"
-        >
-          <div class="stat-card-glow"></div>
-          <div class="stat-card-border"></div>
-          <div class="stat-card-inner">
-            <span class="stat-icon">{{ stat.icon }}</span>
-            <span class="stat-value">{{ stat.value }}</span>
-            <span class="stat-label">{{ stat.label }}</span>
+      <div class="stats-carousel-wrapper">
+        <div class="stats-carousel-track">
+          <div
+            v-for="(stat, index) in stats"
+            :key="'a-' + index"
+            class="stat-card"
+            @click="openLightbox('', stat.title, stat.detail)"
+          >
+            <div class="stat-card-glow"></div>
+            <div class="stat-card-border"></div>
+            <div class="stat-card-inner">
+              <span class="stat-icon">{{ stat.icon }}</span>
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+            <span class="stat-click-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </span>
+            <div class="stat-scan-line"></div>
+            <div class="stat-card-shine"></div>
           </div>
-          <span class="stat-click-hint">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
-          </span>
-          <div class="stat-scan-line"></div>
-          <div class="stat-card-shine"></div>
+          <div
+            v-for="(stat, index) in stats"
+            :key="'b-' + index"
+            class="stat-card"
+            @click="openLightbox('', stat.title, stat.detail)"
+          >
+            <div class="stat-card-glow"></div>
+            <div class="stat-card-border"></div>
+            <div class="stat-card-inner">
+              <span class="stat-icon">{{ stat.icon }}</span>
+              <span class="stat-value">{{ stat.value }}</span>
+              <span class="stat-label">{{ stat.label }}</span>
+            </div>
+            <span class="stat-click-hint">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35M11 8v6M8 11h6"/></svg>
+            </span>
+            <div class="stat-scan-line"></div>
+            <div class="stat-card-shine"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -254,7 +274,7 @@ onUnmounted(() => {
 }
 
 .hero-center h1 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 2.8rem;
   color: #000;
   letter-spacing: 8px;
@@ -291,7 +311,7 @@ onUnmounted(() => {
   color: #fff;
   font-weight: bold;
   font-size: 1rem;
-  font-family: 'Georgia', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
   animation: vsPulse 2s ease-in-out infinite;
 }
@@ -406,7 +426,7 @@ onUnmounted(() => {
   border-radius: 12px;
   font-size: 0.7rem;
   font-weight: bold;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   background: rgba(212, 175, 55, 0.85);
   color: #fff;
   backdrop-filter: blur(4px);
@@ -417,7 +437,7 @@ onUnmounted(() => {
 .card-body { padding: 1.2rem 1.5rem; flex: 1; }
 
 .card-body h3 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.15rem;
   color: #333;
   margin-bottom: 0.4rem;
@@ -460,7 +480,7 @@ onUnmounted(() => {
 
 .topic-text {
   font-size: 0.55rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   color: #8B4513;
   font-weight: bold;
 }
@@ -487,7 +507,7 @@ onUnmounted(() => {
 
 .stats-banner h2 {
   text-align: center;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.6rem;
   color: #00c8ff;
   margin-bottom: 2rem;
@@ -504,10 +524,27 @@ onUnmounted(() => {
   margin: 0.8rem auto 0;
 }
 
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+.stats-carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+}
+
+.stats-carousel-track {
+  display: flex;
   gap: 1.5rem;
+  animation: stats-scroll 30s linear infinite;
+  width: max-content;
+}
+
+.stats-carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes stats-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .stat-card {
@@ -520,19 +557,14 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 2rem 1rem;
+  padding: 2rem 1.5rem;
+  min-width: 200px;
+  flex-shrink: 0;
   background: linear-gradient(135deg, #0a0f1e 0%, #111b33 50%, #0a1628 100%);
   border: 1px solid rgba(0, 200, 255, 0.12);
-  opacity: 0;
-  transform: translateY(20px);
   transition: all 0.4s ease;
   cursor: pointer;
   overflow: hidden;
-}
-
-.stats-banner.visible .stat-card {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .stat-card:hover {
@@ -593,7 +625,7 @@ onUnmounted(() => {
 .stat-value {
   font-size: 1.6rem;
   font-weight: bold;
-  font-family: 'Georgia', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   background: linear-gradient(135deg, #00c8ff, #00ff88);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -604,7 +636,7 @@ onUnmounted(() => {
 .stat-label {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.55);
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 1px;
 }
 
@@ -743,7 +775,7 @@ onUnmounted(() => {
 }
 
 .lightbox-info h3 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.4rem;
   color: #D4AF37;
   margin-bottom: 1rem;
@@ -795,7 +827,8 @@ onUnmounted(() => {
   .center-line { width: 60px; height: 2px; min-height: auto; background: linear-gradient(to right, transparent, #D4AF37, transparent); }
   .arrow-right { transform: rotate(90deg); }
 
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-carousel-track { gap: 1rem; }
+  .stat-card { min-width: 160px; padding: 1.5rem 1rem; }
 
   .lightbox-container { max-width: 95vw; }
   .lightbox-info { padding: 1.2rem 1.5rem 1.5rem; }

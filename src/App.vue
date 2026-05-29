@@ -110,8 +110,6 @@ const navLinks = [
   { path: '/cities', name: '名城风物' },
   { path: '/culture', name: '文化瑰宝' },
   { path: '/trade', name: '商贸物产' },
-  { path: '/heritage', name: '非遗技艺' },
-  { path: '/scenery', name: '风光地貌' },
   { path: '/modern', name: '古今新篇' },
   { path: '/interactive', name: '互动专区' },
 ]
@@ -204,11 +202,15 @@ onUnmounted(() => {
 }
 
 body {
-  font-family: 'SimSun', 'sans-serif';
+  font-family: 'Noto Serif SC', sans-serif;
   background-color: var(--desert-yellow);
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+* {
+  font-family: 'Noto Serif SC', sans-serif !important;
 }
 
 /* 容器 */
@@ -263,7 +265,7 @@ body {
 
 .loading-text {
   font-size: 1.5rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   color: var(--dunhuang-red);
   letter-spacing: 4px;
   animation: pulse-text 1.5s ease-in-out infinite;
@@ -317,7 +319,7 @@ body {
   font-weight: bold;
   color: var(--dunhuang-red);
   text-decoration: none;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 1px;
   transition: all 0.3s ease;
   display: flex;

@@ -495,7 +495,7 @@ function deleteGuestbook(id: number) {
 }
 
 .hero-content h1 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 2.8rem;
   color: #fff;
   letter-spacing: 8px;
@@ -524,7 +524,7 @@ function deleteGuestbook(id: number) {
 
 .section-title {
   text-align: center;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.8rem;
   color: #8B0000;
   margin-bottom: 0.5rem;
@@ -619,7 +619,7 @@ function deleteGuestbook(id: number) {
   font-size: 0.85rem;
   color: #8B0000;
   font-weight: bold;
-  font-family: 'Georgia', serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .card-score {
@@ -646,14 +646,14 @@ function deleteGuestbook(id: number) {
 }
 
 .ph-icon { font-size: 3rem; }
-.ph-text { font-size: 0.8rem; color: #aaa; font-family: 'SimSun', cursive; }
+.ph-text { font-size: 0.8rem; color: #aaa; font-family: 'Noto Serif SC', sans-serif; }
 
 .card-body {
   padding: 1.5rem;
 }
 
 .question-text {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.15rem;
   color: #333;
   margin-bottom: 1.2rem;
@@ -781,7 +781,7 @@ function deleteGuestbook(id: number) {
   border: none;
   border-radius: 25px;
   font-size: 1rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 2px;
@@ -796,7 +796,7 @@ function deleteGuestbook(id: number) {
   font-size: 1.1rem;
   color: #333;
   margin-bottom: 1rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .result-summary strong {
@@ -811,7 +811,7 @@ function deleteGuestbook(id: number) {
   border: none;
   border-radius: 25px;
   font-size: 0.95rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -954,7 +954,7 @@ function deleteGuestbook(id: number) {
 }
 
 .poem-line {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 0.9rem;
   color: #333;
   line-height: 1.8;
@@ -1049,7 +1049,7 @@ function deleteGuestbook(id: number) {
 }
 
 .lightbox-poem-lines p {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.2rem;
   color: #D4AF37;
   line-height: 2;
@@ -1155,7 +1155,7 @@ function deleteGuestbook(id: number) {
   font-size: 0.85rem;
   color: #8B4513;
   font-weight: bold;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .form-field input,
@@ -1202,7 +1202,7 @@ function deleteGuestbook(id: number) {
   border: none;
   border-radius: 25px;
   font-size: 0.95rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   cursor: pointer;
   transition: all 0.3s ease;
   letter-spacing: 1px;
@@ -1277,7 +1277,7 @@ function deleteGuestbook(id: number) {
   justify-content: center;
   font-size: 0.9rem;
   font-weight: bold;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   flex-shrink: 0;
 }
 
@@ -1291,7 +1291,7 @@ function deleteGuestbook(id: number) {
   font-weight: bold;
   font-size: 0.95rem;
   color: #333;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .guest-time {
