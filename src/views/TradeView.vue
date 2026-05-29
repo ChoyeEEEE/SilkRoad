@@ -294,7 +294,12 @@
               >
                 <div class="card-inner">
                   <div class="card-front">
-                    <div class="card-emoji">{{ item.icon }}</div>
+                    <div class="card-img-slot" v-if="item.image">
+                      <img :src="item.image" :alt="item.name" />
+                    </div>
+                    <div class="card-img-slot card-img-placeholder" v-else>
+                      <span>{{ item.icon }}</span>
+                    </div>
                     <div class="card-info">
                       <h4>{{ item.name }}</h4>
                       <span class="card-category">{{ item.category }}</span>
@@ -331,7 +336,12 @@
               >
                 <div class="card-inner">
                   <div class="card-front">
-                    <div class="card-emoji">{{ item.icon }}</div>
+                    <div class="card-img-slot" v-if="item.image">
+                      <img :src="item.image" :alt="item.name" />
+                    </div>
+                    <div class="card-img-slot card-img-placeholder" v-else>
+                      <span>{{ item.icon }}</span>
+                    </div>
                     <div class="card-info">
                       <h4>{{ item.name }}</h4>
                       <span class="card-category">{{ item.category }}</span>
@@ -449,24 +459,25 @@ interface TradeItem {
   period: string
   route: string
   impact: string
+  image?: string
 }
 
 const allExports: TradeItem[] = [
-  { name: '丝绸', icon: '🧵', desc: '丝绸为首项出口商品，华丽织物令西方世界为之倾倒。', fullDesc: '丝绸是丝绸之路最核心的贸易品。中国的丝织技术独步天下，从汉代起便通过丝路大量输往中亚、波斯和罗马。罗马贵族以穿着中国丝绸为荣，丝绸甚至一度与黄金等价。丝织技术的外传也促进了沿线国家纺织业的发展。', category: '织物', period: '汉代起', route: '陆上丝路', impact: '改变西方服饰文化' },
-  { name: '瓷器', icon: '🏺', desc: '精美瓷器享誉世界，China一词即源于瓷器。', fullDesc: '中国瓷器通过海上丝绸之路大量出口至东南亚、中东及欧洲。从唐三彩到宋代青瓷、元代青花，中国瓷器工艺不断精进。欧洲人长期无法破解制瓷秘方，瓷器堪比黄金，是海上丝路最重要的贸易品之一。', category: '工艺品', period: '唐代起', route: '海上丝路', impact: '影响全球陶瓷工艺' },
-  { name: '茶叶', icon: '🍵', desc: '茶文化沿丝路传播，成为东西方共同的饮品文化。', fullDesc: '茶叶经由陆上和海上丝绸之路传播至世界各地。从唐代起，茶叶便经由西域传入中亚和西亚。宋代以后，茶马古道与海上贸易使茶叶远销欧洲。英国的下午茶文化、日本的茶道均源于中国茶文化的传播。', category: '饮品', period: '唐代起', route: '陆海兼有', impact: '塑造全球饮品文化' },
-  { name: '造纸术', icon: '📜', desc: '四大发明之一，经丝路传至阿拉伯，改变了世界文明进程。', fullDesc: '公元751年怛罗斯之战后，造纸术传入阿拉伯世界，随后传播至欧洲。廉价纸张取代了昂贵的羊皮纸，极大促进了知识传播和文化发展，是人类文明史上最重要的技术转移之一。', category: '技术', period: '8世纪', route: '陆上丝路', impact: '推动世界文明进程' },
-  { name: '火药', icon: '💥', desc: '火药经丝路西传，深刻影响了世界军事和科技发展。', fullDesc: '火药作为中国四大发明之一，于13世纪经丝绸之路传入阿拉伯地区，随后传入欧洲。火药的传播彻底改变了战争形态和世界政治格局，推动了欧洲封建制度的瓦解。', category: '技术', period: '13世纪', route: '陆上丝路', impact: '改变世界军事格局' },
-  { name: '漆器', icon: '🎨', desc: '精美漆器沿丝路传播，东方工艺令西方叹为观止。', fullDesc: '中国漆器工艺有七千年历史，通过丝绸之路传播至日本、东南亚及欧洲。漆器以其精美的工艺和耐久性闻名于世，是丝路贸易中的高端工艺品。', category: '工艺品', period: '汉代起', route: '陆海兼有', impact: '传播东方工艺美学' },
+  { name: '丝绸', icon: '🧵', desc: '丝绸为首项出口商品，华丽织物令西方世界为之倾倒。', fullDesc: '丝绸是丝绸之路最核心的贸易品。中国的丝织技术独步天下，从汉代起便通过丝路大量输往中亚、波斯和罗马。罗马贵族以穿着中国丝绸为荣，丝绸甚至一度与黄金等价。丝织技术的外传也促进了沿线国家纺织业的发展。', category: '织物', period: '汉代起', route: '陆上丝路', impact: '改变西方服饰文化', image: '/picture/丝绸.jpg' },
+  { name: '瓷器', icon: '🏺', desc: '精美瓷器享誉世界，China一词即源于瓷器。', fullDesc: '中国瓷器通过海上丝绸之路大量出口至东南亚、中东及欧洲。从唐三彩到宋代青瓷、元代青花，中国瓷器工艺不断精进。欧洲人长期无法破解制瓷秘方，瓷器堪比黄金，是海上丝路最重要的贸易品之一。', category: '工艺品', period: '唐代起', route: '海上丝路', impact: '影响全球陶瓷工艺', image: '/picture/瓷器.v2' },
+  { name: '茶叶', icon: '🍵', desc: '茶文化沿丝路传播，成为东西方共同的饮品文化。', fullDesc: '茶叶经由陆上和海上丝绸之路传播至世界各地。从唐代起，茶叶便经由西域传入中亚和西亚。宋代以后，茶马古道与海上贸易使茶叶远销欧洲。英国的下午茶文化、日本的茶道均源于中国茶文化的传播。', category: '饮品', period: '唐代起', route: '陆海兼有', impact: '塑造全球饮品文化', image: '/picture/茶叶.jpg' },
+  { name: '造纸术', icon: '📜', desc: '四大发明之一，经丝路传至阿拉伯，改变了世界文明进程。', fullDesc: '公元751年怛罗斯之战后，造纸术传入阿拉伯世界，随后传播至欧洲。廉价纸张取代了昂贵的羊皮纸，极大促进了知识传播和文化发展，是人类文明史上最重要的技术转移之一。', category: '技术', period: '8世纪', route: '陆上丝路', impact: '推动世界文明进程', image: '/picture/造纸术.jpg' },
+  { name: '火药', icon: '💥', desc: '火药经丝路西传，深刻影响了世界军事和科技发展。', fullDesc: '火药作为中国四大发明之一，于13世纪经丝绸之路传入阿拉伯地区，随后传入欧洲。火药的传播彻底改变了战争形态和世界政治格局，推动了欧洲封建制度的瓦解。', category: '技术', period: '13世纪', route: '陆上丝路', impact: '改变世界军事格局', image: '/picture/火药.png' },
+  { name: '漆器', icon: '🎨', desc: '精美漆器沿丝路传播，东方工艺令西方叹为观止。', fullDesc: '中国漆器工艺有七千年历史，通过丝绸之路传播至日本、东南亚及欧洲。漆器以其精美的工艺和耐久性闻名于世，是丝路贸易中的高端工艺品。', category: '工艺品', period: '汉代起', route: '陆海兼有', impact: '传播东方工艺美学', image: '/picture/漆器.jpg' },
 ]
 
 const allImports: TradeItem[] = [
-  { name: '葡萄', icon: '🍇', desc: '葡萄及葡萄酒酿造技术经丝路传入中国。', fullDesc: '葡萄原产于地中海东部，汉代张骞出使西域后将其引入中原。葡萄酒酿造技术也随之传入，唐代诗人王翰"葡萄美酒夜光杯"便是最好的写照。葡萄的引入丰富了中国的果蔬品种和饮食文化。', category: '农作物', period: '汉代', route: '陆上丝路', impact: '丰富中国农业品种' },
-  { name: '香料', icon: '🌶️', desc: '胡椒、肉桂等香料丰富了中华饮食文化。', fullDesc: '丝绸之路上的香料贸易极为繁荣。胡椒、肉桂、丁香、豆蔻等香料从东南亚、印度、阿拉伯地区输入中国，不仅丰富了中华饮食文化，还被广泛用于医药和宗教仪式。香料一度价比黄金。', category: '食品', period: '汉代起', route: '陆海兼有', impact: '变革中华饮食文化' },
-  { name: '珠宝', icon: '💎', desc: '波斯宝石、罗马琉璃沿丝路流入东方宫廷。', fullDesc: '波斯的红宝石、缅甸的翡翠、斯里兰卡的蓝宝石以及罗马的琉璃制品，通过丝绸之路源源不断地流入中国。这些珍宝不仅满足了宫廷贵族的奢华需求，也促进了中国珠宝加工工艺的提升。', category: '奢侈品', period: '汉代起', route: '陆上丝路', impact: '推动珠宝工艺交流' },
-  { name: '农作物', icon: '🌾', desc: '苜蓿、胡麻、核桃等作物改善了中国农业结构。', fullDesc: '丝绸之路为中国引入了大量农作物品种：苜蓿、胡麻（芝麻）、核桃、石榴、黄瓜、胡萝卜等。这些作物的引入极大地丰富了中国的农业结构和食物种类，对中国农业产生了深远影响。', category: '农作物', period: '汉代起', route: '陆上丝路', impact: '改善中国农业结构' },
-  { name: '佛教文化', icon: '☸️', desc: '佛教经丝路传入中国，深刻影响了中华文明。', fullDesc: '佛教自汉代经由丝绸之路传入中国，带来了佛经、佛像、佛教艺术等。敦煌莫高窟、云冈石窟等均是丝路佛教文化传播的结晶。佛教深刻影响了中国的哲学、文学、艺术和社会生活。', category: '文化', period: '汉代起', route: '陆上丝路', impact: '深刻影响中华文明' },
-  { name: '琉璃', icon: '🔮', desc: '西方琉璃制作技术传入，推动中国玻璃工艺发展。', fullDesc: '琉璃（古代玻璃）制作技术从罗马帝国经丝绸之路传入中国。西方的钠钙玻璃与中国的铅钡玻璃技术相互融合，推动了中国古代玻璃工艺的发展，丰富了工艺品门类。', category: '工艺品', period: '汉代起', route: '陆上丝路', impact: '推动玻璃工艺发展' },
+  { name: '葡萄', icon: '🍇', desc: '葡萄及葡萄酒酿造技术经丝路传入中国。', fullDesc: '葡萄原产于地中海东部，汉代张骞出使西域后将其引入中原。葡萄酒酿造技术也随之传入，唐代诗人王翰"葡萄美酒夜光杯"便是最好的写照。葡萄的引入丰富了中国的果蔬品种和饮食文化。', category: '农作物', period: '汉代', route: '陆上丝路', impact: '丰富中国农业品种', image: '/picture/葡萄.webp' },
+  { name: '香料', icon: '🌶️', desc: '胡椒、肉桂等香料丰富了中华饮食文化。', fullDesc: '丝绸之路上的香料贸易极为繁荣。胡椒、肉桂、丁香、豆蔻等香料从东南亚、印度、阿拉伯地区输入中国，不仅丰富了中华饮食文化，还被广泛用于医药和宗教仪式。香料一度价比黄金。', category: '食品', period: '汉代起', route: '陆海兼有', impact: '变革中华饮食文化', image: '/picture/香料.jpg' },
+  { name: '珠宝', icon: '💎', desc: '波斯宝石、罗马琉璃沿丝路流入东方宫廷。', fullDesc: '波斯的红宝石、缅甸的翡翠、斯里兰卡的蓝宝石以及罗马的琉璃制品，通过丝绸之路源源不断地流入中国。这些珍宝不仅满足了宫廷贵族的奢华需求，也促进了中国珠宝加工工艺的提升。', category: '奢侈品', period: '汉代起', route: '陆上丝路', impact: '推动珠宝工艺交流', image: '/picture/珠宝.jpg' },
+  { name: '农作物', icon: '🌾', desc: '苜蓿、胡麻、核桃等作物改善了中国农业结构。', fullDesc: '丝绸之路为中国引入了大量农作物品种：苜蓿、胡麻（芝麻）、核桃、石榴、黄瓜、胡萝卜等。这些作物的引入极大地丰富了中国的农业结构和食物种类，对中国农业产生了深远影响。', category: '农作物', period: '汉代起', route: '陆上丝路', impact: '改善中国农业结构', image: '/picture/农作物.jpg' },
+  { name: '佛教文化', icon: '☸️', desc: '佛教经丝路传入中国，深刻影响了中华文明。', fullDesc: '佛教自汉代经由丝绸之路传入中国，带来了佛经、佛像、佛教艺术等。敦煌莫高窟、云冈石窟等均是丝路佛教文化传播的结晶。佛教深刻影响了中国的哲学、文学、艺术和社会生活。', category: '文化', period: '汉代起', route: '陆上丝路', impact: '深刻影响中华文明', image: '/picture/印度佛教.jpg' },
+  { name: '琉璃', icon: '🔮', desc: '西方琉璃制作技术传入，推动中国玻璃工艺发展。', fullDesc: '琉璃（古代玻璃）制作技术从罗马帝国经丝绸之路传入中国。西方的钠钙玻璃与中国的铅钡玻璃技术相互融合，推动了中国古代玻璃工艺的发展，丰富了工艺品门类。', category: '工艺品', period: '汉代起', route: '陆上丝路', impact: '推动玻璃工艺发展', image: '/picture/琉璃.jpg' },
 ]
 
 const filterTabs = [
@@ -1349,9 +1360,31 @@ onUnmounted(() => {
   box-shadow: 0 4px 16px rgba(139, 0, 0, 0.2);
 }
 
-.card-emoji {
-  font-size: 2rem;
+.card-img-slot {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
   flex-shrink: 0;
+}
+.card-img-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.trade-card:hover .card-img-slot img {
+  transform: scale(1.1);
+}
+.card-img-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(139,69,19,0.06) 0%, rgba(212,175,55,0.05) 100%);
+  border: 2px dashed rgba(139,69,19,0.15);
+}
+.card-img-placeholder span {
+  font-size: 2rem;
 }
 
 .card-info {

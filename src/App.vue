@@ -110,8 +110,6 @@ const navLinks = [
   { path: '/cities', name: '名城风物' },
   { path: '/culture', name: '文化瑰宝' },
   { path: '/trade', name: '商贸物产' },
-  { path: '/heritage', name: '非遗技艺' },
-  { path: '/scenery', name: '风光地貌' },
   { path: '/modern', name: '古今新篇' },
   { path: '/interactive', name: '互动专区' },
 ]

@@ -236,12 +236,9 @@
           <div v-for="city in cityHighlights" :key="city.name" class="city-tile">
             <div class="city-tile-bg" :style="{ background: city.gradient }"></div>
             <div class="city-image-slot">
-              <div class="image-placeholder image-placeholder-city">
-                <span class="ph-hint">{{ city.name }} · 添加图片</span>
-              </div>
+              <img :src="city.image" :alt="city.name" class="city-img" />
             </div>
             <div class="city-tile-content">
-              <span class="city-emoji">{{ city.icon }}</span>
               <h3>{{ city.name }}</h3>
               <p>{{ city.tagline }}</p>
             </div>
@@ -278,29 +275,52 @@
         </div>
         <div class="trade-layout">
           <div class="trade-image-slot">
-            <div class="image-placeholder image-placeholder-trade">
-              <span class="ph-icon-large">🏺</span>
-              <span class="ph-text-banner">在此添加丝路贸易主题图片</span>
-              <span class="ph-hint">建议尺寸 800×500</span>
+            <img src="/picture/丝路贸易.jpeg" alt="丝路贸易" class="trade-banner-img" />
+            <div class="trade-banner-overlay">
+              <span class="trade-banner-text">东西方的繁华互通</span>
             </div>
           </div>
-          <div class="trade-flow">
-            <div class="trade-column">
+          <div class="trade-columns">
+            <div class="trade-column-wide">
               <h3 class="trade-col-title">🇨🇳 中国输出</h3>
-              <div v-for="item in tradeExport" :key="item.name" class="trade-item">
-                <span class="trade-emoji">{{ item.icon }}</span>
-                <span class="trade-name">{{ item.name }}</span>
+              <div class="carousel-wrapper">
+                <div class="carousel-track carousel-up">
+                  <div v-for="(item, i) in tradeExport" :key="'e1-' + i" class="trade-card">
+                    <div class="trade-card-img">
+                      <img :src="item.image" :alt="item.name" />
+                    </div>
+                    <span class="trade-card-name">{{ item.name }}</span>
+                  </div>
+                  <div v-for="(item, i) in tradeExport" :key="'e2-' + i" class="trade-card">
+                    <div class="trade-card-img">
+                      <img :src="item.image" :alt="item.name" />
+                    </div>
+                    <span class="trade-card-name">{{ item.name }}</span>
+                  </div>
+                </div>
               </div>
             </div>
-            <div class="trade-arrows">
-              <svg width="60" height="24" viewBox="0 0 60 24"><path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#D4AF37" stroke-width="2" fill="none"/></svg>
-              <svg width="60" height="24" viewBox="0 0 60 24" class="arrow-reverse"><path d="M0 12 H50 M45 5 L55 12 L45 19" stroke="#8B0000" stroke-width="2" fill="none"/></svg>
+            <div class="trade-arrows-wide">
+              <svg width="60" height="40" viewBox="0 0 60 40"><path d="M0 20 H50 M45 10 L55 20 L45 30" stroke="#D4AF37" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <svg width="60" height="40" viewBox="0 0 60 40" class="arrow-reverse"><path d="M0 20 H50 M45 10 L55 20 L45 30" stroke="#8B0000" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <div class="trade-column">
+            <div class="trade-column-wide">
               <h3 class="trade-col-title">🌍 域外传入</h3>
-              <div v-for="item in tradeImport" :key="item.name" class="trade-item">
-                <span class="trade-emoji">{{ item.icon }}</span>
-                <span class="trade-name">{{ item.name }}</span>
+              <div class="carousel-wrapper">
+                <div class="carousel-track carousel-down">
+                  <div v-for="(item, i) in tradeImport" :key="'i1-' + i" class="trade-card">
+                    <div class="trade-card-img">
+                      <img :src="item.image" :alt="item.name" />
+                    </div>
+                    <span class="trade-card-name">{{ item.name }}</span>
+                  </div>
+                  <div v-for="(item, i) in tradeImport" :key="'i2-' + i" class="trade-card">
+                    <div class="trade-card-img">
+                      <img :src="item.image" :alt="item.name" />
+                    </div>
+                    <span class="trade-card-name">{{ item.name }}</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -334,33 +354,40 @@
           <h2>古今新篇</h2>
           <p class="section-desc">从驼铃声声到列车轰鸣</p>
         </div>
-        <div class="compare-cards">
-          <div v-for="pair in modernHighlights" :key="pair.topic" class="compare-card">
-            <div class="compare-ancient">
-              <div class="card-image-slot card-image-slot-sm">
-                <div class="image-placeholder">
-                  <span class="ph-icon">{{ pair.ancient.icon }}</span>
-                  <span class="ph-hint">古代图片</span>
+        <div class="compare-carousel">
+          <button class="compare-nav-btn compare-prev" @click="prevCompare" :disabled="currentCompareIndex === 0">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="compare-card-wrapper">
+            <transition name="compare-slide" mode="out-in">
+              <div :key="currentCompareIndex" class="compare-card">
+                <div class="compare-ancient">
+                  <div class="card-image-slot card-image-slot-compare">
+                    <img :src="modernHighlights[currentCompareIndex].ancient.image" :alt="modernHighlights[currentCompareIndex].topic + '古代'" class="compare-img" />
+                  </div>
+                  <span class="compare-label">古代</span>
+                  <p>{{ modernHighlights[currentCompareIndex].ancient.text }}</p>
+                </div>
+                <div class="compare-divider">
+                  <span class="compare-topic">{{ modernHighlights[currentCompareIndex].topic }}</span>
+                  <span class="compare-vs">VS</span>
+                </div>
+                <div class="compare-modern">
+                  <div class="card-image-slot card-image-slot-compare">
+                    <img :src="modernHighlights[currentCompareIndex].modern.image" :alt="modernHighlights[currentCompareIndex].topic + '现代'" class="compare-img" />
+                  </div>
+                  <span class="compare-label">现代</span>
+                  <p>{{ modernHighlights[currentCompareIndex].modern.text }}</p>
                 </div>
               </div>
-              <span class="compare-label">古代</span>
-              <p>{{ pair.ancient.text }}</p>
-            </div>
-            <div class="compare-divider">
-              <span class="compare-topic">{{ pair.topic }}</span>
-              <span class="compare-vs">VS</span>
-            </div>
-            <div class="compare-modern">
-              <div class="card-image-slot card-image-slot-sm">
-                <div class="image-placeholder">
-                  <span class="ph-icon">{{ pair.modern.icon }}</span>
-                  <span class="ph-hint">现代图片</span>
-                </div>
-              </div>
-              <span class="compare-label">现代</span>
-              <p>{{ pair.modern.text }}</p>
+            </transition>
+            <div class="compare-dots">
+              <span v-for="(_, i) in modernHighlights" :key="i" class="compare-dot" :class="{ active: i === currentCompareIndex }" @click="currentCompareIndex = i"></span>
             </div>
           </div>
+          <button class="compare-nav-btn compare-next" @click="nextCompare" :disabled="currentCompareIndex === modernHighlights.length - 1">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M7 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
         </div>
         <router-link to="/modern" class="section-link">
           查看古今对比
@@ -389,6 +416,7 @@
 import { ref, reactive, onMounted, onUnmounted } from 'vue'
 
 const hoveredRoute = ref('')
+const currentCompareIndex = ref(0)
 const titleChars = '重走丝绸之路，探寻千年文明'.split('')
 
 const statsRef = ref<HTMLElement | null>(null)
@@ -402,6 +430,13 @@ const scrollToSection = (sectionId: string) => {
     const offsetPosition = elementPosition + window.pageYOffset - navHeight
     window.scrollTo({ top: offsetPosition, behavior: 'smooth' })
   }
+}
+
+const prevCompare = () => {
+  if (currentCompareIndex.value > 0) currentCompareIndex.value--
+}
+const nextCompare = () => {
+  if (currentCompareIndex.value < modernHighlights.length - 1) currentCompareIndex.value++
 }
 
 const visibleSections = reactive<Record<string, boolean>>({
@@ -499,41 +534,41 @@ const cultureHighlights = [
 ]
 
 const cityHighlights = [
-  { name: '长安', icon: '🏯', tagline: '丝路起点，万国来朝', gradient: 'linear-gradient(135deg, #8B0000 0%, #D4AF37 100%)' },
-  { name: '敦煌', icon: '🏜️', tagline: '莫高窟壁画千年不朽', gradient: 'linear-gradient(135deg, #C2703E 0%, #F5DEB3 100%)' },
-  { name: '撒马尔罕', icon: '🕌', tagline: '中亚明珠，帖木儿之都', gradient: 'linear-gradient(135deg, #2F4F4F 0%, #5F9EA0 100%)' },
-  { name: '罗马', icon: '🏛️', tagline: '条条大路通罗马', gradient: 'linear-gradient(135deg, #4A0E4E 0%, #C0A0D0 100%)' },
+  { name: '长安', icon: '🏯', tagline: '丝路起点，万国来朝', gradient: 'linear-gradient(135deg, #8B0000 0%, #D4AF37 100%)', image: '/picture/长安.jpg' },
+  { name: '敦煌', icon: '🏜️', tagline: '莫高窟壁画千年不朽', gradient: 'linear-gradient(135deg, #C2703E 0%, #F5DEB3 100%)', image: '/picture/敦煌2.jpg' },
+  { name: '撒马尔罕', icon: '🕌', tagline: '中亚明珠，帖木儿之都', gradient: 'linear-gradient(135deg, #2F4F4F 0%, #5F9EA0 100%)', image: '/picture/撒马尔罕.jpg' },
+  { name: '罗马', icon: '🏛️', tagline: '条条大路通罗马', gradient: 'linear-gradient(135deg, #4A0E4E 0%, #C0A0D0 100%)', image: '/picture/罗马.jpg' },
 ]
 
 const tradeExport = [
-  { icon: '🍵', name: '丝绸' },
-  { icon: '🫖', name: '茶叶' },
-  { icon: '🏺', name: '瓷器' },
-  { icon: '💎', name: '玉石' },
+  { icon: '🍵', name: '丝绸', image: '/picture/丝绸.jpg' },
+  { icon: '🫖', name: '茶叶', image: '/picture/茶叶.jpg' },
+  { icon: '🏺', name: '瓷器', image: '/picture/瓷器.v2' },
+  { icon: '💎', name: '玉石', image: '/picture/玉石.jpg' },
 ]
 
 const tradeImport = [
-  { icon: '🍇', name: '葡萄' },
-  { icon: '🥜', name: '胡桃' },
-  { icon: '🐴', name: '汗血宝马' },
-  { icon: '💎', name: '琉璃' },
+  { icon: '🍇', name: '葡萄', image: '/picture/葡萄.webp' },
+  { icon: '🥜', name: '胡桃', image: '/picture/胡桃.jpg' },
+  { icon: '🐴', name: '汗血宝马', image: '/picture/汗血宝马.jpg' },
+  { icon: '💎', name: '琉璃', image: '/picture/琉璃.jpg' },
 ]
 
 const modernHighlights = [
   {
     topic: '交通',
-    ancient: { icon: '🐫', text: '骆驼商队，日行30公里' },
-    modern: { icon: '🚄', text: '中欧班列，日行1000公里' },
+    ancient: { icon: '🐫', text: '骆驼商队，日行30公里', image: '/picture/modern-ancient-transport.jpg' },
+    modern: { icon: '🚄', text: '中欧班列，日行1000公里', image: '/picture/modern-modern-transport.jpg' },
   },
   {
     topic: '通信',
-    ancient: { icon: '🕊️', text: '飞鸽传书，数月到达' },
-    modern: { icon: '📡', text: '光纤网络，瞬间传输' },
+    ancient: { icon: '🕊️', text: '飞鸽传书，数月到达', image: '/picture/飞鸽传书.jpg' },
+    modern: { icon: '📡', text: '光纤网络，瞬间传输', image: '/picture/光纤网络.png' },
   },
   {
     topic: '贸易',
-    ancient: { icon: '⚖️', text: '以物易物，集市交易' },
-    modern: { icon: '💻', text: '跨境电商，全球联通' },
+    ancient: { icon: '⚖️', text: '以物易物，集市交易', image: '/picture/市集交易.jpg' },
+    modern: { icon: '💻', text: '跨境电商，全球联通', image: '/picture/跨境电商.jpg' },
   },
 ]
 </script>
@@ -646,7 +681,7 @@ const modernHighlights = [
 /* 文字 */
 .banner-text {
   position: absolute; top: 10%; left: 50%; transform: translateX(-50%);
-  text-align: center; width: 90%; max-width: 900px; z-index: 10;
+  text-align: center; width: 100%; z-index: 10;
 }
 .banner-text h1 {
   font-size: 3.8rem;
@@ -965,13 +1000,6 @@ const modernHighlights = [
   background: rgba(0,0,0,0.2);
 }
 
-.image-placeholder-trade {
-  height: 100%;
-  border-radius: 16px;
-  border: 2px dashed rgba(139,69,19,0.15);
-  background: linear-gradient(135deg, rgba(139,69,19,0.06) 0%, rgba(212,175,55,0.04) 100%);
-}
-
 /* ========== 全宽特色横幅 ========== */
 .feature-banner {
   padding: 0 2rem;
@@ -1222,6 +1250,15 @@ const modernHighlights = [
   position: absolute; inset: 0;
   z-index: 1;
 }
+.city-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+}
+.city-tile:hover .city-img {
+  transform: scale(1.08);
+  filter: brightness(1.08) saturate(1.15);
+}
 .city-tile:hover .city-tile-bg {
   transform: scale(1.08);
 }
@@ -1238,14 +1275,6 @@ const modernHighlights = [
 }
 .city-tile:hover .city-tile-content {
   background: rgba(0,0,0,0.15);
-}
-.city-emoji {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-  transition: transform 0.4s ease;
-}
-.city-tile:hover .city-emoji {
-  transform: scale(1.15) translateY(-4px);
 }
 .city-tile-content h3 {
   color: white;
@@ -1265,75 +1294,170 @@ const modernHighlights = [
 .trade-layout {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
   align-items: center;
 }
 .trade-image-slot {
   width: 100%;
-  max-width: 700px;
-  height: 220px;
+  max-width: 900px;
+  height: 300px;
   border-radius: 16px;
   overflow: hidden;
+  position: relative;
 }
-.trade-flow {
+.trade-banner-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform 8s ease;
+}
+.trade-image-slot:hover .trade-banner-img {
+  transform: scale(1.05);
+}
+.trade-banner-overlay {
+  position: absolute; inset: 0;
+  background: rgba(45,24,16,0.35);
+  display: flex; align-items: center; justify-content: center;
+}
+.trade-banner-text {
+  font-size: 1.5rem;
+  font-family: 'Noto Sans SC', sans-serif;
+  color: rgba(255,248,220,0.95);
+  letter-spacing: 6px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+.trade-columns {
   display: flex;
   align-items: flex-start;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap;
+  width: 100%;
+  max-width: 900px;
 }
-.trade-column {
+.trade-column-wide {
   flex: 1;
-  min-width: 200px;
-  max-width: 300px;
+  min-width: 0;
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(139,69,19,0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  overflow: hidden;
 }
 .trade-col-title {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   color: #2d1810;
   margin-bottom: 1rem;
   font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px;
   text-align: center;
 }
-.trade-item {
+.carousel-wrapper {
+  height: 360px;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+.carousel-track {
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.carousel-up {
+  animation: scroll-up 12s linear infinite;
+}
+.carousel-down {
+  animation: scroll-down 12s linear infinite;
+}
+@keyframes scroll-up {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes scroll-down {
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0); }
+}
+.trade-card {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 0.8rem;
-  padding: 0.8rem 1rem;
-  background: rgba(255,255,255,0.6);
+  gap: 0.6rem;
+  padding: 0.8rem;
+  background: rgba(255,255,255,0.7);
   border: 1px solid rgba(139,69,19,0.08);
-  border-radius: 10px;
-  margin-bottom: 0.6rem;
+  border-radius: 12px;
   transition: all 0.3s ease;
 }
-.trade-item:hover {
-  transform: translateX(4px);
+.trade-card:hover {
+  transform: translateY(-4px);
   border-color: rgba(212,175,55,0.3);
-  box-shadow: 0 4px 12px rgba(139,69,19,0.08);
+  box-shadow: 0 8px 24px rgba(139,69,19,0.1);
 }
-.trade-emoji { font-size: 1.3rem; }
-.trade-name {
+.trade-card-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+.trade-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.trade-card:hover .trade-card-img img {
+  transform: scale(1.1);
+}
+.trade-card-name {
   font-size: 0.95rem;
   color: #333;
   font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 1px;
 }
-.trade-arrows {
+.trade-arrows-wide {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding-top: 2.5rem;
+  gap: 1rem;
+  padding-top: 3.5rem;
+  flex-shrink: 0;
 }
 .arrow-reverse {
   transform: rotate(180deg);
 }
 
 /* ========== 古今对比 ========== */
-.compare-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+.compare-carousel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.compare-nav-btn {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(139,69,19,0.2);
+  background: rgba(255,255,255,0.8);
+  color: #8B4513;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+.compare-nav-btn:hover:not(:disabled) {
+  background: rgba(139,69,19,0.1);
+  border-color: #8B4513;
+  transform: scale(1.1);
+}
+.compare-nav-btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.compare-card-wrapper {
+  flex: 1;
+  min-width: 0;
 }
 .compare-card {
   display: flex;
@@ -1345,19 +1469,48 @@ const modernHighlights = [
   transition: all 0.4s ease;
 }
 .compare-card:hover {
-  transform: translateY(-4px);
   box-shadow: 0 12px 40px rgba(139,69,19,0.12);
   border-color: rgba(212,175,55,0.3);
+}
+.compare-slide-enter-active,
+.compare-slide-leave-active {
+  transition: all 0.35s ease;
+}
+.compare-slide-enter-from {
+  opacity: 0;
+  transform: translateX(40px);
+}
+.compare-slide-leave-to {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+.compare-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.compare-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(139,69,19,0.2);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.compare-dot.active {
+  background: #D4AF37;
+  transform: scale(1.3);
 }
 .compare-ancient,
 .compare-modern {
   flex: 1;
-  padding: 1.2rem;
+  padding: 1.8rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.3rem;
+  gap: 0.6rem;
 }
 .compare-ancient {
   background: rgba(139,69,19,0.03);
@@ -1365,8 +1518,26 @@ const modernHighlights = [
 .compare-modern {
   background: rgba(47,79,79,0.03);
 }
+.card-image-slot-compare {
+  width: 100%;
+  height: 320px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  position: relative;
+}
+.compare-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), filter 0.5s ease;
+}
+.compare-card:hover .compare-img {
+  transform: scale(1.06);
+  filter: brightness(1.05) saturate(1.1);
+}
 .compare-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 2px;
   color: #999;
   font-family: 'Courier New', monospace;
@@ -1374,9 +1545,9 @@ const modernHighlights = [
 }
 .compare-ancient p,
 .compare-modern p {
-  font-size: 0.85rem;
+  font-size: 1rem;
   color: #555;
-  line-height: 1.5;
+  line-height: 1.6;
   margin-top: 0.3rem;
 }
 .compare-divider {
@@ -1384,12 +1555,12 @@ const modernHighlights = [
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 0 0.8rem;
+  padding: 0 1rem;
   background: rgba(212,175,55,0.08);
-  min-width: 60px;
+  min-width: 70px;
 }
 .compare-topic {
-  font-size: 0.75rem;
+  font-size: 0.85rem;
   color: #8B4513;
   font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px;
@@ -1397,7 +1568,7 @@ const modernHighlights = [
   margin-bottom: 0.5rem;
 }
 .compare-vs {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: bold;
   color: var(--gold);
   font-family: 'Courier New', monospace;
@@ -1448,7 +1619,7 @@ const modernHighlights = [
 }
 
 @media (max-width: 768px) {
-  .banner-text h1 { font-size: 2.2rem; letter-spacing: 4px; white-space: nowrap; }
+  .banner-text h1 { font-size: 2.6rem; letter-spacing: 4px; white-space: nowrap; }
   .subtitle { font-size: 1.1rem; }
   .quick-nav { gap: 0.6rem; bottom: 4%; }
   .quick-nav button { padding: 0.6rem 1.2rem; font-size: 0.85rem; }
@@ -1458,10 +1629,17 @@ const modernHighlights = [
   .route-cards { grid-template-columns: 1fr; }
   .culture-grid { grid-template-columns: repeat(2, 1fr); }
   .city-showcase { grid-template-columns: repeat(2, 1fr); }
-  .trade-flow { flex-direction: column; align-items: center; }
-  .trade-arrows { flex-direction: row; padding-top: 0; }
+  .trade-columns { flex-direction: column; align-items: center; }
+  .trade-arrows-wide { flex-direction: row; padding-top: 0; }
+  .carousel-wrapper { height: 280px; }
+  .trade-image-slot { height: 200px; }
   .arrow-reverse { transform: rotate(0deg); }
-  .compare-cards { grid-template-columns: 1fr; }
+  .compare-carousel { flex-direction: column; }
+  .compare-nav-btn { width: 36px; height: 36px; }
+  .compare-card { flex-direction: column; }
+  .compare-divider { flex-direction: row; min-width: auto; padding: 0.6rem 1rem; }
+  .compare-topic { writing-mode: horizontal-tb; margin-bottom: 0; margin-right: 0.5rem; }
+  .card-image-slot-compare { height: 200px; }
 
   .stats-inner { grid-template-columns: repeat(2, 1fr); }
   .stat-number { font-size: 1.5rem; }
