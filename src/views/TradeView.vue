@@ -153,7 +153,7 @@
                       class="city-label"
                       :fill="activeCity === i ? '#8B0000' : '#8B4513'"
                       :font-size="activeCity === i ? 15 : 13"
-                      font-family="SimSun, serif" font-weight="bold">
+                      font-family="Noto Serif SC", sans-serif font-weight="bold">
                   {{ city.name }}
                 </text>
                 <text :y="city.labelAbove ? (activeCity === i ? -16 : -12) : (activeCity === i ? 52 : 46)"
@@ -161,7 +161,7 @@
                       class="city-sublabel"
                       :fill="activeCity === i ? '#6a5a4a' : '#8a7a6a'"
                       :font-size="activeCity === i ? 10 : 9"
-                      font-family="SimSun, serif">
+                      font-family="Noto Serif SC", sans-serif>
                   {{ city.sub }}
                 </text>
               </g>
@@ -195,10 +195,10 @@
 
               <!-- 方向箭头 -->
               <g class="direction-arrows">
-                <text x="200" y="80" font-size="10" fill="rgba(139,0,0,0.7)" font-family="SimSun, serif">
+                <text x="200" y="80" font-size="10" fill="rgba(139,0,0,0.7)" font-family="Noto Serif SC", sans-serif>
                   ← 西传
                 </text>
-                <text x="650" y="80" font-size="10" fill="rgba(47,79,79,0.7)" font-family="SimSun, serif">
+                <text x="650" y="80" font-size="10" fill="rgba(47,79,79,0.7)" font-family="Noto Serif SC", sans-serif>
                   东传 →
                 </text>
               </g>
@@ -752,7 +752,7 @@ onUnmounted(() => {
   letter-spacing: 12px;
   color: var(--desert-yellow);
   text-shadow: 0 0 20px rgba(212, 175, 55, 0.3), 0 2px 10px rgba(0, 0, 0, 0.6);
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   margin: 0;
 }
 
@@ -766,7 +766,7 @@ onUnmounted(() => {
   font-size: 1.15rem;
   color: rgba(245, 222, 179, 0.7);
   letter-spacing: 6px;
-  font-family: 'SimSun', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   animation: fade-up 1s 0.6s ease both;
 }
 
@@ -845,7 +845,7 @@ onUnmounted(() => {
   font-size: 2.5rem;
   font-weight: bold;
   color: var(--gold);
-  font-family: 'Georgia', serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .stat-suffix {
@@ -905,7 +905,7 @@ onUnmounted(() => {
 
 .section-title {
   font-size: 2.2rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   color: var(--dunhuang-red);
   letter-spacing: 6px;
   margin-bottom: 1rem;
@@ -1000,7 +1000,7 @@ onUnmounted(() => {
 }
 
 .endpoint-label {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.3rem;
   color: var(--gobi-brown);
   font-weight: bold;
@@ -1151,7 +1151,7 @@ onUnmounted(() => {
   justify-content: space-between;
   font-size: 0.75rem;
   color: #9a8a6a;
-  font-family: 'Georgia', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 1px;
 }
 
@@ -1196,7 +1196,7 @@ onUnmounted(() => {
   border: 1.5px solid rgba(212, 175, 55, 0.2);
   border-radius: 30px;
   cursor: pointer;
-  font-family: 'SimSun', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 0.9rem;
   color: #666;
   transition: all 0.3s ease;
@@ -1233,7 +1233,7 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.3rem;
   font-weight: bold;
 }
@@ -1294,7 +1294,7 @@ onUnmounted(() => {
 
 .divider-label {
   writing-mode: vertical-rl;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   color: var(--gold);
   font-size: 0.9rem;
   letter-spacing: 4px;
@@ -1360,7 +1360,7 @@ onUnmounted(() => {
 }
 
 .card-info h4 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.1rem;
   color: #333;
   margin-bottom: 2px;
@@ -1531,7 +1531,7 @@ onUnmounted(() => {
 }
 
 .impact-card h4 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.15rem;
   color: var(--gobi-brown);
   margin-bottom: 0.5rem;
@@ -1663,7 +1663,7 @@ onUnmounted(() => {
 
 .modal-title {
   font-size: 1.8rem;
-  font-family: 'SimSun', 'KaiTi', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   color: var(--dunhuang-red);
   line-height: 1.5;
   margin-bottom: 0.5rem;
@@ -1719,14 +1719,14 @@ onUnmounted(() => {
 .modal-info-value {
   font-size: 0.95rem;
   color: #4a3728;
-  font-family: 'SimSun', serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .modal-desc {
   font-size: 0.95rem;
   line-height: 2;
   color: #6a5a4a;
-  font-family: 'SimSun', serif;
+  font-family: 'Noto Serif SC', sans-serif;
   text-indent: 2em;
   border-top: 1px dashed rgba(0, 0, 0, 0.06);
   padding-top: 1.2rem;
