@@ -181,7 +181,7 @@ onUnmounted(() => {
 }
 
 .hero-content h1 {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 2.8rem;
   letter-spacing: 8px;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
@@ -221,7 +221,7 @@ onUnmounted(() => {
 
 .region-label {
   color: #8B4513;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 1.5rem;
   margin-bottom: 2rem;
   padding-left: 1rem;
@@ -304,7 +304,7 @@ onUnmounted(() => {
 
 .overlay-city {
   color: #fff;
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 1.4rem;
   font-weight: bold;
   letter-spacing: 4px;
@@ -341,7 +341,7 @@ onUnmounted(() => {
 }
 
 .card-title {
-  font-family: 'SimSun', cursive;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 1.4rem;
   color: #8B0000;
   margin-bottom: 0.6rem;

@@ -312,7 +312,7 @@ onUnmounted(() => { observer?.disconnect() })
 }
 .hero-content { position: relative; z-index: 2; text-align: center; }
 .hero-content h1 {
-  font-size: 4.2rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif;
+  font-size: 4.2rem; font-family: 'Noto Sans SC', sans-serif;
   color: #C8982C; letter-spacing: 16px;
   text-shadow: 0 0 20px rgba(200,152,44,0.3), 0 2px 10px rgba(0,0,0,0.6);
   animation: fadeInDown 1s ease-out; position: relative;
@@ -322,7 +322,7 @@ onUnmounted(() => { observer?.disconnect() })
 }
 .hero-content p {
   font-size: 1.25rem; color: rgba(220,200,170,0.75); margin-top: 1.2rem; letter-spacing: 5px;
-  font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif;
+  font-family: 'Noto Sans SC', sans-serif;
   animation: fadeInUp 1s ease-out 0.3s both; position: relative;
 }
 .hero-content p::before, .hero-content p::after {
@@ -338,11 +338,11 @@ onUnmounted(() => { observer?.disconnect() })
 .scroll-section { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 2rem; }
 .section-title {
   text-align: center; font-size: 2.5rem;
-  font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif;
+  font-family: 'Noto Sans SC', sans-serif;
   color: #B84C38; letter-spacing: 4px; margin-bottom: 0.5rem;
 }
 .section-title::after { content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(90deg, transparent, #C8982C, transparent); margin: 0.8rem auto 0; }
-.section-subtitle { text-align: center; font-size: 0.95rem; color: #8B6E1A; letter-spacing: 2px; margin-bottom: 1.5rem; font-family: 'SimSun',serif; }
+.section-subtitle { text-align: center; font-size: 0.95rem; color: #8B6E1A; letter-spacing: 2px; margin-bottom: 1.5rem; font-family: 'Noto Sans SC', sans-serif; }
 
 /* ===== 展开/收起按钮 ===== */
 .toggle-btn {
@@ -351,7 +351,7 @@ onUnmounted(() => { observer?.disconnect() })
   background: linear-gradient(135deg, rgba(200,152,44,0.08), rgba(184,76,56,0.06));
   border: 1px solid rgba(200,152,44,0.25); border-radius: 30px;
   cursor: pointer; transition: all 0.4s ease;
-  font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif;
+  font-family: 'Noto Sans SC', sans-serif;
   color: #8B6E1A; font-size: 0.9rem; letter-spacing: 2px;
 }
 .toggle-btn:hover {
@@ -360,7 +360,7 @@ onUnmounted(() => { observer?.disconnect() })
   box-shadow: 0 4px 16px rgba(200,152,44,0.15);
 }
 .toggle-btn.active { color: #B84C38; }
-.toggle-icon { font-family: 'SimSun',serif; font-weight: bold; }
+.toggle-icon { font-family: 'Noto Sans SC', sans-serif; font-weight: bold; }
 .toggle-arrow { transition: transform 0.4s ease; }
 .toggle-arrow.up { transform: rotate(180deg); }
 
@@ -486,18 +486,18 @@ onUnmounted(() => { observer?.disconnect() })
 }
 .seal-stamp::before { content: ''; position: absolute; inset: 3px; border: 1px solid rgba(184,76,56,0.3); border-radius: 2px; }
 .seal-stamp span {
-  font-size: 1rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif;
+  font-size: 1rem; font-family: 'Noto Sans SC', sans-serif;
   color: #B84C38; writing-mode: vertical-rl; letter-spacing: 2px; line-height: 1;
 }
 .era-line-area { flex: 1; }
 .era-line-area h3 {
-  font-size: 1.1rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif;
+  font-size: 1.1rem; font-family: 'Noto Sans SC', sans-serif;
   color: #2d1a12; letter-spacing: 3px;
 }
-.era-dates { font-size: 0.72rem; color: #8B6E1A; letter-spacing: 2px; font-family: 'SimSun',serif; }
+.era-dates { font-size: 0.72rem; color: #8B6E1A; letter-spacing: 2px; font-family: 'Noto Sans SC', sans-serif; }
 .era-line-area::after { content: ''; display: block; margin-top: 0.4rem; height: 1px; background: linear-gradient(90deg, rgba(139,110,26,0.18), transparent 70%); }
 
-.era-summary { font-size: 0.85rem; line-height: 1.85; color: #555; margin-bottom: 1.2rem; font-family: 'SimSun',serif; letter-spacing: 0.5px; }
+.era-summary { font-size: 0.85rem; line-height: 1.85; color: #555; margin-bottom: 1.2rem; font-family: 'Noto Sans SC', sans-serif; letter-spacing: 0.5px; }
 
 /* ===== 事件卡 ===== */
 .event-card {
@@ -515,10 +515,10 @@ onUnmounted(() => { observer?.disconnect() })
 .event-card:hover .event-img { transform: scale(1.05); }
 .img-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.35rem; }
 .ph-icon { font-size: 1.8rem; opacity: 0.6; }
-.ph-label { font-size: 0.7rem; color: rgba(255,255,255,0.7); letter-spacing: 2px; font-family: 'SimSun',serif; }
+.ph-label { font-size: 0.7rem; color: rgba(255,255,255,0.7); letter-spacing: 2px; font-family: 'Noto Sans SC', sans-serif; }
 
 .event-info { flex: 1; padding: 0.8rem 1rem; display: flex; flex-direction: column; justify-content: center; }
-.event-info h4 { font-size: 0.95rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #2d1a12; letter-spacing: 2px; margin-bottom: 0.35rem; }
+.event-info h4 { font-size: 0.95rem; font-family: 'Noto Sans SC', sans-serif; color: #2d1a12; letter-spacing: 2px; margin-bottom: 0.35rem; }
 .event-info p { font-size: 0.8rem; line-height: 1.7; color: #666; margin-bottom: 0.5rem; }
 .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .tag { padding: 0.1rem 0.4rem; background: rgba(139,110,26,0.06); color: #8B6E1A; border-radius: 8px; font-size: 0.6rem; border: 1px solid rgba(139,110,26,0.1); letter-spacing: 1px; }
@@ -531,7 +531,7 @@ onUnmounted(() => { observer?.disconnect() })
   position: relative; transform: rotate(-5deg); opacity: 0.6;
 }
 .finale-seal::before { content: ''; position: absolute; inset: 4px; border: 1.5px solid rgba(184,76,56,0.35); border-radius: 50%; }
-.finale-seal span { font-size: 0.78rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #B84C38; writing-mode: vertical-rl; letter-spacing: 3px; }
+.finale-seal span { font-size: 0.78rem; font-family: 'Noto Sans SC', sans-serif; color: #B84C38; writing-mode: vertical-rl; letter-spacing: 3px; }
 
 /* ===== 通关文牒 ===== */
 .passport-section {
@@ -540,34 +540,34 @@ onUnmounted(() => { observer?.disconnect() })
 }
 .passport-inner { max-width: 1100px; margin: 0 auto; }
 .passport-header { text-align: center; margin-bottom: 3rem; }
-.passport-badge { display: inline-block; padding: 0.3rem 1.2rem; background: linear-gradient(135deg, #B84C38, #C8982C); color: white; border-radius: 20px; font-size: 0.75rem; letter-spacing: 3px; font-family: 'SimSun',serif; margin-bottom: 0.8rem; }
-.passport-title { font-size: 2.2rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #2d1a12; letter-spacing: 4px; margin-bottom: 0.5rem; }
+.passport-badge { display: inline-block; padding: 0.3rem 1.2rem; background: linear-gradient(135deg, #B84C38, #C8982C); color: white; border-radius: 20px; font-size: 0.75rem; letter-spacing: 3px; font-family: 'Noto Sans SC', sans-serif; margin-bottom: 0.8rem; }
+.passport-title { font-size: 2.2rem; font-family: 'Noto Sans SC', sans-serif; color: #2d1a12; letter-spacing: 4px; margin-bottom: 0.5rem; }
 .passport-title::after { content: ''; display: block; width: 60px; height: 3px; background: linear-gradient(90deg, transparent, #C8982C, transparent); margin: 0.8rem auto 0; }
-.passport-subtitle { font-size: 0.95rem; color: #8B6E1A; letter-spacing: 2px; font-family: 'SimSun',serif; }
+.passport-subtitle { font-size: 0.95rem; color: #8B6E1A; letter-spacing: 2px; font-family: 'Noto Sans SC', sans-serif; }
 .passport-intro { display: flex; gap: 2.5rem; align-items: flex-start; margin-bottom: 3rem; }
 .passport-text { flex: 1; }
-.passport-text p { font-size: 0.95rem; line-height: 1.9; color: #555; margin-bottom: 1rem; letter-spacing: 1px; font-family: 'SimSun',serif; text-indent: 2em; }
+.passport-text p { font-size: 0.95rem; line-height: 1.9; color: #555; margin-bottom: 1rem; letter-spacing: 1px; font-family: 'Noto Sans SC', sans-serif; text-indent: 2em; }
 .passport-image-slot { width: 320px; flex-shrink: 0; }
 .passport-img-ph { width: 100%; height: 220px; border-radius: 14px; border: 2px dashed rgba(200,152,44,0.25); background: linear-gradient(135deg, rgba(200,152,44,0.04), rgba(184,76,56,0.04)); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.5rem; cursor: pointer; transition: all 0.3s ease; }
 .passport-img-ph:hover { border-color: rgba(200,152,44,0.45); background: linear-gradient(135deg, rgba(200,152,44,0.08), rgba(184,76,56,0.06)); }
 .pp-icon { font-size: 2.5rem; opacity: 0.6; }
-.pp-text { font-size: 0.8rem; color: #8B6E1A; letter-spacing: 2px; font-family: 'SimSun',serif; }
-.pp-hint { font-size: 0.65rem; color: rgba(139,110,26,0.4); letter-spacing: 1px; font-family: 'SimSun',serif; }
+.pp-text { font-size: 0.8rem; color: #8B6E1A; letter-spacing: 2px; font-family: 'Noto Sans SC', sans-serif; }
+.pp-hint { font-size: 0.65rem; color: rgba(139,110,26,0.4); letter-spacing: 1px; font-family: 'Noto Sans SC', sans-serif; }
 .passport-types { margin-bottom: 3rem; }
-.types-title, .famous-title { text-align: center; font-size: 1.4rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #B84C38; letter-spacing: 3px; margin-bottom: 1.5rem; }
+.types-title, .famous-title { text-align: center; font-size: 1.4rem; font-family: 'Noto Sans SC', sans-serif; color: #B84C38; letter-spacing: 3px; margin-bottom: 1.5rem; }
 .types-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.2rem; }
 .type-card { background: white; border-radius: 14px; padding: 1.5rem; text-align: center; border: 1px solid rgba(200,152,44,0.1); transition: all 0.4s ease; }
 .type-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.06); border-color: rgba(200,152,44,0.25); }
 .type-icon { font-size: 2.2rem; margin-bottom: 0.8rem; }
-.type-card h4 { font-size: 1.1rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #2d1a12; letter-spacing: 2px; margin-bottom: 0.3rem; }
-.type-era { font-size: 0.7rem; color: #B84C38; letter-spacing: 1px; font-family: 'SimSun',serif; }
+.type-card h4 { font-size: 1.1rem; font-family: 'Noto Sans SC', sans-serif; color: #2d1a12; letter-spacing: 2px; margin-bottom: 0.3rem; }
+.type-era { font-size: 0.7rem; color: #B84C38; letter-spacing: 1px; font-family: 'Noto Sans SC', sans-serif; }
 .type-card p { font-size: 0.82rem; line-height: 1.7; color: #666; margin-top: 0.6rem; }
 .famous-list { display: flex; flex-direction: column; gap: 1.2rem; }
 .famous-item { display: flex; gap: 1.2rem; align-items: flex-start; background: white; border-radius: 14px; padding: 1.5rem; border: 1px solid rgba(200,152,44,0.1); transition: all 0.4s ease; }
 .famous-item:hover { transform: translateX(4px); box-shadow: 0 6px 20px rgba(0,0,0,0.06); border-color: rgba(200,152,44,0.25); }
 .famous-icon { font-size: 2rem; flex-shrink: 0; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; background: rgba(200,152,44,0.08); border-radius: 12px; }
-.famous-body h4 { font-size: 1.1rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; color: #2d1a12; letter-spacing: 2px; }
-.famous-era { font-size: 0.7rem; color: #B84C38; letter-spacing: 1px; font-family: 'SimSun',serif; }
+.famous-body h4 { font-size: 1.1rem; font-family: 'Noto Sans SC', sans-serif; color: #2d1a12; letter-spacing: 2px; }
+.famous-era { font-size: 0.7rem; color: #B84C38; letter-spacing: 1px; font-family: 'Noto Sans SC', sans-serif; }
 .famous-body p { font-size: 0.85rem; line-height: 1.7; color: #666; margin-top: 0.4rem; }
 
 /* ===== 底部 ===== */
@@ -575,7 +575,7 @@ onUnmounted(() => { observer?.disconnect() })
 .summary-card { background: linear-gradient(135deg, #3a2a10 0%, #6b4e10 100%); border-radius: 20px; padding: 3rem; text-align: center; color: white; position: relative; overflow: hidden; }
 .summary-card::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent 0px, transparent 30px, rgba(255,255,255,0.03) 30px, rgba(255,255,255,0.03) 60px); }
 .summary-icon { font-size: 3rem; margin-bottom: 1rem; position: relative; }
-.summary-card h3 { font-size: 1.8rem; font-family: 'ZCOOL XiaoWei','Ma Shan Zheng','STKaiti','SimSun',serif; letter-spacing: 4px; margin-bottom: 1rem; position: relative; }
+.summary-card h3 { font-size: 1.8rem; font-family: 'Noto Sans SC', sans-serif; letter-spacing: 4px; margin-bottom: 1rem; position: relative; }
 .summary-card p { font-size: 1rem; line-height: 1.8; opacity: 0.9; position: relative; max-width: 600px; margin: 0 auto 2rem; }
 .summary-stats { display: flex; justify-content: center; gap: 3rem; position: relative; }
 .stat { display: flex; flex-direction: column; gap: 0.3rem; }

@@ -394,7 +394,7 @@ onUnmounted(() => {
 
 <style>
 .leaflet-container {
-  font-family: 'SimSun', serif;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .custom-marker {
@@ -458,7 +458,7 @@ onUnmounted(() => {
 
 .section-title {
   text-align: center; margin-bottom: 0.5rem; color: #8B0000;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  font-family: 'Noto Sans SC', sans-serif;
   font-size: 2.5rem; letter-spacing: 4px;
 }
 .section-desc { text-align: center; color: #888; font-size: 1rem; margin-bottom: 1.2rem; }
@@ -545,12 +545,12 @@ onUnmounted(() => {
 .modal-sea .modal-icon { background: linear-gradient(135deg, #eef5fa, #dce8f2); }
 .banner-text h3 {
   font-size: 1.5rem; color: #2c2c2c;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  font-family: 'Noto Sans SC', sans-serif;
   letter-spacing: 3px; margin-bottom: 0.25rem;
 }
 .modal-sub {
   font-size: 0.82rem; color: #888; display: block;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  font-family: 'Noto Sans SC', sans-serif;
   letter-spacing: 1px;
 }
 .banner-ornament {
@@ -574,7 +574,7 @@ onUnmounted(() => {
 .modal-desc {
   font-size: 0.92rem; line-height: 1.9; color: #555;
   text-indent: 2em;
-  font-family: 'SimSun', 'STSong', serif;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .modal-lower {
@@ -591,7 +591,7 @@ onUnmounted(() => {
 }
 .divider-text {
   font-size: 0.75rem; color: #999; letter-spacing: 3px; white-space: nowrap;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 .facts {
@@ -631,7 +631,7 @@ onUnmounted(() => {
   background: none; border: 1px solid rgba(0,0,0,0.1);
   padding: 0.45rem 1rem; border-radius: 8px;
   cursor: pointer; font-size: 0.82rem; color: #666;
-  transition: all 0.25s; font-family: 'SimSun', serif;
+  transition: all 0.25s; font-family: 'Noto Sans SC', sans-serif;
   display: flex; align-items: center; gap: 0.4rem;
 }
 .nav-btn:hover { border-color: #8B6914; color: #8B6914; background: #faf6ee; }
@@ -645,12 +645,12 @@ onUnmounted(() => {
 .city-cards { margin-top: 2rem; }
 .cards-title {
   text-align: center; font-size: 1.7rem; color: #8B4513; margin-bottom: 1.6rem;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif; letter-spacing: 3px;
+  font-family: 'Noto Sans SC', sans-serif; letter-spacing: 3px;
 }
 
 .cards-subtitle {
   font-size: 1.15rem; color: #5D4037; margin: 1.5rem 0 1rem;
-  font-family: 'ZCOOL XiaoWei', 'Ma Shan Zheng', 'STKaiti', 'SimSun', serif;
+  font-family: 'Noto Sans SC', sans-serif;
   letter-spacing: 2px; padding-left: 0.5rem;
   border-left: 3px solid #8B6914;
 }
@@ -664,7 +664,7 @@ onUnmounted(() => {
 .land-card.active { border-color: #8B6914; background: #faf6ee; }
 .sea-card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0,0,0,0.13); border-color: #0277BD; }
 .sea-card.active { border-color: #0277BD; background: #eef5fa; }
-.cname { display: block; font-size: 1.05rem; font-weight: bold; color: #333; font-family: 'SimSun', serif; }
+.cname { display: block; font-size: 1.05rem; font-weight: bold; color: #333; font-family: 'Noto Sans SC', sans-serif; }
 .csub { display: block; font-size: 0.78rem; color: #888; margin-top: 0.35rem; }
 
 @media (max-width: 768px) {
