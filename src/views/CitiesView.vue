@@ -17,23 +17,18 @@
         <h3 class="region-label"><span class="label-icon">🏯</span> 国内名城</h3>
         <div class="cards-column">
           <div
-            v-for="(city, index) in domesticCities"
+            v-for="city in domesticCities"
             :key="city.name"
             class="city-card"
-            :class="{ reverse: index % 2 !== 0 }"
             ref="domRefs"
           >
             <div class="card-image">
               <img :src="city.img" :alt="city.name" />
-              <div class="image-overlay">
-                <span class="overlay-city">{{ city.name }}</span>
-              </div>
             </div>
             <div class="card-body">
               <div class="card-tag domestic">国内</div>
               <h4 class="card-title">{{ city.name }}</h4>
               <p class="card-desc">{{ city.desc }}</p>
-              <div class="card-accent"></div>
             </div>
           </div>
         </div>
@@ -43,23 +38,18 @@
         <h3 class="region-label"><span class="label-icon">🌍</span> 国外名城</h3>
         <div class="cards-column">
           <div
-            v-for="(city, index) in foreignCities"
+            v-for="city in foreignCities"
             :key="city.name"
             class="city-card"
-            :class="{ reverse: index % 2 !== 0 }"
             ref="forRefs"
           >
             <div class="card-image">
               <img :src="city.img" :alt="city.name" />
-              <div class="image-overlay">
-                <span class="overlay-city">{{ city.name }}</span>
-              </div>
             </div>
             <div class="card-body">
               <div class="card-tag foreign">国外</div>
               <h4 class="card-title">{{ city.name }}</h4>
               <p class="card-desc">{{ city.desc }}</p>
-              <div class="card-accent foreign-accent"></div>
             </div>
           </div>
         </div>
@@ -77,12 +67,18 @@ const domesticCities = [
   { name: '楼兰', desc: '古代驿城，戈壁中的庞贝，曾是丝路重镇，如今只剩遗址诉说往日辉煌。', img: '/picture/楼兰.jpg' },
   { name: '嘉峪关', desc: '长城西端关隘，天下第一雄关，大漠孤烟中的军事要塞。', img: '/picture/嘉峪关.jpg' },
   { name: '吐鲁番', desc: '火焰山脚下，葡萄之乡，坎儿井灌溉系统展现古人智慧。', img: '/picture/吐鲁番.jpg' },
+  { name: '洛阳', desc: '十三朝古都，白马寺所在地，丝绸之路东端起点之一，东西方文明在此交汇。', img: '/picture/洛阳.jpg' },
+  { name: '张掖', desc: '河西走廊咽喉，七彩丹霞闻名天下，自古为丝路重镇与军事要塞。', img: '/picture/张掖.jpg' },
+  { name: '喀什', desc: '中国最西端的历史文化名城，古丝绸之路的交通要冲，东西方贸易的重要集散地。', img: '/picture/喀什.jpg' },
 ]
 
 const foreignCities = [
   { name: '罗马', desc: '欧洲终点，古罗马帝国中心，条条大路通罗马，丝路将东西方紧密相连。', img: '/picture/罗马.jpg' },
   { name: '波斯', desc: '重要中转站，波斯帝国核心地带，东西方贸易与文化的桥梁。', img: '/picture/波斯.jpg' },
   { name: '撒马尔罕', desc: '中亚枢纽，帖木儿帝国首都，蓝色穹顶下藏着丝路最璀璨的文明。', img: '/picture/撒马尔罕.jpg' },
+  { name: '巴格达', desc: '古代阿拔斯王朝首都，底格里斯河畔的明珠，丝路西段的商贸与学术中心。', img: '/picture/巴格达.jpg' },
+  { name: '伊斯坦布尔', desc: '古称君士坦丁堡，横跨欧亚两洲，丝路终端重镇，东西方文明的交汇点。', img: '/picture/伊斯坦布尔.jpg' },
+  { name: '布哈拉', desc: '乌兹别克斯坦古城，中亚伊斯兰文化中心，千年商旅驿站保存完好。', img: '/picture/布哈拉.jpg' },
 ]
 
 const domRefs = ref<HTMLElement[]>([])
@@ -208,7 +204,7 @@ onUnmounted(() => {
 }
 
 .cities-section {
-  max-width: 960px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 3rem 2rem 4rem;
   position: relative;
@@ -238,25 +234,22 @@ onUnmounted(() => {
 .cards-column {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .city-card {
   display: flex;
+  align-items: stretch;
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(8px);
   border-radius: 14px;
   overflow: hidden;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
   border: 1px solid rgba(212, 175, 55, 0.15);
+  height: 260px;
   opacity: 0;
-  transform: translateX(-50px);
+  transform: translateX(-40px);
   transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.city-card.reverse {
-  flex-direction: row-reverse;
-  transform: translateX(50px);
 }
 
 .city-card.visible {
@@ -265,15 +258,15 @@ onUnmounted(() => {
 }
 
 .city-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 48px rgba(139, 0, 0, 0.12);
-  border-color: rgba(212, 175, 55, 0.35);
+  transform: translateX(8px);
+  box-shadow: 0 12px 40px rgba(139, 0, 0, 0.12);
+  border-color: rgba(212, 175, 55, 0.4);
 }
 
 .card-image {
-  flex: 0 0 380px;
-  position: relative;
+  flex: 0 0 420px;
   overflow: hidden;
+  position: relative;
 }
 
 .card-image img {
@@ -284,46 +277,22 @@ onUnmounted(() => {
 }
 
 .city-card:hover .card-image img {
-  transform: scale(1.08);
-}
-
-.image-overlay {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 1.2rem 1rem;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.city-card:hover .image-overlay {
-  opacity: 1;
-}
-
-.overlay-city {
-  color: #fff;
-  font-family: 'SimSun', cursive;
-  font-size: 1.4rem;
-  font-weight: bold;
-  letter-spacing: 4px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transform: scale(1.1);
 }
 
 .card-body {
   flex: 1;
-  padding: 1.8rem 2rem;
+  padding: 1.8rem 2.2rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: relative;
+  min-width: 0;
 }
 
 .card-tag {
   display: inline-block;
   padding: 3px 12px;
-  border-radius: 14px;
+  border-radius: 12px;
   font-size: 0.75rem;
   font-weight: bold;
   margin-bottom: 0.8rem;
@@ -342,7 +311,7 @@ onUnmounted(() => {
 
 .card-title {
   font-family: 'SimSun', cursive;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #8B0000;
   margin-bottom: 0.6rem;
 }
@@ -351,23 +320,10 @@ onUnmounted(() => {
   color: #555;
   font-size: 0.95rem;
   line-height: 1.8;
-}
-
-.card-accent {
-  width: 40px;
-  height: 3px;
-  background: linear-gradient(90deg, #D4AF37, transparent);
-  margin-top: 1.2rem;
-  border-radius: 2px;
-  transition: width 0.5s ease;
-}
-
-.card-accent.foreign-accent {
-  background: linear-gradient(90deg, #8B4513, transparent);
-}
-
-.city-card:hover .card-accent {
-  width: 80px;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @keyframes heroFadeIn {
@@ -399,27 +355,25 @@ onUnmounted(() => {
 }
 
 @media (max-width: 768px) {
-  .city-card,
-  .city-card.reverse {
-    flex-direction: column;
-    transform: translateY(30px);
-  }
-
-  .city-card.visible {
-    transform: translateY(0);
+  .city-card {
+    height: 180px;
   }
 
   .card-image {
-    flex: none;
-    height: 200px;
+    flex: 0 0 200px;
+  }
+
+  .card-title {
+    font-size: 1.2rem;
+  }
+
+  .card-desc {
+    font-size: 0.85rem;
+    -webkit-line-clamp: 3;
   }
 
   .hero-content h1 {
     font-size: 1.8rem;
-  }
-
-  .image-overlay {
-    opacity: 1;
   }
 }
 </style>
