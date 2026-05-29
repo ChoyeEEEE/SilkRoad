@@ -202,7 +202,7 @@ onUnmounted(() => {
 }
 
 .hero-content h1 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 2.8rem;
   letter-spacing: 8px;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
@@ -299,7 +299,7 @@ onUnmounted(() => {
   font-size: 3.5rem;
   font-weight: 900;
   color: rgba(255, 255, 255, 0.25);
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
 }
 
@@ -314,7 +314,7 @@ onUnmounted(() => {
 }
 
 .panorama-title-overlay span {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.5rem;
   color: #fff;
   font-weight: bold;
@@ -328,7 +328,7 @@ onUnmounted(() => {
 }
 
 .panorama-info h3 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.3rem;
   color: var(--accent, #333);
   margin-bottom: 0.5rem;
@@ -363,7 +363,7 @@ onUnmounted(() => {
 
 .strip-title {
   text-align: center;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.6rem;
   color: #2F4F4F;
   margin-bottom: 2rem;
@@ -420,7 +420,7 @@ onUnmounted(() => {
 }
 
 .season-card h4 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.2rem;
   color: var(--season-color);
   margin-bottom: 0.4rem;

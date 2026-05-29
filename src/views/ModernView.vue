@@ -274,7 +274,7 @@ onUnmounted(() => {
 }
 
 .hero-center h1 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 2.8rem;
   color: #000;
   letter-spacing: 8px;
@@ -311,7 +311,7 @@ onUnmounted(() => {
   color: #fff;
   font-weight: bold;
   font-size: 1rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   box-shadow: 0 4px 20px rgba(212, 175, 55, 0.5);
   animation: vsPulse 2s ease-in-out infinite;
 }
@@ -426,7 +426,7 @@ onUnmounted(() => {
   border-radius: 12px;
   font-size: 0.7rem;
   font-weight: bold;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   background: rgba(212, 175, 55, 0.85);
   color: #fff;
   backdrop-filter: blur(4px);
@@ -437,7 +437,7 @@ onUnmounted(() => {
 .card-body { padding: 1.2rem 1.5rem; flex: 1; }
 
 .card-body h3 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.15rem;
   color: #333;
   margin-bottom: 0.4rem;
@@ -480,7 +480,7 @@ onUnmounted(() => {
 
 .topic-text {
   font-size: 0.55rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   color: #8B4513;
   font-weight: bold;
 }
@@ -507,7 +507,7 @@ onUnmounted(() => {
 
 .stats-banner h2 {
   text-align: center;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.6rem;
   color: #00c8ff;
   margin-bottom: 2rem;
@@ -625,7 +625,7 @@ onUnmounted(() => {
 .stat-value {
   font-size: 1.6rem;
   font-weight: bold;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   background: linear-gradient(135deg, #00c8ff, #00ff88);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -636,7 +636,7 @@ onUnmounted(() => {
 .stat-label {
   font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.55);
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 1px;
 }
 
@@ -775,7 +775,7 @@ onUnmounted(() => {
 }
 
 .lightbox-info h3 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.4rem;
   color: #D4AF37;
   margin-bottom: 1rem;

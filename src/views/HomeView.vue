@@ -666,7 +666,7 @@ const modernHighlights = [
 
 .node-label {
   font-size: 11px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   fill: rgba(232, 212, 139, 0.75);
   letter-spacing: 3px;
   font-weight: normal;
@@ -684,8 +684,8 @@ const modernHighlights = [
   text-align: center; width: 100%; z-index: 10;
 }
 .banner-text h1 {
-  font-size: 4.8rem;
-  font-family: 'Ma Shan Zheng', 'Noto Serif SC', serif;
+  font-size: 3.8rem;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 8px; font-weight: 400;
   white-space: nowrap;
   color: #FFF8DC;
@@ -715,7 +715,7 @@ const modernHighlights = [
 }
 .subtitle {
   font-size: 1.5rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   color: rgba(245,222,179,0.9);
   text-shadow: 0 1px 4px rgba(0,0,0,0.7);
   margin-top: 1rem; letter-spacing: 4px;
@@ -733,7 +733,7 @@ const modernHighlights = [
   border: 1px solid rgba(212,175,55,0.3);
   padding: 0.7rem 1.5rem; border-radius: 30px; cursor: pointer;
   font-weight: bold; transition: all 0.4s ease;
-  backdrop-filter: blur(8px); font-family: 'Noto Sans SC', sans-serif;
+  backdrop-filter: blur(8px); font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px; font-size: 0.95rem;
   display: flex; align-items: center; gap: 0.4rem;
   position: relative; overflow: hidden;
@@ -808,7 +808,7 @@ const modernHighlights = [
   color: rgba(245,222,179,0.7);
   margin-top: 0.3rem;
   letter-spacing: 1px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 @keyframes stat-slide-up {
@@ -873,7 +873,7 @@ const modernHighlights = [
 }
 .section-header h2 {
   font-size: 2.2rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   color: #2d1810;
   letter-spacing: 4px;
   margin-bottom: 0.5rem;
@@ -897,7 +897,7 @@ const modernHighlights = [
   text-decoration: none;
   font-size: 0.95rem;
   letter-spacing: 2px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   transition: all 0.3s ease;
   position: relative; overflow: hidden;
 }
@@ -962,7 +962,7 @@ const modernHighlights = [
   font-size: 0.7rem;
   color: rgba(139,69,19,0.4);
   letter-spacing: 1px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .image-placeholder-banner {
@@ -982,7 +982,7 @@ const modernHighlights = [
   font-size: 0.9rem;
   color: rgba(139,69,19,0.45);
   letter-spacing: 2px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 .image-placeholder-city {
@@ -1044,7 +1044,7 @@ const modernHighlights = [
 }
 .feature-quote {
   font-size: 1.6rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   color: rgba(255,248,220,0.95);
   letter-spacing: 4px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
@@ -1056,7 +1056,7 @@ const modernHighlights = [
   font-size: 0.9rem;
   color: rgba(245,222,179,0.7);
   letter-spacing: 2px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
 }
 
 /* ========== 路线卡片 ========== */
@@ -1097,7 +1097,7 @@ const modernHighlights = [
   font-size: 1.2rem;
   color: #2d1810;
   margin-bottom: 0.5rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px;
 }
 .route-card-inner p {
@@ -1181,7 +1181,7 @@ const modernHighlights = [
   font-size: 1.1rem;
   color: #2d1810;
   margin-bottom: 0.5rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px;
 }
 .culture-card-inner p {
@@ -1279,7 +1279,7 @@ const modernHighlights = [
 .city-tile-content h3 {
   color: white;
   font-size: 1.3rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 3px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
@@ -1345,8 +1345,8 @@ const modernHighlights = [
 .trade-col-title {
   font-size: 1.2rem;
   color: #2d1810;
-  margin-bottom: 1.2rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  margin-bottom: 1rem;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px;
   text-align: center;
 }
@@ -1411,9 +1411,8 @@ const modernHighlights = [
 .trade-card-name {
   font-size: 0.95rem;
   color: #333;
-  font-family: 'Noto Sans SC', sans-serif;
-  letter-spacing: 2px;
-  font-weight: 500;
+  font-family: 'Noto Serif SC', sans-serif;
+  letter-spacing: 1px;
 }
 .trade-arrows-wide {
   display: flex;
@@ -1563,7 +1562,7 @@ const modernHighlights = [
 .compare-topic {
   font-size: 0.85rem;
   color: #8B4513;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   letter-spacing: 2px;
   writing-mode: vertical-rl;
   margin-bottom: 0.5rem;
@@ -1587,7 +1586,7 @@ const modernHighlights = [
   color: rgba(139,69,19,0.5);
   font-size: 0.85rem;
   letter-spacing: 3px;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   border-top: 1px solid rgba(139,69,19,0.1);
 }
 .footer-ornament {

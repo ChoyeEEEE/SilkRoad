@@ -196,7 +196,7 @@ onUnmounted(() => {
 }
 
 .hero-content h1 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 2.8rem;
   letter-spacing: 8px;
   text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
@@ -305,7 +305,7 @@ onUnmounted(() => {
   padding: 5px 14px;
   border-radius: 20px;
   font-size: 0.75rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   backdrop-filter: blur(4px);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
@@ -315,7 +315,7 @@ onUnmounted(() => {
 }
 
 .card-content h3 {
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   font-size: 1.25rem;
   color: #2F4F4F;
   margin-bottom: 0.5rem;
@@ -340,7 +340,7 @@ onUnmounted(() => {
   padding: 3px 10px;
   border-radius: 12px;
   font-size: 0.75rem;
-  font-family: 'Noto Sans SC', sans-serif;
+  font-family: 'Noto Serif SC', sans-serif;
   transition: all 0.3s ease;
 }
 
